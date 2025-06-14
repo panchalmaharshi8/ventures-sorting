@@ -1,0 +1,17 @@
+# Byte-compiled / optimized python files
+__pycache__/
+*.py[cod]
+
+# Data files we don’t want in Git
+*.csv
+*.xls
+*.xlsx
+
+# SQLite DBs
+*.sqlite3
+
+# Generated JSON folder
+ihid_json/
+
+# Environment vars
+.env
