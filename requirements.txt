@@ -1,0 +1,4 @@
+pandas==2.3.0
+openpyxl==3.1.5
+# Add sqlalchemy if you plan to work with databases directly
+# sqlalchemy==2.0.27

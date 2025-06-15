@@ -1,5 +1,6 @@
 import json
 import sqlite3
+import os
 from collections import defaultdict
 
 # loading IHID json
@@ -13,12 +14,13 @@ def load_catalog(catalog_path):
         catalog[tbl].append(col)
     return catalog
 
-#loading mapping json (we will create this once the mapping is completed)
+#loading mapping json
 def load_mapping(mapping_path):
     try:
         with open(mapping_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
+        print(f"Warning: Mapping file {mapping_path} not found. No mappings will be applied.")
         return {}  # no mappings yet
 
 # function to fetch any non-null records from the table for a given table and field
@@ -66,12 +68,94 @@ def fetch_encounter(conn, encntr_num, catalog):
 
     return details
 
+def transform_to_omop(details, mapping):
+    """
+    Transform IHID data to OMOP format based on the provided mapping.
+    
+    Args:
+        details: Dict of IHID tables -> records
+        mapping: Dict of mapping from IHID to OMOP
+    
+    Returns:
+        Dict of OMOP tables with their records
+    """
+    omop_data = defaultdict(list)
+    
+    # Track mapped fields to avoid duplicates
+    processed = set()
+    
+    # Generate person_id from encounter
+    if 'admission_discharge' in details and details['admission_discharge']:
+        enc_record = details['admission_discharge'][0]
+        if 'encntr_num' in enc_record:
+            person_id = enc_record['encntr_num']
+            omop_data['person'].append({
+                'person_id': person_id,
+                # Add other required person fields with default values since IHID is de-identified
+                'gender_concept_id': 0,
+                'year_of_birth': 0,
+                'race_concept_id': 0,
+                'ethnicity_concept_id': 0
+            })
+    
+    # Process each IHID table
+    for ihid_table, records in details.items():
+        if ihid_table not in mapping:
+            continue
+            
+        for record in records:
+            # Apply mappings for this table
+            for ihid_field, maps in mapping[ihid_table].items():
+                if ihid_field not in record:
+                    continue
+                    
+                ihid_value = record[ihid_field]
+                
+                for map_info in maps:
+                    omop_table = map_info['omop_table']
+                    omop_field = map_info['omop_field']
+                    
+                    # Skip if already processed (avoid duplicates)
+                    key = (omop_table, omop_field, str(ihid_value))
+                    if key in processed:
+                        continue
+                    processed.add(key)
+                    
+                    # Create new OMOP record or update existing
+                    new_record = {omop_field: ihid_value}
+                    
+                    # If this is a visit_occurrence, add person_id
+                    if omop_table == 'visit_occurrence' and 'encntr_num' in record:
+                        new_record['person_id'] = record['encntr_num']
+                        new_record['visit_occurrence_id'] = record['encntr_num']
+                        
+                    # If this is a condition_occurrence, add person_id and visit_occurrence_id
+                    if omop_table == 'condition_occurrence' and 'encntr_num' in record:
+                        new_record['person_id'] = record['encntr_num']
+                        new_record['visit_occurrence_id'] = record['encntr_num']
+                        
+                    # Add the record to the appropriate OMOP table
+                    omop_data[omop_table].append(new_record)
+    
+    return dict(omop_data)
+
+def save_omop_data(omop_data, output_dir):
+    """Save OMOP data to JSON files by table."""
+    os.makedirs(output_dir, exist_ok=True)
+    
+    for table, records in omop_data.items():
+        output_path = os.path.join(output_dir, f"{table}.json")
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(records, f, indent=2)
+        print(f"Wrote {len(records)} records to {output_path}")
+
 def main():
     # paths
     catalog_path = 'All_Tables_Combined.json'
-    mapping_path = 'mapping.json'
+    mapping_path = 'ihid_omop_mapping.json'
     db_path      = 'IHID.db'  # TOY DATASET NEEDED HERE
-
+    output_dir = 'omop_output'
+    
     # load
     catalog = load_catalog(catalog_path)
     mapping = load_mapping(mapping_path)
@@ -85,19 +169,18 @@ def main():
         enc = row['encntr_num']
         details = fetch_encounter(conn, enc, catalog)
 
-        # inspect unmapped fields
-        for table, recs in details.items():
-            for rec in recs:
-                for col, val in rec.items():
-                    mapped = mapping.get(table, {}).get(col)
-                    if not mapped:
-                        print(f"[UNMAPPED] {table}.{col} = {val!r}")
-
-        # at this point, `details` is a dict of:
-        #   table → [ { col1: val1, col2: val2, … }, … ]
-        # you can now pass `details` into your mapping/ETL layer
+        # Transform IHID data to OMOP
+        omop_data = transform_to_omop(details, mapping)
+        
+        # Print some statistics on mapping results
+        for omop_table, records in omop_data.items():
+            print(f"Generated {len(records)} {omop_table} records")
+            
+        # Save OMOP data to files
+        save_omop_data(omop_data, output_dir)
 
     conn.close()
+    print("ETL process completed successfully.")
 
 if __name__ == '__main__':
     main()

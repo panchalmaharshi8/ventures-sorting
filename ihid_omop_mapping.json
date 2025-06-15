@@ -1,0 +1,1984 @@
+{
+  "Admission - Discharge": {
+    "facility_id_at_ad": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_id",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_id_at_admit": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_id",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_id_at_disch": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_id",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_name_src_at_ad": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_name_src_at_admit": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_name_src_at_disch": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_short_name_src_at_ad": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_short_name_src_at_admit": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_short_name_src_at_disch": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_desc_at_ad": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "non-exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_desc_at_admit": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "non-exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_desc_at_disch": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "care_site_name",
+        "mapping_type": "non-exact",
+        "description": "The name of the care_site as it appears in the source data",
+        "notes": "There are just the name fields, and then corresponding descriptive fields detailing the extended attributes of a given facility"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_a": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "place_of_service_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
+        "notes": null
+      },
+      {
+        "omop_table": "care_site",
+        "omop_field": "place_of_service_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
+        "notes": null
+      }
+    ],
+    "d": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "place_of_service_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
+        "notes": null
+      }
+    ],
+    "dmit": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "place_of_service_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_di": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "place_of_service_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
+        "notes": null
+      }
+    ],
+    "sch": [
+      {
+        "omop_table": "care_site",
+        "omop_field": "place_of_service_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
+        "notes": null
+      }
+    ],
+    "admit_source_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "admitted_from_concept_id",
+        "mapping_type": "exact",
+        "description": "Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example.",
+        "notes": null
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "admitted_from_concept_id",
+        "mapping_type": "exact",
+        "description": "Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example.",
+        "notes": null
+      }
+    ],
+    "admit_category_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "admitted_from_concept_id",
+        "mapping_type": "non-exact",
+        "description": "Use this field to determine where the patient was admitted from. This concept is part of the visit domain and can indicate if a patient was admitted to the hospital from a long-term care facility, for example.",
+        "notes": null
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_concept_id",
+        "mapping_type": "exact",
+        "description": "This field contains a concept id representing the kind of visit, like inpatient or outpatient. All concepts in this field should be standard and belong to the Visit domain.",
+        "notes": null
+      }
+    ],
+    "admit_source_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "admitted_from_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "admitted_from_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "admit_source_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "admitted_from_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "admitted_from_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "facility_is_acute_at_ad": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_is_free_standing_rehab_at _ad": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_ad": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_disch": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit Detail took place.",
+        "notes": "- These fields are also all present for care site id in the visit OCCURENCE table as well, as they all vary in the granularity they offer. There's a discrepancy between how OMOP and IHID choose to break down visit details. OMOP breaks down a given occurence in to detailed instances of provider-patient interaction. IHID has separate categories for admit, admit without discharge yet, 1st-3rd interaction with provider, and discharge details."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact",
+        "description": "This field provides information about the Care Site where the Visit took place.",
+        "notes": null
+      }
+    ],
+    "admit_category_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "preceding_visit_detail_id",
+        "mapping_type": "exact",
+        "description": "Use this field to find the visit detail that occurred for the person prior to the given visit detail record. There could be a few days or a few years in between.",
+        "notes": null
+      }
+    ],
+    "admit_category_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "preceding_visit_detail_id",
+        "mapping_type": "exact",
+        "description": "Use this field to find the visit detail that occurred for the person prior to the given visit detail record. There could be a few days or a few years in between.",
+        "notes": null
+      }
+    ],
+    "arrival_mode_by_ambulance_cihi_code": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "preceding_visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this field to find the visit detail that occurred for the person prior to the given visit detail record. There could be a few days or a few years in between.",
+        "notes": null
+      }
+    ],
+    "arrival_mode_by_ambulance_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "preceding_visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this field to find the visit detail that occurred for the person prior to the given visit detail record. There could be a few days or a few years in between.",
+        "notes": null
+      }
+    ],
+    "arrival_mode_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "preceding_visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this field to find the visit detail that occurred for the person prior to the given visit detail record. There could be a few days or a few years in between.",
+        "notes": null
+      }
+    ],
+    "arrival_mode_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "preceding_visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this field to find the visit detail that occurred for the person prior to the given visit detail record. There could be a few days or a few years in between.",
+        "notes": null
+      }
+    ],
+    "admitting_care_provider_specialty_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "provider_id",
+        "mapping_type": "exact",
+        "description": "There will only be one provider per  **visit** record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). This is a typical reason for leveraging the VISIT_DETAIL table as even though each VISIT_DETAIL record can only have one provider, there is no limit to the number of VISIT_DETAIL records that can be associated to a VISIT_OCCURRENCE record.",
+        "notes": null
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "provider_id",
+        "mapping_type": "non-exact",
+        "description": "There will only be one provider per  **visit** record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). This is a typical reason for leveraging the VISIT_DETAIL table as even though each VISIT_DETAIL record can only have one provider, there is no limit to the number of VISIT_DETAIL records that can be associated to a VISIT_OCCURRENCE record.",
+        "notes": null
+      }
+    ],
+    "provider_care_team_desc_src_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "provider_id",
+        "mapping_type": "non-exact",
+        "description": "There will only be one provider per  **visit** record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). This is a typical reason for leveraging the VISIT_DETAIL table as even though each VISIT_DETAIL record can only have one provider, there is no limit to the number of VISIT_DETAIL records that can be associated to a VISIT_OCCURRENCE record.",
+        "notes": null
+      }
+    ],
+    "provider_care_team_desc_src_at_disch": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "provider_id",
+        "mapping_type": "non-exact",
+        "description": "There will only be one provider per  **visit** record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). This is a typical reason for leveraging the VISIT_DETAIL table as even though each VISIT_DETAIL record can only have one provider, there is no limit to the number of VISIT_DETAIL records that can be associated to a VISIT_OCCURRENCE record.",
+        "notes": null
+      }
+    ],
+    "provider_care_team_medical_service_desc_src_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "provider_id",
+        "mapping_type": "non-exact",
+        "description": "There will only be one provider per  **visit** record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). This is a typical reason for leveraging the VISIT_DETAIL table as even though each VISIT_DETAIL record can only have one provider, there is no limit to the number of VISIT_DETAIL records that can be associated to a VISIT_OCCURRENCE record.",
+        "notes": null
+      }
+    ],
+    "provider_care_team_medical_service_desc_src_at_disch": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "provider_id",
+        "mapping_type": "non-exact",
+        "description": "There will only be one provider per  **visit** record and the ETL document should clearly state how they were chosen (attending, admitting, etc.). This is a typical reason for leveraging the VISIT_DETAIL table as even though each VISIT_DETAIL record can only have one provider, there is no limit to the number of VISIT_DETAIL records that can be associated to a VISIT_OCCURRENCE record.",
+        "notes": null
+      }
+    ],
+    "admit_dx_icd_1_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit detail.",
+        "notes": "\"admit_dx_icd_1_id, admit_dx_icd_2_id, admit_dx_icd_3_id\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_icd_2_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit detail.",
+        "notes": "\"admit_dx_icd_1_id, admit_dx_icd_2_id, admit_dx_icd_3_id\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_icd_3_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit detail.",
+        "notes": "\"admit_dx_icd_1_id, admit_dx_icd_2_id, admit_dx_icd_3_id\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_1_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the kind of visit detail that took place (inpatient, outpatient, emergency, etc.)",
+        "notes": "\"admit_dx_1_desc, admit_dx_2_desc, admit_dx_3_desc, admit_dx_icd_1_desc_src, admit_dx_icd_2_desc_src, admit_dx_icd_3_desc_src\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_2_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the kind of visit detail that took place (inpatient, outpatient, emergency, etc.)",
+        "notes": "\"admit_dx_1_desc, admit_dx_2_desc, admit_dx_3_desc, admit_dx_icd_1_desc_src, admit_dx_icd_2_desc_src, admit_dx_icd_3_desc_src\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_3_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the kind of visit detail that took place (inpatient, outpatient, emergency, etc.)",
+        "notes": "\"admit_dx_1_desc, admit_dx_2_desc, admit_dx_3_desc, admit_dx_icd_1_desc_src, admit_dx_icd_2_desc_src, admit_dx_icd_3_desc_src\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_icd_1_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the kind of visit detail that took place (inpatient, outpatient, emergency, etc.)",
+        "notes": "\"admit_dx_1_desc, admit_dx_2_desc, admit_dx_3_desc, admit_dx_icd_1_desc_src, admit_dx_icd_2_desc_src, admit_dx_icd_3_desc_src\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_icd_2_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the kind of visit detail that took place (inpatient, outpatient, emergency, etc.)",
+        "notes": "\"admit_dx_1_desc, admit_dx_2_desc, admit_dx_3_desc, admit_dx_icd_1_desc_src, admit_dx_icd_2_desc_src, admit_dx_icd_3_desc_src\": diagnoses for first to third admit"
+      }
+    ],
+    "admit_dx_icd_3_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the kind of visit detail that took place (inpatient, outpatient, emergency, etc.)",
+        "notes": "\"admit_dx_1_desc, admit_dx_2_desc, admit_dx_3_desc, admit_dx_icd_1_desc_src, admit_dx_icd_2_desc_src, admit_dx_icd_3_desc_src\": diagnoses for first to third admit"
+      }
+    ],
+    "disch_disp_id": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "discharged_to_concept_id",
+        "mapping_type": "exact",
+        "description": "Use this field to determine where the patient was discharged to after a visit. This concept is part of the visit domain and can indicate if a patient was transferred to another hospital or sent to a long-term care facility, for example.  It is assumed that a person is discharged to home therefore there is not a standard concept id for \"home\".  Use concept id = 0 when a person is discharged to home.",
+        "notes": null
+      }
+    ],
+    "disch_disp_dad_short_desc": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "discharged_to_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "disch_disp_desc_src": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "discharged_to_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "disch_disp_dad_desc": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "discharged_to_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "disch_date_id": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_calendar_month": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_calendar_year": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_day_of_week": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_reporting_week_end": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_reporting_week_nbr": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_reporting_year": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_year_day_count": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_date_ytd_day_num": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_time_interval_1_hour": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits the end date is typically the discharge date.  If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_date, then set the visit_end_date to the date of the data pull.",
+        "notes": null
+      }
+    ],
+    "disch_time_id": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_end_datetime",
+        "mapping_type": "exact",
+        "description": "If a Person is still an inpatient in the hospital at the time of the data extract and does not have a visit_end_datetime, then set the visit_end_datetime to the datetime of the data pull.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_id_at_ad": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_id_at_admit": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_id_at_disch": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_id_at_ad": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_id_at_admit": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_id_at_disch": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_at_ad": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_at_admit": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_at_disch": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_src_at_ad": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_src_at_admit": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_src_at_disch": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_at_ad": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_at_admit": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_at_disch": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_src_at_ad": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_src_at_admit": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_src_at_disch": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      }
+    ],
+    "admit_date_id": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_start_date",
+        "mapping_type": "exact",
+        "description": "For inpatient visits, the start date is typically the admission date. For outpatient visits the start date and end date will be the same.",
+        "notes": null
+      }
+    ],
+    "admit_date_reporting_week_end": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_start_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits, the start date is typically the admission date. For outpatient visits the start date and end date will be the same.",
+        "notes": null
+      }
+    ],
+    "admit_date_reporting_week_nbr": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_start_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits, the start date is typically the admission date. For outpatient visits the start date and end date will be the same.",
+        "notes": null
+      }
+    ],
+    "admit_date_reporting_year": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_start_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits, the start date is typically the admission date. For outpatient visits the start date and end date will be the same.",
+        "notes": null
+      }
+    ],
+    "admit_dt_tm": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_start_date",
+        "mapping_type": "non-exact",
+        "description": "For inpatient visits, the start date is typically the admission date. For outpatient visits the start date and end date will be the same.",
+        "notes": null
+      }
+    ],
+    "admit_time_id": [
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_start_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ]
+  },
+  "DAD Diagnosis": {
+    "diagnosis_cd": [
+      {
+        "omop_table": "condition_era",
+        "omop_field": "condition_concept_id",
+        "mapping_type": "non-exact",
+        "description": "The Concept Id representing the Condition.",
+        "notes": "OMOP expects an ID but IHID only provides a VARCHAR"
+      },
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_concept_id",
+        "mapping_type": "non-exact",
+        "description": "The CONDITION_CONCEPT_ID field is recommended for primary use in analyses, and must be used for network studies. This is the standard concept mapped from the source value which represents a condition",
+        "notes": "Maps the diagnosis code to a standard concept."
+      },
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_source_concept_id",
+        "mapping_type": "exact",
+        "description": "This is the concept representing the condition source value and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Condition necessary for a given analytic use case. Consider using CONDITION_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.",
+        "notes": "The source diagnosis code before mapping to a standard concept."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is the Standard Concept representing the Person's cause of death, if available.",
+        "notes": "The cause of death can be sourced from the diagnosis codes, especially when diagnosis_type_id indicates it is a cause of death."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_source_concept_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "The cause of death can be sourced from the diagnosis codes, especially when diagnosis_type_id indicates it is a cause of death."
+      },
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_name",
+        "mapping_type": "non-exact",
+        "description": "The name describing the Domain, e.g.\nCondition, Procedure, Measurement\netc.",
+        "notes": null
+      }
+    ],
+    "diagnosis_order_number": [
+      {
+        "omop_table": "condition_era",
+        "omop_field": "condition_occurrence_count",
+        "mapping_type": "non-exact",
+        "description": "The number of individual Condition\nOccurrences used to construct the\ncondition era.",
+        "notes": "This field can be used to count the number of diagnoses for a given encounter."
+      }
+    ],
+    "diagnosis_source_id": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_occurrence_id",
+        "mapping_type": "exact",
+        "description": "The unique key given to a condition record for a person. Refer to the ETL for how duplicate conditions during the same visit were handled.",
+        "notes": "A unique identifier for each diagnosis record."
+      }
+    ],
+    "diagnosis_desc": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the condition that occurred. For example, this could be an ICD10 or Read code.",
+        "notes": "The verbatim description of the diagnosis from the source."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_source_value",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "The verbatim description of the cause of death."
+      },
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_name",
+        "mapping_type": "non-exact",
+        "description": "The name describing the Domain, e.g.\nCondition, Procedure, Measurement\netc.",
+        "notes": null
+      }
+    ],
+    "diagnosis_type_id": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_status_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This concept represents the point during the visit the diagnosis was given (admitting diagnosis, final diagnosis), whether the diagnosis was determined due to laboratory findings, if the diagnosis was exclusionary, or if it was a preliminary diagnosis, among others.",
+        "notes": "This field can be mapped to represent the status of the diagnosis (e.g., admitting, final)."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_concept_id",
+        "mapping_type": "exact",
+        "description": "This is the Standard Concept representing the Person's cause of death, if available.",
+        "notes": "The cause of death can be sourced from the diagnosis codes, especially when diagnosis_type_id indicates it is a cause of death."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_source_concept_id",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "The cause of death can be sourced from the diagnosis codes, especially when diagnosis_type_id indicates it is a cause of death."
+      },
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_name",
+        "mapping_type": "non-exact",
+        "description": "The name describing the Domain, e.g.\nCondition, Procedure, Measurement\netc.",
+        "notes": null
+      }
+    ],
+    "most_responsible_diagnosis_desc": [
+      {
+        "omop_table": "death",
+        "omop_field": "cause_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is the Standard Concept representing the Person's cause of death, if available.",
+        "notes": "The cause of death can be sourced from the diagnosis codes, especially when diagnosis_type_id indicates it is a cause of death."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_source_concept_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "The cause of death can be sourced from the diagnosis codes, especially when diagnosis_type_id indicates it is a cause of death."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "cause_source_value",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "The verbatim description of the cause of death."
+      }
+    ]
+  },
+  "Census": {
+    "disch_dt_tm": [
+      {
+        "omop_table": "condition_era",
+        "omop_field": "condition_era_end_date",
+        "mapping_type": "exact",
+        "description": "The end date for the Condition Era\nconstructed from the individual\ninstances of Condition Occurrences.\nIt is the end date of the final\ncontinuously recorded instance of the\nCondition.",
+        "notes": "The date and time when the patient was formally discharged (released) from the health care facility."
+      },
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_end_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "Provides a more precise end time for the condition."
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "condition_era",
+        "omop_field": "condition_era_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "A unique source system key for each encounter/visit which can be joined with emergency and census"
+      }
+    ],
+    "admit_dt_tm": [
+      {
+        "omop_table": "condition_era",
+        "omop_field": "condition_era_start_date",
+        "mapping_type": "non-exact",
+        "description": "The start date for the Condition Era\nconstructed from the individual\ninstances of Condition Occurrences.\nIt is the start date of the very first\nchronologically recorded instance of\nthe condition with at least 31 days since any prior record of the same Condition.",
+        "notes": "The admission date marks the beginning of a condition era."
+      }
+    ],
+    "gender_id_at_census": [
+      {
+        "omop_table": "person",
+        "omop_field": "gender_concept_id",
+        "mapping_type": "exact",
+        "description": "This field is meant to capture the biological sex at birth of the Person. This field should not be used to study gender identity issues.",
+        "notes": "NOTE!!! IHID stores the gender of the person at the census date. NOT the biological sex although their definitions may overlap in many cases"
+      }
+    ],
+    "Medical Imaging: gender_desc": [
+      {
+        "omop_table": "person",
+        "omop_field": "gender_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This field is meant to capture the biological sex at birth of the Person. This field should not be used to study gender identity issues.",
+        "notes": "NOTE!!! IHID stores the gender of the person at the census date. NOT the biological sex although their definitions may overlap in many cases"
+      },
+      {
+        "omop_table": "person",
+        "omop_field": "gender_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field is used to store the biological sex of the person from the source data. It is not intended for use in standard analytics but for reference only.",
+        "notes": "NOTE!!! IHID stores the gender of the person at the census date. NOT the biological sex although their definitions may overlap in many cases"
+      }
+    ],
+    "gender_desc_at_census": [
+      {
+        "omop_table": "person",
+        "omop_field": "gender_source_value",
+        "mapping_type": "exact",
+        "description": "This field is used to store the biological sex of the person from the source data. It is not intended for use in standard analytics but for reference only.",
+        "notes": "NOTE!!! IHID stores the gender of the person at the census date. NOT the biological sex although their definitions may overlap in many cases"
+      }
+    ],
+    "age_at_census": [
+      {
+        "omop_table": "person",
+        "omop_field": "year_of_birth",
+        "mapping_type": "non-exact",
+        "description": "Compute age using year_of_birth.",
+        "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
+      }
+    ],
+    "age_category_at_census": [
+      {
+        "omop_table": "person",
+        "omop_field": "year_of_birth",
+        "mapping_type": "non-exact",
+        "description": "Compute age using year_of_birth.",
+        "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
+      }
+    ],
+    "age_id_at_census": [
+      {
+        "omop_table": "person",
+        "omop_field": "year_of_birth",
+        "mapping_type": "non-exact",
+        "description": "Compute age using year_of_birth.",
+        "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
+      }
+    ],
+    "Medical Imaging table:": [
+      {
+        "omop_table": "person",
+        "omop_field": "year_of_birth",
+        "mapping_type": "non-exact",
+        "description": "Compute age using year_of_birth.",
+        "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
+      }
+    ],
+    "age_at_exam": [
+      {
+        "omop_table": "person",
+        "omop_field": "year_of_birth",
+        "mapping_type": "non-exact",
+        "description": "Compute age using year_of_birth.",
+        "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
+      }
+    ],
+    "age_category_at_exam": [
+      {
+        "omop_table": "person",
+        "omop_field": "year_of_birth",
+        "mapping_type": "non-exact",
+        "description": "Compute age using year_of_birth.",
+        "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
+      }
+    ]
+  },
+  "DAD Abstract (also present in other DAD categories)": {
+    "disch_dt_date": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_end_date",
+        "mapping_type": "exact",
+        "description": "Use this date to determine the end date of the condition",
+        "notes": "The discharge date represents the end of a specific condition occurrence."
+      }
+    ]
+  },
+  "DAD Abstract": {
+    "admit_dt_date": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_start_date",
+        "mapping_type": "non-exact",
+        "description": "Use this date to determine the start date of the condition",
+        "notes": "The admission date is the start of the condition occurrence."
+      }
+    ],
+    "main_patient_service_desc": [
+      {
+        "omop_table": "cost",
+        "omop_field": "cost_domain_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "The domain of the cost can be inferred from the main service or principal procedure."
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "revenue_code_source_value",
+        "mapping_type": "non-exact",
+        "description": "Revenue codes are a method to charge for a class of procedures and conditions in the U.S. hospital system.",
+        "notes": null
+      }
+    ],
+    "principle_procedure_desc": [
+      {
+        "omop_table": "cost",
+        "omop_field": "cost_domain_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "The domain of the cost can be inferred from the main service or principal procedure."
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "cost",
+        "omop_field": "cost_event_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "encntr_num is the encounter number. abstract_num is a unique ID for the abstract."
+      }
+    ],
+    "abstract_num": [
+      {
+        "omop_table": "cost",
+        "omop_field": "cost_event_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "encntr_num is the encounter number. abstract_num is a unique ID for the abstract."
+      }
+    ],
+    "cmg_intervention_ooh_count": [
+      {
+        "omop_table": "cost",
+        "omop_field": "drg_concept_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "CMG (Case Mix Group) is the Canadian equivalent of DRG. This can be mapped to a standard concept."
+      }
+    ],
+    "cmg_trim_point": [
+      {
+        "omop_table": "cost",
+        "omop_field": "drg_concept_id",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "CMG (Case Mix Group) is the Canadian equivalent of DRG. This can be mapped to a standard concept."
+      }
+    ],
+    "cmg_cmg_desc": [
+      {
+        "omop_table": "cost",
+        "omop_field": "drg_source_value",
+        "mapping_type": "exact",
+        "description": "Diagnosis Related Groups are US codes used to classify hospital cases into one of approximately 500 groups.",
+        "notes": "The source value for the Case Mix Group."
+      }
+    ],
+    "is_med_service_mhsu_at_admit": [
+      {
+        "omop_table": "cost",
+        "omop_field": "revenue_code_source_value",
+        "mapping_type": "non-exact",
+        "description": "Revenue codes are a method to charge for a class of procedures and conditions in the U.S. hospital system.",
+        "notes": null
+      }
+    ],
+    "payor_desc": [
+      {
+        "omop_table": "cost",
+        "omop_field": "revenue_code_source_value",
+        "mapping_type": "non-exact",
+        "description": "Revenue codes are a method to charge for a class of procedures and conditions in the U.S. hospital system.",
+        "notes": null
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "total_cost",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These are relative cost weights, not actual monetary costs. They can be used to estimate costs."
+      }
+    ],
+    "cmg_resource_intensity_weight": [
+      {
+        "omop_table": "cost",
+        "omop_field": "total_cost",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These are relative cost weights, not actual monetary costs. They can be used to estimate costs."
+      }
+    ],
+    "cacs_ambulatory_cost_weight": [
+      {
+        "omop_table": "cost",
+        "omop_field": "total_cost",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These are relative cost weights, not actual monetary costs. They can be used to estimate costs."
+      }
+    ],
+    "disch_disposition_desc": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_type_concept_id",
+        "mapping_type": "exact",
+        "description": "This is the provenance of the death record, i.e., where it came from. It is possible that an administrative claims database would source death information from a government file so do not assume the Death Type is the same as the Visit Type, etc.",
+        "notes": "These fields indicate the circumstances and\nlocation of death."
+      }
+    ],
+    "autopsy": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_type_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is the provenance of the death record, i.e., where it came from. It is possible that an administrative claims database would source death information from a government file so do not assume the Death Type is the same as the Visit Type, etc.",
+        "notes": "These fields indicate the circumstances and\nlocation of death."
+      }
+    ],
+    "death_in_operating_room": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_type_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is the provenance of the death record, i.e., where it came from. It is possible that an administrative claims database would source death information from a government file so do not assume the Death Type is the same as the Visit Type, etc.",
+        "notes": "These fields indicate the circumstances and\nlocation of death."
+      }
+    ],
+    "disch_disp_dad_is_death": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_type_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This is the provenance of the death record, i.e., where it came from. It is possible that an administrative claims database would source death information from a government file so do not assume the Death Type is the same as the Visit Type, etc.",
+        "notes": "These fields indicate the circumstances and\nlocation of death."
+      }
+    ]
+  },
+  "Census or Admission / Discharge": {
+    "admit_dt_tm": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_start_datetime",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "A more precise start time for the condition."
+      }
+    ]
+  },
+  "Admission / Discharge": {
+    "diagnosis_type_id (see IM Dx Type table?)": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_status_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the condition status.",
+        "notes": "The source value for the diagnosis status."
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "The visit during which the condition occurred.",
+        "notes": "The primary identifier for the patient's visit."
+      },
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "special",
+        "description": "Using encounter number as person identifier since IHID is de-identified",
+        "notes": "This is a special mapping due to de-identification requirements"
+      }
+    ],
+    "disch_dt_date": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_date",
+        "mapping_type": "non-exact",
+        "description": "The date the person was deceased.",
+        "notes": "The discharge date/time should be used as the death date when disch_disp_dad_is_death is flagged."
+      }
+    ],
+    "disch_dt_tm": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_date",
+        "mapping_type": "non-exact",
+        "description": "The date the person was deceased.",
+        "notes": "The discharge date/time should be used as the death date when disch_disp_dad_is_death is flagged."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "death_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "The discharge date and time should be used as the death date and time when disch_disp_dad_is_death is flagged."
+      }
+    ]
+  },
+  "Admission / Discharge or DAD Abstract": {
+    "care_type": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_type_concept_id",
+        "mapping_type": "non-exact",
+        "description": "This field can be used to determine the provenance of the Condition record, as in whether the condition was from an EHR system, insurance claim, registry, or other sources.",
+        "notes": "This indicates the type of care setting where the condition was recorded."
+      }
+    ]
+  },
+  "DAD Abstract        ": {
+    "payor_desc": [
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_patient",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_payer",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_primary",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      }
+    ],
+    "primary_health_plan_desc_src": [
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_patient",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_payer",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_primary",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      }
+    ]
+  },
+  "Medical Imaging": {
+    "rad_exam_modality_code_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_concept_id",
+        "mapping_type": "exact",
+        "description": "The DEVICE_CONCEPT_ID field is recommended for primary use in analyses, and must be used for network studies. This is the standard concept mapped from the source concept id which represents a foreign object or instrument the person was exposed to.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_concept_id",
+        "mapping_type": "exact",
+        "description": "UNIT_SOURCE_VALUES should be mapped to a Standard Concept in the Unit domain that best represents the unit as given in the source data.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_concept_id",
+        "mapping_type": "non-exact",
+        "description": "The DEVICE_CONCEPT_ID field is recommended for primary use in analyses, and must be used for network studies. This is the standard concept mapped from the source concept id which represents a foreign object or instrument the person was exposed to.",
+        "notes": null
+      }
+    ],
+    "rad_exam_end_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_date",
+        "mapping_type": "exact",
+        "description": "The DEVICE_EXPOSURE_END_DATE denotes the day the device exposure ended for the patient, if given.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "med_service_desc_src_at_rad_exam_end": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_date",
+        "mapping_type": "exact",
+        "description": "The DEVICE_EXPOSURE_END_DATE denotes the day the device exposure ended for the patient, if given.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the device exposure that occurred. For example, this could be an NDC or Gemscript code.",
+        "notes": null
+      }
+    ],
+    "rad_report_final_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_date",
+        "mapping_type": "non-exact",
+        "description": "The DEVICE_EXPOSURE_END_DATE denotes the day the device exposure ended for the patient, if given.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_datetime",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "transcription_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_date",
+        "mapping_type": "non-exact",
+        "description": "The DEVICE_EXPOSURE_END_DATE denotes the day the device exposure ended for the patient, if given.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_end_datetime",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "rad_exam_status_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_id",
+        "mapping_type": "exact",
+        "description": "The unique key given to records a person's exposure to a foreign physical object or instrument.",
+        "notes": null
+      }
+    ],
+    "rad_exam_start_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_start_date",
+        "mapping_type": "exact",
+        "description": "Use this date to determine the start date of the device record.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_start_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "rad_exam_request_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_start_date",
+        "mapping_type": "non-exact",
+        "description": "Use this date to determine the start date of the device record.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_start_datetime",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "rad_exam_request_received_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_exposure_start_date",
+        "mapping_type": "non-exact",
+        "description": "Use this date to determine the start date of the device record.",
+        "notes": null
+      }
+    ],
+    "rad_resource_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_source_concept_id",
+        "mapping_type": "exact",
+        "description": "This is the concept representing the device source value and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Device necessary for a given analytic use case. Consider using DEVICE_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_source_concept_id",
+        "mapping_type": "exact",
+        "description": "This is the concept representing the device source value and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Device necessary for a given analytic use case. Consider using DEVICE_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_type_concept_id",
+        "mapping_type": "exact",
+        "description": "You can use the TYPE_CONCEPT_ID to denote the provenance of the record, as in whether the record is from administrative claims or EHR.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_type_concept_id",
+        "mapping_type": "exact",
+        "description": "You can use the TYPE_CONCEPT_ID to denote the provenance of the record, as in whether the record is from administrative claims or EHR.",
+        "notes": null
+      }
+    ],
+    "rad_exam_catalog_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the device exposure that occurred. For example, this could be an NDC or Gemscript code.",
+        "notes": null
+      }
+    ],
+    "med_service_dad_desc_at_rad_exam_end": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "device_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the device exposure that occurred. For example, this could be an NDC or Gemscript code.",
+        "notes": null
+      }
+    ],
+    "rad_exam_count": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "quantity",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": null
+      }
+    ],
+    "source_system_code": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_concept_id",
+        "mapping_type": "exact",
+        "description": "UNIT_SOURCE_VALUES should be mapped to a Standard Concept in the Unit domain that best represents the unit as given in the source data.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "exact",
+        "description": "The Visit Detail during which the device was prescribed or given.",
+        "notes": null
+      },
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "The Visit during which the device was prescribed or given.",
+        "notes": null
+      }
+    ],
+    "DxTypeID": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_concept_id",
+        "mapping_type": "exact",
+        "description": "This is the concept representing the UNIT_SOURCE_VALUE and may not necessarily be standard. This field is discouraged from use in analysis because it is not required to contain Standard Concepts that are used across the OHDSI community, and should only be used when Standard Concepts do not adequately represent the source detail for the Unit necessary for a given analytic use case. Consider using UNIT_CONCEPT_ID instead to enable standardized analytics that can be consistent across the network.",
+        "notes": null
+      },
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_concept_id",
+        "mapping_type": "exact",
+        "description": "A Concept representing the Domain Concept the DOMAIN record belongs to.",
+        "notes": null
+      },
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_id",
+        "mapping_type": "exact",
+        "description": "A unique key for each domain.",
+        "notes": null
+      }
+    ],
+    "rad_exam_workload_extended_units": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "encntr_type_desc_at_rad_exam_end": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_src_at_rad_exam_end": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "encntr_type_class_desc_at_rad_exam_end": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_community_of_care _desc": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_community_of_care _subgrp_desc": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_health_organization_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_health_organization_site_desc _src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_health_organization_site_short_desc": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_name_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "rad_exam_room_facility_short_name_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "unit_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the unit of the Device. For example, blood transfusions are considered devices and can be given in mL quantities.",
+        "notes": null
+      }
+    ],
+    "requisition_received_dt_tm": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact",
+        "description": "The Visit Detail during which the device was prescribed or given.",
+        "notes": null
+      }
+    ],
+    "rad_exam_modality_desc_src": [
+      {
+        "omop_table": "device_exposure",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "The Visit during which the device was prescribed or given.",
+        "notes": null
+      }
+    ],
+    "diagnosis_type_id": [
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_concept_id",
+        "mapping_type": "non-exact",
+        "description": "A Concept representing the Domain Concept the DOMAIN record belongs to.",
+        "notes": null
+      },
+      {
+        "omop_table": "domain",
+        "omop_field": "domain_id",
+        "mapping_type": "non-exact",
+        "description": "A unique key for each domain.",
+        "notes": null
+      }
+    ]
+  },
+  "Order": {
+    "strength_dose_minimum_range_value": [
+      {
+        "omop_table": "dose_era",
+        "omop_field": "dose_value",
+        "mapping_type": "exact",
+        "description": "The numeric value of the dosage of the drug_ingredient.",
+        "notes": null
+      }
+    ]
+  }
+}
