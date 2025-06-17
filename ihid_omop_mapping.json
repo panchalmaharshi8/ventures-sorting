@@ -1,5 +1,5 @@
 {
-  "Admission - Discharge": {
+  "Admission / Discharge": {
     "facility_id_at_ad": [
       {
         "omop_table": "care_site",
@@ -326,6 +326,63 @@
         "mapping_type": "non-exact",
         "description": "This is a high-level way of characterizing a Care Site. Typically, however, Care Sites can provide care in multiple settings (inpatient, outpatient, etc.) and this granularity should be reflected in the visit.",
         "notes": null
+      }
+    ],
+    "diagnosis_type_id (see IM Dx Type table?)": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "condition_status_source_value",
+        "mapping_type": "non-exact",
+        "description": "This field houses the verbatim value from the source data representing the condition status.",
+        "notes": "The source value for the diagnosis status."
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "condition_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "The visit during which the condition occurred.",
+        "notes": "The primary identifier for the patient's visit."
+      },
+      {
+        "omop_table": "visit_occurrence",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact",
+        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
+        "notes": null
+      },
+      {
+        "omop_table": "VISIT_OCCURRENCE",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Using encounter number as visit identifier",
+        "notes": "Each encounter represents a unique visit in the OMOP model"
+      }
+    ],
+    "disch_dt_date": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_date",
+        "mapping_type": "non-exact",
+        "description": "The date the person was deceased.",
+        "notes": "The discharge date/time should be used as the death date when disch_disp_dad_is_death is flagged."
+      }
+    ],
+    "disch_dt_tm": [
+      {
+        "omop_table": "death",
+        "omop_field": "death_date",
+        "mapping_type": "non-exact",
+        "description": "The date the person was deceased.",
+        "notes": "The discharge date/time should be used as the death date when disch_disp_dad_is_death is flagged."
+      },
+      {
+        "omop_table": "death",
+        "omop_field": "death_datetime",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "The discharge date and time should be used as the death date and time when disch_disp_dad_is_death is flagged."
       }
     ],
     "admit_source_id": [
@@ -848,15 +905,6 @@
         "notes": null
       }
     ],
-    "encntr_num": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact",
-        "description": "Use this to identify unique interactions between a person and the health care system. This identifier links across the other CDM event tables to associate events with a visit.",
-        "notes": null
-      }
-    ],
     "encntr_type_class_desc_at_ad": [
       {
         "omop_table": "visit_occurrence",
@@ -1017,6 +1065,24 @@
         "mapping_type": "exact",
         "description": NaN,
         "notes": null
+      }
+    ],
+    "patient_id": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using patient_id as person identifier",
+        "notes": "Although not in current catalog, patient_id is expected in actual data"
+      }
+    ],
+    "MRN": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using MRN as alternate person identifier",
+        "notes": "Documentation mentions both patient_id and MRN as unique patient identifiers"
       }
     ]
   },
@@ -1393,16 +1459,28 @@
         "notes": "The source value for the Case Mix Group."
       }
     ],
-    "is_med_service_mhsu_at_admit": [
+    "payor_desc": [
       {
         "omop_table": "cost",
-        "omop_field": "revenue_code_source_value",
-        "mapping_type": "non-exact",
-        "description": "Revenue codes are a method to charge for a class of procedures and conditions in the U.S. hospital system.",
-        "notes": null
-      }
-    ],
-    "payor_desc": [
+        "omop_field": "paid_by_patient",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_payer",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_primary",
+        "mapping_type": "exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
       {
         "omop_table": "cost",
         "omop_field": "revenue_code_source_value",
@@ -1416,6 +1494,38 @@
         "mapping_type": "non-exact",
         "description": NaN,
         "notes": "These are relative cost weights, not actual monetary costs. They can be used to estimate costs."
+      }
+    ],
+    "primary_health_plan_desc_src": [
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_patient",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_payer",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      },
+      {
+        "omop_table": "cost",
+        "omop_field": "paid_by_primary",
+        "mapping_type": "non-exact",
+        "description": NaN,
+        "notes": "These fields identify the payer"
+      }
+    ],
+    "is_med_service_mhsu_at_admit": [
+      {
+        "omop_table": "cost",
+        "omop_field": "revenue_code_source_value",
+        "mapping_type": "non-exact",
+        "description": "Revenue codes are a method to charge for a class of procedures and conditions in the U.S. hospital system.",
+        "notes": null
       }
     ],
     "cmg_resource_intensity_weight": [
@@ -1502,76 +1612,6 @@
       }
     ]
   },
-  "Admission / Discharge": {
-    "diagnosis_type_id (see IM Dx Type table?)": [
-      {
-        "omop_table": "condition_occurrence",
-        "omop_field": "condition_status_source_value",
-        "mapping_type": "non-exact",
-        "description": "This field houses the verbatim value from the source data representing the condition status.",
-        "notes": "The source value for the diagnosis status."
-      }
-    ],
-    "encntr_num": [
-      {
-        "omop_table": "condition_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact",
-        "description": "The visit during which the condition occurred.",
-        "notes": "The primary identifier for the patient's visit."
-      },
-      {
-        "omop_table": "VISIT_OCCURRENCE",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact",
-        "description": "Using encounter number as visit identifier",
-        "notes": "Each encounter represents a unique visit in the OMOP model"
-      }
-    ],
-    "disch_dt_date": [
-      {
-        "omop_table": "death",
-        "omop_field": "death_date",
-        "mapping_type": "non-exact",
-        "description": "The date the person was deceased.",
-        "notes": "The discharge date/time should be used as the death date when disch_disp_dad_is_death is flagged."
-      }
-    ],
-    "disch_dt_tm": [
-      {
-        "omop_table": "death",
-        "omop_field": "death_date",
-        "mapping_type": "non-exact",
-        "description": "The date the person was deceased.",
-        "notes": "The discharge date/time should be used as the death date when disch_disp_dad_is_death is flagged."
-      },
-      {
-        "omop_table": "death",
-        "omop_field": "death_datetime",
-        "mapping_type": "exact",
-        "description": NaN,
-        "notes": "The discharge date and time should be used as the death date and time when disch_disp_dad_is_death is flagged."
-      }
-    ],
-    "patient_id": [
-      {
-        "omop_table": "PERSON",
-        "omop_field": "person_id",
-        "mapping_type": "anticipated",
-        "description": "Using patient_id as person identifier",
-        "notes": "Although not in current catalog, patient_id is expected in actual data"
-      }
-    ],
-    "MRN": [
-      {
-        "omop_table": "PERSON",
-        "omop_field": "person_id",
-        "mapping_type": "anticipated",
-        "description": "Using MRN as alternate person identifier",
-        "notes": "Documentation mentions both patient_id and MRN as unique patient identifiers"
-      }
-    ]
-  },
   "Admission / Discharge or DAD Abstract": {
     "care_type": [
       {
@@ -1580,54 +1620,6 @@
         "mapping_type": "non-exact",
         "description": "This field can be used to determine the provenance of the Condition record, as in whether the condition was from an EHR system, insurance claim, registry, or other sources.",
         "notes": "This indicates the type of care setting where the condition was recorded."
-      }
-    ]
-  },
-  "DAD Abstract        ": {
-    "payor_desc": [
-      {
-        "omop_table": "cost",
-        "omop_field": "paid_by_patient",
-        "mapping_type": "exact",
-        "description": NaN,
-        "notes": "These fields identify the payer"
-      },
-      {
-        "omop_table": "cost",
-        "omop_field": "paid_by_payer",
-        "mapping_type": "exact",
-        "description": NaN,
-        "notes": "These fields identify the payer"
-      },
-      {
-        "omop_table": "cost",
-        "omop_field": "paid_by_primary",
-        "mapping_type": "exact",
-        "description": NaN,
-        "notes": "These fields identify the payer"
-      }
-    ],
-    "primary_health_plan_desc_src": [
-      {
-        "omop_table": "cost",
-        "omop_field": "paid_by_patient",
-        "mapping_type": "non-exact",
-        "description": NaN,
-        "notes": "These fields identify the payer"
-      },
-      {
-        "omop_table": "cost",
-        "omop_field": "paid_by_payer",
-        "mapping_type": "non-exact",
-        "description": NaN,
-        "notes": "These fields identify the payer"
-      },
-      {
-        "omop_table": "cost",
-        "omop_field": "paid_by_primary",
-        "mapping_type": "non-exact",
-        "description": NaN,
-        "notes": "These fields identify the payer"
       }
     ]
   },

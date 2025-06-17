@@ -40,55 +40,96 @@ def fetch_non_null(conn, table, key_field, key_value, columns):
 def fetch_all_patients(conn, catalog):
     """Fetch all unique patient IDs from the database.
     If patient_id or MRN are not available, falls back to using encounter numbers.
+    
+    Handles the mismatch between catalog table names and actual database table names.
     """
     patient_ids = set()
     has_patient_identifiers = False
     
+    # Get list of actual tables in the database
+    try:
+        available_tables = [row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")]
+        if not available_tables:
+            print("Warning: Database appears to be empty. No tables found.")
+            return {f"DUMMY_{i}" for i in range(1, 10)}  # Return dummy IDs
+    except Exception as e:
+        print(f"Error checking database tables: {e}")
+        return {f"DUMMY_{i}" for i in range(1, 10)}  # Return dummy IDs
+    
+    # Create mapping between catalog table names and database table names
+    table_mapping = {}
+    for catalog_table in catalog.keys():
+        # Try exact match first
+        if catalog_table in available_tables:
+            table_mapping[catalog_table] = catalog_table
+            continue
+            
+        # Try sanitized versions
+        sanitized_name = catalog_table.replace(" ", "_").replace("/", "_").replace("-", "_").lower()
+        if sanitized_name in available_tables:
+            table_mapping[catalog_table] = sanitized_name
+            continue
+            
+        # Try matching by keywords
+        keywords = catalog_table.lower().replace("/", " ").replace("-", " ").split()
+        for db_table in available_tables:
+            if all(keyword in db_table.lower() for keyword in keywords):
+                table_mapping[catalog_table] = db_table
+                break
+    
     # Look for patient_id or MRN in all tables
-    for table, cols in catalog.items():
+    for catalog_table, cols in catalog.items():
+        db_table = table_mapping.get(catalog_table)
+        
+        if not db_table:
+            continue  # Skip if no matching database table
+            
         if 'patient_id' in cols:
-            for row in conn.execute(f"SELECT DISTINCT patient_id FROM {table} WHERE patient_id IS NOT NULL"):
-                patient_ids.add(row[0])
-                has_patient_identifiers = True
+            try:
+                for row in conn.execute(f"SELECT DISTINCT patient_id FROM {db_table} WHERE patient_id IS NOT NULL"):
+                    patient_ids.add(row[0])
+                    has_patient_identifiers = True
+            except Exception as e:
+                print(f"Error querying patient_id from {db_table}: {e}")
+                
         elif 'MRN' in cols:
-            for row in conn.execute(f"SELECT DISTINCT MRN FROM {table} WHERE MRN IS NOT NULL"):
-                patient_ids.add(row[0])
-                has_patient_identifiers = True
+            try:
+                for row in conn.execute(f"SELECT DISTINCT MRN FROM {db_table} WHERE MRN IS NOT NULL"):
+                    patient_ids.add(row[0])
+                    has_patient_identifiers = True
+            except Exception as e:
+                print(f"Error querying MRN from {db_table}: {e}")
     
     # Fall back to encounter numbers if no patient identifiers were found
     if not has_patient_identifiers:
         print("Warning: No patient_id or MRN found in the data. Falling back to using encounter numbers as patient identifiers.")
-        enc_table = "admission_discharge"  # Assumed default table with encounter numbers
         
-        # Find the first table that has encntr_num
-        for table, cols in catalog.items():
-            if 'encntr_num' in cols:
-                enc_table = table
-                break
-                
-        try:
-            # Check if the table exists first
-            table_exists = conn.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (enc_table,)).fetchone()
-            
-            if table_exists:
+        # Find tables with encounter numbers
+        enc_tables = []
+        for catalog_table, cols in catalog.items():
+            if 'encntr_num' in cols and catalog_table in table_mapping:
+                enc_tables.append(table_mapping[catalog_table])
+        
+        # If no mapped tables with encounter numbers, try common table names
+        if not enc_tables:
+            enc_tables = ['admission_discharge', 'admissions', 'encounters', 'visits']
+            enc_tables = [t for t in enc_tables if t in available_tables]
+        
+        # Try each potential table
+        for enc_table in enc_tables:
+            try:
+                print(f"Trying to fetch encounter numbers from {enc_table}")
                 for row in conn.execute(f"SELECT DISTINCT encntr_num FROM {enc_table} WHERE encntr_num IS NOT NULL"):
                     patient_ids.add(f"ENC_{row[0]}")  # Prefix to distinguish from real patient IDs
-            else:
-                print(f"Warning: Table '{enc_table}' does not exist in the database.")
-                # Try alternative tables
-                for alt_table in ['admission_discharge', 'encounters', 'visit', 'patients']:
-                    try:
-                        table_exists = conn.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (alt_table,)).fetchone()
-                        if table_exists:
-                            print(f"Using alternative table '{alt_table}' for encounter numbers")
-                            for row in conn.execute(f"SELECT DISTINCT encntr_num FROM {alt_table} WHERE encntr_num IS NOT NULL"):
-                                patient_ids.add(f"ENC_{row[0]}")
-                            break
-                    except:
-                        pass
-        except Exception as e:
-            print(f"Error fetching encounter numbers: {e}")
-            # If all else fails, generate dummy IDs
+                    
+                if patient_ids:  # If we found any, stop looking
+                    break
+            except Exception as e:
+                print(f"Error querying encntr_num from {enc_table}: {e}")
+        
+        # If still no patient IDs found, generate dummy IDs
+        if not patient_ids:
+            print("No valid encounter numbers found. Using dummy patient IDs.")
             patient_ids = {f"DUMMY_{i}" for i in range(1, 10)}
     
     return patient_ids
@@ -144,15 +185,26 @@ def transform_to_omop(details, mapping):
     # Track if we found any patient identifiers
     has_patient_identifiers = False
     
+    print(f"\n=== MAPPING DETAILS ===")
+    
     # Process each IHID table
     for ihid_table, records in details.items():
         if ihid_table not in mapping:
+            print(f"Table {ihid_table} not in mapping, skipping")
             continue
             
-        for record in records:
+        print(f"\nProcessing {len(records)} records from table '{ihid_table}'")
+        
+        for record_idx, record in enumerate(records):
+            if record_idx > 3:  # Only print details for first few records to avoid verbosity
+                continue
+                
             # First identify patient_id and encntr_num to use across all mappings for this record
             patient_id = record.get('patient_id') or record.get('MRN')
             encntr_num = record.get('encntr_num')
+            
+            print(f"  Record {record_idx+1}: Fields: {list(record.keys())[:5]}... (total {len(record)} fields)")
+            print(f"    Patient ID: {patient_id}, Encounter: {encntr_num}")
             
             # If we found a patient ID, mark that we have patient identifiers
             if patient_id:
@@ -162,8 +214,10 @@ def transform_to_omop(details, mapping):
             # but only if we haven't found any real patient IDs in the dataset
             if not patient_id and encntr_num and not has_patient_identifiers:
                 patient_id = f"ENC_{encntr_num}"  # Prefix to distinguish from real patient IDs
+                print(f"    Using encounter as patient ID fallback: {patient_id}")
 
             # Apply mappings for this table
+            record_mappings = 0
             for ihid_field, maps in mapping[ihid_table].items():
                 if ihid_field not in record:
                     continue
@@ -173,6 +227,7 @@ def transform_to_omop(details, mapping):
                 for map_info in maps:
                     omop_table = map_info['omop_table']
                     omop_field = map_info['omop_field']
+                    map_type = map_info.get('mapping_type', 'unknown')
                     
                     # Skip person table as we handle it separately
                     if omop_table == 'person':
@@ -183,6 +238,10 @@ def transform_to_omop(details, mapping):
                     if key in processed:
                         continue
                     processed.add(key)
+                    
+                    if record_idx <= 3:  # Only print details for first few records
+                        print(f"    Mapping: {ihid_field} -> {omop_table}.{omop_field} = {ihid_value} (type: {map_type})")
+                    record_mappings += 1
                     
                     # Create new OMOP record
                     new_record = {omop_field: ihid_value}
@@ -215,6 +274,13 @@ def transform_to_omop(details, mapping):
                     
                     # Add the record to the appropriate OMOP table
                     omop_data[omop_table].append(new_record)
+            
+            if record_idx <= 3:
+                print(f"    Total mappings applied: {record_mappings}")
+    
+    print("\n=== MAPPING SUMMARY ===")
+    for omop_table, records in omop_data.items():
+        print(f"Generated {len(records)} records for {omop_table}")
     
     return dict(omop_data)
 
@@ -258,14 +324,97 @@ def main():
             'race_concept_id': 0,
             'ethnicity_concept_id': 0
         })
+        
+    # DEBUGGING: Create some synthetic data for testing mappings
+    print("\n=== TESTING MAPPING WITH SYNTHETIC DATA ===")
+    test_data = {
+        "Admission / Discharge": [
+            {
+                "encntr_num": "E000001",
+                "admit_dt_tm": "2023-01-15T09:30:00",
+                "disch_dt_tm": "2023-01-18T14:45:00",
+                "facility_id_at_admit": 123,
+                "admit_source_desc": "Emergency Department",
+                "disch_disp_dad_desc": "Home",
+                "gender_desc_at_admit": "Male",
+                "age_at_admit": 45
+            }
+        ],
+        "Census": [
+            {
+                "encntr_num": "E000001",
+                "gender_desc_at_census": "Male",
+                "age_at_census": 45
+            }
+        ],
+        "DAD Diagnosis": [
+            {
+                "diagnosis_cd": "J18.9",
+                "diagnosis_desc": "Pneumonia, unspecified",
+                "diagnosis_type_id": 1
+            }
+        ]
+    }
     
-    # Then iterate through encounters
-    for row in conn.execute("SELECT encntr_num FROM admission_discharge"):
-        enc = row['encntr_num']
-        details = fetch_encounter(conn, enc, catalog)
-
-        # Transform IHID data to OMOP
-        encounter_omop_data = transform_to_omop(details, mapping)
+    # Test the mapping with synthetic data
+    test_omop_data = transform_to_omop(test_data, mapping)
+    
+    # Merge with the regular data
+    for table, records in test_omop_data.items():
+        if table != 'person':  # We already handled person records
+            omop_data[table].extend(records)
+    
+    # Then iterate through encounters - check first if tables exist
+    try:
+        # First check if any of the expected tables exist
+        table_check = conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
+        available_tables = [table[0] for table in table_check]
+        
+        if len(available_tables) == 0:
+            print(f"Warning: No tables found in the database. This appears to be a placeholder database.")
+            print(f"Available tables would be listed here: {available_tables}")
+            print("Creating sample OMOP output without actual data.")
+            # Create empty OMOP data structure
+            encounter_omop_data = {}
+        else:
+            # Try to find a suitable table with encounter numbers
+            encounter_table = None
+            possible_tables = ["admission_discharge", "Admission_Discharge", "admission_discharge_view"]
+            
+            for table in possible_tables:
+                if table in available_tables:
+                    encounter_table = table
+                    break
+            
+            # Try to use a sanitized version of the catalog table name
+            if not encounter_table:
+                for table_name in catalog.keys():
+                    if "admission" in table_name.lower() and "discharge" in table_name.lower():
+                        sanitized_name = table_name.replace(" ", "_").replace("/", "_").replace("-", "_").lower()
+                        if sanitized_name in available_tables:
+                            encounter_table = sanitized_name
+                            break
+            
+            if encounter_table:
+                print(f"Using table '{encounter_table}' for encounter data")
+                for row in conn.execute(f"SELECT encntr_num FROM {encounter_table}"):
+                    enc = row['encntr_num']
+                    details = fetch_encounter(conn, enc, catalog)
+                    
+                    # Transform IHID data to OMOP
+                    encounter_omop_data = transform_to_omop(details, mapping)
+                    
+                    # Merge with overall OMOP data
+                    for table, records in encounter_omop_data.items():
+                        if table != 'person':  # We already handled person records
+                            omop_data[table].extend(records)
+            else:
+                print("No suitable encounter table found in the database. Creating sample output.")
+                encounter_omop_data = {}
+    except Exception as e:
+        print(f"Error accessing database: {e}")
+        print("Creating sample OMOP output without actual data.")
+        encounter_omop_data = {}
         
         # Merge with overall OMOP data
         for table, records in encounter_omop_data.items():

@@ -9,9 +9,15 @@ __pycache__/
 
 # SQLite DBs
 *.sqlite3
+*.db
 
 # Generated JSON folder
 ihid_json/
+omop_output/
 
 # Environment vars
 .env
+
+# Temporary and system files
+.DS_Store
+Thumbs.db

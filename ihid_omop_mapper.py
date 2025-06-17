@@ -186,23 +186,43 @@ class IHIDOMOPMapper:
             logging.warning(f"No IHID table provided for {omop_table}.{omop_field}")
             return
         
+        # Normalize table name to match the actual catalog keys in IHID data
+        actual_ihid_table = None
+        for catalog_table in self.ihid_catalog.keys():
+            # Try exact match first
+            if catalog_table.lower() == ihid_table.lower():
+                actual_ihid_table = catalog_table
+                break
+            
+            # Then try matching with different separators
+            normalized_catalog = catalog_table.lower().replace('/', '-').replace(' ', '').replace('\\', '')
+            normalized_input = ihid_table.lower().replace('/', '-').replace(' ', '').replace('\\', '')
+            if normalized_catalog == normalized_input:
+                actual_ihid_table = catalog_table
+                break
+        
+        # If we found a match, use the actual table name from catalog
+        # Otherwise, use the original input name for logging purposes
+        ihid_table_to_use = actual_ihid_table or ihid_table
+        
         # Some sanity checks
         field_exists = False
-        for field_info in self.ihid_catalog.get(ihid_table, []):
+        for field_info in self.ihid_catalog.get(ihid_table_to_use, []):
             if field_info['name'] == ihid_field:
                 field_exists = True
                 break
         
         if not field_exists:
             if mapping_type in ['exact', 'non-exact']:
-                logging.warning(f"Field {ihid_field} not found in IHID table {ihid_table}")
+                logging.warning(f"Field {ihid_field} not found in IHID table {ihid_table_to_use}")
             else:
                 # For special or alternate mappings, we just add a note
                 logging.info(f"Adding {mapping_type} mapping for {ihid_field} to {omop_table}.{omop_field} " +
                            f"(field not in current catalog but expected in actual data)")
         
         # Add the mapping information - use defaultdict features
-        self.mapping[ihid_table][ihid_field].append({
+        # Always use the actual catalog table name if we found a match
+        self.mapping[ihid_table_to_use][ihid_field].append({
             'omop_table': omop_table,
             'omop_field': omop_field,
             'mapping_type': mapping_type,

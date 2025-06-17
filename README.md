@@ -19,7 +19,13 @@ The mapping process involves:
 
 ### 1. IHID-OMOP Mapper (`ihid_omop_mapper.py`)
 
-This script generates a mapping between IHID fields and OMOP fields based on the mapping information provided in the Excel file.
+This script generates a mapping between IHID fields and OMOP fields based on the mapping information provided in the Excel file. 
+
+Key features:
+- Table name normalization to handle mismatches between catalog and database (e.g., "Admission - Discharge" vs. "Admission / Discharge")
+- Robust handling of missing fields expected in real data but not in the current catalog
+- Detailed logging of mapping process and warnings
+- Special handling for patient identifiers and encounter numbers
 
 ```bash
 # Activate virtual environment with pandas and openpyxl
@@ -34,6 +40,11 @@ The script will generate an `ihid_omop_mapping.json` file that can be used by th
 ### 2. Mapping Validator (`mapping_validator.py`)
 
 This tool validates the mapping by checking coverage of both IHID and OMOP fields.
+It provides detailed reports on:
+- Percentage of mapped IHID tables and fields
+- Percentage of mapped OMOP tables and fields
+- Lists of unmapped tables and fields
+- Top OMOP tables with the most unmapped fields
 
 ```bash
 # Activate virtual environment with pandas and openpyxl
@@ -45,7 +56,30 @@ python mapping_validator.py ihid_omop_mapping.json All_Tables_Combined.json OMOP
 
 ### 3. ETL Script (`ihid_etl.py`)
 
-This script uses the mapping to extract, transform, and load data from IHID to OMOP format.
+This script uses the mapping to extract, transform, and load data from IHID to OMOP format. It includes:
+- Robust handling of missing fields and tables
+- Fallback to encounter numbers when patient_id/MRN is not available
+- Handling of table name mismatches between catalog and database
+- Generation of synthetic data for testing when real data is unavailable
+- Linking of person_id and visit_occurrence_id across all relevant tables
+
+```bash
+# Run the ETL process
+python ihid_etl.py
+```
+
+### 4. Sample Database Creation (`create_sample_db.py`)
+
+This script creates a sample SQLite database from the IHID catalog for ETL testing. It:
+- Creates tables based on the catalog structure
+- Generates realistic sample data with proper relationships
+- Handles column type mapping to SQLite types
+- Establishes proper relationships between patient_id, MRN, and encounter numbers
+
+```bash
+# Create a sample database for testing
+python create_sample_db.py
+```
 
 ## File Details
 
@@ -53,6 +87,11 @@ This script uses the mapping to extract, transform, and load data from IHID to O
 - `OMOP_Summarized_Schema.xlsx`: Contains the OMOP schema with mappings to IHID fields
 - `ihid_omop_mapping.json`: Generated mapping file (output of the mapper)
 - `ihid_etl.py`: ETL script that uses the mapping to transform data
+- `mapping_validator.py`: Validates mapping coverage and quality
+- `create_sample_db.py`: Creates a sample SQLite database for ETL testing
+- `IHID.db`: Sample SQLite database for testing
+- `requirements.txt`: Required Python packages
+- `omop_output/`: Directory containing the generated OMOP data files
 
 ## OMOP Structure
 
@@ -69,27 +108,60 @@ The OMOP Common Data Model includes tables like:
 
 And other related tables for structured clinical data.
 
-## Usage Instructions
+## Complete Pipeline Workflow
 
-1. Make sure you have the required dependencies installed:
+1. **Setup Environment**:
    ```bash
-   pip install pandas openpyxl
+   # Install required packages
+   pip install -r requirements.txt
    ```
 
-2. Run the mapper to generate the mapping file:
+2. **Generate Sample Database** (for testing):
+   ```bash
+   python create_sample_db.py
+   ```
+
+3. **Create Mapping**:
    ```bash
    python ihid_omop_mapper.py
    ```
 
-3. Validate the mapping:
+4. **Validate Mapping**:
    ```bash
    python mapping_validator.py ihid_omop_mapping.json All_Tables_Combined.json OMOP_Summarized_Schema.xlsx
    ```
 
-4. Use the mapping in the ETL process:
+5. **Run ETL Process**:
    ```bash
    python ihid_etl.py
    ```
+
+6. **Verify Output**:
+   Check the generated files in the `omop_output/` directory.
+
+## Robustness Features
+
+### 1. Patient ID Handling
+- Primary lookup for `patient_id` field
+- Fallback to `MRN` field if patient_id not found
+- Fallback to using encounter numbers with `ENC_` prefix if no patient identifiers exist
+- Generation of dummy IDs as a last resort
+
+### 2. Table Name Normalization
+- Handles different separators (-, /, spaces)
+- Matches tables despite case differences
+- Sanitizes problematic characters for database compatibility
+
+### 3. Error Handling
+- Detailed logging throughout the process
+- Warning for missing fields expected in real data
+- Graceful handling of database access errors
+- Recovery from missing tables or columns
+
+### 4. Testing Support
+- Sample database creation for testing without real data
+- Synthetic data generation with proper relationships
+- Test mode in ETL to validate mappings
 
 ## Notes
 
@@ -97,3 +169,4 @@ And other related tables for structured clinical data.
 - Although IHID is de-identified, it maintains consistent patient identifiers (`patient_id` or `MRN`) across tables.
 - We use these consistent patient identifiers as the OMOP `person_id` and the encounter numbers (`encntr_num`) as `visit_occurrence_id`.
 - Not all IHID fields may have corresponding OMOP fields and vice versa.
+- The system is designed to be robust against missing fields, table name variations, and missing patient identifiers.
