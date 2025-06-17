@@ -84,19 +84,25 @@ def transform_to_omop(details, mapping):
     # Track mapped fields to avoid duplicates
     processed = set()
     
-    # Generate person_id from encounter
-    if 'admission_discharge' in details and details['admission_discharge']:
-        enc_record = details['admission_discharge'][0]
-        if 'encntr_num' in enc_record:
-            person_id = enc_record['encntr_num']
-            omop_data['person'].append({
-                'person_id': person_id,
-                # Add other required person fields with default values since IHID is de-identified
-                'gender_concept_id': 0,
-                'year_of_birth': 0,
-                'race_concept_id': 0,
-                'ethnicity_concept_id': 0
-            })
+    # Generate person_id from patient_id
+    person_ids = set()
+    
+    # Extract all unique patient_ids from the data
+    for table, records in details.items():
+        for record in records:
+            if 'patient_id' in record and record['patient_id']:
+                person_ids.add(record['patient_id'])
+    
+    # Create a person record for each unique patient_id
+    for person_id in person_ids:
+        omop_data['person'].append({
+            'person_id': person_id,
+            # Add other required person fields with default values since IHID is de-identified
+            'gender_concept_id': 0,
+            'year_of_birth': 0,
+            'race_concept_id': 0,
+            'ethnicity_concept_id': 0
+        })
     
     # Process each IHID table
     for ihid_table, records in details.items():
@@ -124,15 +130,19 @@ def transform_to_omop(details, mapping):
                     # Create new OMOP record or update existing
                     new_record = {omop_field: ihid_value}
                     
-                    # If this is a visit_occurrence, add person_id
-                    if omop_table == 'visit_occurrence' and 'encntr_num' in record:
-                        new_record['person_id'] = record['encntr_num']
-                        new_record['visit_occurrence_id'] = record['encntr_num']
+                    # If this is a visit_occurrence, add person_id from patient_id
+                    if omop_table == 'visit_occurrence':
+                        if 'patient_id' in record:
+                            new_record['person_id'] = record['patient_id']
+                        if 'encntr_num' in record:
+                            new_record['visit_occurrence_id'] = record['encntr_num']
                         
                     # If this is a condition_occurrence, add person_id and visit_occurrence_id
-                    if omop_table == 'condition_occurrence' and 'encntr_num' in record:
-                        new_record['person_id'] = record['encntr_num']
-                        new_record['visit_occurrence_id'] = record['encntr_num']
+                    if omop_table == 'condition_occurrence':
+                        if 'patient_id' in record:
+                            new_record['person_id'] = record['patient_id']
+                        if 'encntr_num' in record:
+                            new_record['visit_occurrence_id'] = record['encntr_num']
                         
                     # Add the record to the appropriate OMOP table
                     omop_data[omop_table].append(new_record)

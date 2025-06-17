@@ -4,7 +4,7 @@ This project contains tools to map IHID (Integrated Health Information Database)
 
 ## Overview
 
-The OMOP Common Data Model is a standardized way to organize healthcare data. Since IHID is de-identified, we use the IHID encounter number field as a root patient identifier instead of a traditional person identifier.
+The OMOP Common Data Model is a standardized way to organize healthcare data. Although IHID contains de-identified data, it maintains consistent patient identifiers across tables. We map the IHID patient_id to the OMOP person_id as the root identifier, and encounter numbers (encntr_num) to visit_occurrence_id.
 
 ![OMOP Common Data Model Structure](OMOP_Structure.png)
 
@@ -58,7 +58,7 @@ This script uses the mapping to extract, transform, and load data from IHID to O
 
 The OMOP Common Data Model includes tables like:
 
-1. **Person** - In our case, using IHID's encounter number as a proxy
+1. **Person** - Maps to IHID's patient_id field
 2. **Visit_Occurrence** - Maps to IHID admission/discharge records
 3. **Condition_Occurrence** - Maps to IHID diagnosis records
 4. **Drug_Exposure** - Maps to IHID medication records

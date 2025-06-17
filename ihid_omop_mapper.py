@@ -5,8 +5,9 @@ IHID to OMOP Mapper
 This script reads the IHID data structure and maps it to the OMOP Common Data Model,
 generating a mapping file that can be used by the ETL process.
 
-In the OMOP CDM, a primary table is PERSON, but since IHID is de-identified,
-we'll use ENCOUNTER_NUMBER as the root identifier.
+In the OMOP CDM, the primary table is PERSON, and we'll map the IHID patient_id
+to the OMOP person_id as the root identifier. Although the IHID data is de-identified,
+it still maintains unique patient identifiers across tables.
 """
 
 import json
@@ -204,20 +205,37 @@ class IHIDOMOPMapper:
         })
     
     def _create_special_person_mapping(self) -> None:
-        """Create special mapping for PERSON table using ENCOUNTER_NUMBER."""
-        logging.info("Creating special mapping for PERSON table using ENCOUNTER_NUMBER")
+        """Create special mapping for PERSON table using patient_id."""
+        logging.info("Creating special mapping for PERSON table using patient_id")
         
-        # Find the admission/discharge table that has encounter_num
+        # Since patient_id should be in every table, we can choose any table
+        # but prefer to start with admission/discharge if available
+        target_table = next((table for table in self.ihid_catalog.keys() 
+                            if table in ["Admission - Discharge", "Admission / Discharge"]), 
+                            next(iter(self.ihid_catalog.keys())))
+        
+        # Add mapping from patient_id to person_id
+        self._add_mapping(
+            ihid_table=target_table,
+            ihid_field='patient_id',
+            omop_table='PERSON',
+            omop_field='person_id',
+            mapping_type='exact',
+            description="Using patient_id as person identifier",
+            notes="Although IHID is de-identified, it maintains unique patient identifiers across tables"
+        )
+        
+        # Also map encounter numbers to visit_occurrence_id
         for ihid_table, fields in self.ihid_catalog.items():
             if any(field['name'] == 'encntr_num' for field in fields):
                 self._add_mapping(
                     ihid_table=ihid_table,
                     ihid_field='encntr_num',
-                    omop_table='PERSON',
-                    omop_field='person_id',
-                    mapping_type='special',
-                    description="Using encounter number as person identifier since IHID is de-identified",
-                    notes="This is a special mapping due to de-identification requirements"
+                    omop_table='VISIT_OCCURRENCE',
+                    omop_field='visit_occurrence_id',
+                    mapping_type='exact',
+                    description="Using encounter number as visit identifier",
+                    notes="Each encounter represents a unique visit in the OMOP model"
                 )
                 break
     
