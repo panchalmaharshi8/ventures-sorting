@@ -36,6 +36,63 @@ def fetch_non_null(conn, table, key_field, key_value, columns):
             records.append(rec)
     return records
 
+# fetches all patient records from the database
+def fetch_all_patients(conn, catalog):
+    """Fetch all unique patient IDs from the database.
+    If patient_id or MRN are not available, falls back to using encounter numbers.
+    """
+    patient_ids = set()
+    has_patient_identifiers = False
+    
+    # Look for patient_id or MRN in all tables
+    for table, cols in catalog.items():
+        if 'patient_id' in cols:
+            for row in conn.execute(f"SELECT DISTINCT patient_id FROM {table} WHERE patient_id IS NOT NULL"):
+                patient_ids.add(row[0])
+                has_patient_identifiers = True
+        elif 'MRN' in cols:
+            for row in conn.execute(f"SELECT DISTINCT MRN FROM {table} WHERE MRN IS NOT NULL"):
+                patient_ids.add(row[0])
+                has_patient_identifiers = True
+    
+    # Fall back to encounter numbers if no patient identifiers were found
+    if not has_patient_identifiers:
+        print("Warning: No patient_id or MRN found in the data. Falling back to using encounter numbers as patient identifiers.")
+        enc_table = "admission_discharge"  # Assumed default table with encounter numbers
+        
+        # Find the first table that has encntr_num
+        for table, cols in catalog.items():
+            if 'encntr_num' in cols:
+                enc_table = table
+                break
+                
+        try:
+            # Check if the table exists first
+            table_exists = conn.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (enc_table,)).fetchone()
+            
+            if table_exists:
+                for row in conn.execute(f"SELECT DISTINCT encntr_num FROM {enc_table} WHERE encntr_num IS NOT NULL"):
+                    patient_ids.add(f"ENC_{row[0]}")  # Prefix to distinguish from real patient IDs
+            else:
+                print(f"Warning: Table '{enc_table}' does not exist in the database.")
+                # Try alternative tables
+                for alt_table in ['admission_discharge', 'encounters', 'visit', 'patients']:
+                    try:
+                        table_exists = conn.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (alt_table,)).fetchone()
+                        if table_exists:
+                            print(f"Using alternative table '{alt_table}' for encounter numbers")
+                            for row in conn.execute(f"SELECT DISTINCT encntr_num FROM {alt_table} WHERE encntr_num IS NOT NULL"):
+                                patient_ids.add(f"ENC_{row[0]}")
+                            break
+                    except:
+                        pass
+        except Exception as e:
+            print(f"Error fetching encounter numbers: {e}")
+            # If all else fails, generate dummy IDs
+            patient_ids = {f"DUMMY_{i}" for i in range(1, 10)}
+    
+    return patient_ids
+
 # fetches everything for a given encounter number, starting from admission/discharge and then other child tables
 def fetch_encounter(conn, encntr_num, catalog):
     details = {}
@@ -84,25 +141,8 @@ def transform_to_omop(details, mapping):
     # Track mapped fields to avoid duplicates
     processed = set()
     
-    # Generate person_id from patient_id
-    person_ids = set()
-    
-    # Extract all unique patient_ids from the data
-    for table, records in details.items():
-        for record in records:
-            if 'patient_id' in record and record['patient_id']:
-                person_ids.add(record['patient_id'])
-    
-    # Create a person record for each unique patient_id
-    for person_id in person_ids:
-        omop_data['person'].append({
-            'person_id': person_id,
-            # Add other required person fields with default values since IHID is de-identified
-            'gender_concept_id': 0,
-            'year_of_birth': 0,
-            'race_concept_id': 0,
-            'ethnicity_concept_id': 0
-        })
+    # Track if we found any patient identifiers
+    has_patient_identifiers = False
     
     # Process each IHID table
     for ihid_table, records in details.items():
@@ -110,6 +150,19 @@ def transform_to_omop(details, mapping):
             continue
             
         for record in records:
+            # First identify patient_id and encntr_num to use across all mappings for this record
+            patient_id = record.get('patient_id') or record.get('MRN')
+            encntr_num = record.get('encntr_num')
+            
+            # If we found a patient ID, mark that we have patient identifiers
+            if patient_id:
+                has_patient_identifiers = True
+            
+            # If patient_id is missing but we have an encounter number, use it as a fallback
+            # but only if we haven't found any real patient IDs in the dataset
+            if not patient_id and encntr_num and not has_patient_identifiers:
+                patient_id = f"ENC_{encntr_num}"  # Prefix to distinguish from real patient IDs
+
             # Apply mappings for this table
             for ihid_field, maps in mapping[ihid_table].items():
                 if ihid_field not in record:
@@ -121,29 +174,45 @@ def transform_to_omop(details, mapping):
                     omop_table = map_info['omop_table']
                     omop_field = map_info['omop_field']
                     
+                    # Skip person table as we handle it separately
+                    if omop_table == 'person':
+                        continue
+                        
                     # Skip if already processed (avoid duplicates)
                     key = (omop_table, omop_field, str(ihid_value))
                     if key in processed:
                         continue
                     processed.add(key)
                     
-                    # Create new OMOP record or update existing
+                    # Create new OMOP record
                     new_record = {omop_field: ihid_value}
                     
-                    # If this is a visit_occurrence, add person_id from patient_id
-                    if omop_table == 'visit_occurrence':
-                        if 'patient_id' in record:
-                            new_record['person_id'] = record['patient_id']
-                        if 'encntr_num' in record:
-                            new_record['visit_occurrence_id'] = record['encntr_num']
+                    # Add standard foreign keys based on table
+                    if patient_id:
+                        # For all clinical tables, add person_id
+                        clinical_tables = [
+                            'visit_occurrence', 'condition_occurrence', 'procedure_occurrence', 
+                            'drug_exposure', 'measurement', 'observation', 'note', 'specimen'
+                        ]
+                        if omop_table.lower() in [t.lower() for t in clinical_tables]:
+                            new_record['person_id'] = patient_id
+                    
+                    # Add visit_occurrence_id for tables that need it
+                    if encntr_num:
+                        event_tables = [
+                            'condition_occurrence', 'procedure_occurrence', 'drug_exposure', 
+                            'measurement', 'observation', 'note', 'specimen'
+                        ]
+                        if omop_table.lower() in [t.lower() for t in event_tables]:
+                            new_record['visit_occurrence_id'] = encntr_num
                         
-                    # If this is a condition_occurrence, add person_id and visit_occurrence_id
-                    if omop_table == 'condition_occurrence':
-                        if 'patient_id' in record:
-                            new_record['person_id'] = record['patient_id']
-                        if 'encntr_num' in record:
-                            new_record['visit_occurrence_id'] = record['encntr_num']
-                        
+                    # Special handling for visit_occurrence to ensure it has correct IDs
+                    if omop_table.lower() == 'visit_occurrence':
+                        if patient_id and 'person_id' not in new_record:
+                            new_record['person_id'] = patient_id
+                        if encntr_num and 'visit_occurrence_id' not in new_record:
+                            new_record['visit_occurrence_id'] = encntr_num
+                    
                     # Add the record to the appropriate OMOP table
                     omop_data[omop_table].append(new_record)
     
@@ -173,21 +242,42 @@ def main():
     # connect
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
-
-    # iterate encounters
+    
+    # First, get all unique patients to build the person table
+    patients = fetch_all_patients(conn, catalog)
+    print(f"Found {len(patients)} unique patients in the database")
+    
+    # Create a base OMOP data structure with person records
+    omop_data = defaultdict(list)
+    for patient_id in patients:
+        omop_data['person'].append({
+            'person_id': patient_id,
+            # Add other required person fields with default values since IHID is de-identified
+            'gender_concept_id': 0,
+            'year_of_birth': 0,
+            'race_concept_id': 0,
+            'ethnicity_concept_id': 0
+        })
+    
+    # Then iterate through encounters
     for row in conn.execute("SELECT encntr_num FROM admission_discharge"):
         enc = row['encntr_num']
         details = fetch_encounter(conn, enc, catalog)
 
         # Transform IHID data to OMOP
-        omop_data = transform_to_omop(details, mapping)
+        encounter_omop_data = transform_to_omop(details, mapping)
         
-        # Print some statistics on mapping results
-        for omop_table, records in omop_data.items():
-            print(f"Generated {len(records)} {omop_table} records")
-            
-        # Save OMOP data to files
-        save_omop_data(omop_data, output_dir)
+        # Merge with overall OMOP data
+        for table, records in encounter_omop_data.items():
+            if table != 'person':  # We already handled person records
+                omop_data[table].extend(records)
+    
+    # Print some statistics on mapping results
+    for omop_table, records in omop_data.items():
+        print(f"Generated {len(records)} {omop_table} records")
+        
+    # Save OMOP data to files
+    save_omop_data(dict(omop_data), output_dir)
 
     conn.close()
     print("ETL process completed successfully.")

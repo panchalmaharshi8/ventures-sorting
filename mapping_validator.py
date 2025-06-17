@@ -117,8 +117,10 @@ class MappingValidator:
         mapped_ihid_tables = set(self.mapping.keys())
         all_ihid_tables = set(self.ihid_catalog.keys())
         
-        results['ihid_tables']['mapped'] = len(mapped_ihid_tables)
-        results['ihid_tables']['unmapped'] = sorted(list(all_ihid_tables - mapped_ihid_tables))
+        # Calculate the properly mapped tables count
+        valid_mapped_tables = mapped_ihid_tables.intersection(all_ihid_tables)
+        results['ihid_tables']['mapped'] = len(valid_mapped_tables)
+        results['ihid_tables']['unmapped'] = sorted(list(all_ihid_tables - valid_mapped_tables))
         
         # Check IHID fields coverage
         mapped_ihid_fields = set()

@@ -7,7 +7,8 @@ generating a mapping file that can be used by the ETL process.
 
 In the OMOP CDM, the primary table is PERSON, and we'll map the IHID patient_id
 to the OMOP person_id as the root identifier. Although the IHID data is de-identified,
-it still maintains unique patient identifiers across tables.
+it still maintains unique patient identifiers (patient_id or MRN) across tables.
+The encounter numbers (encntr_num) will be mapped to visit_occurrence_id.
 """
 
 import json
@@ -193,7 +194,12 @@ class IHIDOMOPMapper:
                 break
         
         if not field_exists:
-            logging.warning(f"Field {ihid_field} not found in IHID table {ihid_table}")
+            if mapping_type in ['exact', 'non-exact']:
+                logging.warning(f"Field {ihid_field} not found in IHID table {ihid_table}")
+            else:
+                # For special or alternate mappings, we just add a note
+                logging.info(f"Adding {mapping_type} mapping for {ihid_field} to {omop_table}.{omop_field} " +
+                           f"(field not in current catalog but expected in actual data)")
         
         # Add the mapping information - use defaultdict features
         self.mapping[ihid_table][ihid_field].append({
@@ -205,27 +211,42 @@ class IHIDOMOPMapper:
         })
     
     def _create_special_person_mapping(self) -> None:
-        """Create special mapping for PERSON table using patient_id."""
-        logging.info("Creating special mapping for PERSON table using patient_id")
+        """Create special mapping for PERSON table using patient_id or MRN across all tables."""
+        logging.info("Creating special mappings for PERSON table with patient_id and visit_occurrence with encntr_num")
+
+        # We'll add anticipated fields to only select tables to prevent validation issues
+        # Use admission/discharge table as the primary source for patient identifiers
+        target_tables = [table for table in self.ihid_catalog.keys() 
+                        if any(name in table.lower() for name in ["admission", "discharge", "abstract", "census"])]
         
-        # Since patient_id should be in every table, we can choose any table
-        # but prefer to start with admission/discharge if available
-        target_table = next((table for table in self.ihid_catalog.keys() 
-                            if table in ["Admission - Discharge", "Admission / Discharge"]), 
-                            next(iter(self.ihid_catalog.keys())))
+        # If no suitable tables found, use the first table
+        if not target_tables:
+            target_tables = [next(iter(self.ihid_catalog.keys()))]
         
-        # Add mapping from patient_id to person_id
-        self._add_mapping(
-            ihid_table=target_table,
-            ihid_field='patient_id',
-            omop_table='PERSON',
-            omop_field='person_id',
-            mapping_type='exact',
-            description="Using patient_id as person identifier",
-            notes="Although IHID is de-identified, it maintains unique patient identifiers across tables"
-        )
-        
-        # Also map encounter numbers to visit_occurrence_id
+        # Map patient_id to person_id in select tables
+        for ihid_table in target_tables:
+            self._add_mapping(
+                ihid_table=ihid_table,
+                ihid_field='patient_id',
+                omop_table='PERSON',
+                omop_field='person_id',
+                mapping_type='anticipated',
+                description="Using patient_id as person identifier",
+                notes="Although not in current catalog, patient_id is expected in actual data"
+            )
+            
+            # Also add MRN mapping where it should exist
+            self._add_mapping(
+                ihid_table=ihid_table,
+                ihid_field='MRN',
+                omop_table='PERSON',
+                omop_field='person_id',
+                mapping_type='anticipated',
+                description="Using MRN as alternate person identifier",
+                notes="Documentation mentions both patient_id and MRN as unique patient identifiers"
+            )
+            
+        # Map encounter numbers to visit_occurrence_id across all tables
         for ihid_table, fields in self.ihid_catalog.items():
             if any(field['name'] == 'encntr_num' for field in fields):
                 self._add_mapping(

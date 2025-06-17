@@ -1282,6 +1282,24 @@
         "description": "Compute age using year_of_birth.",
         "notes": "No birthday categories in IHID but you can calculate birth year from the age at census"
       }
+    ],
+    "patient_id": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using patient_id as person identifier",
+        "notes": "Although not in current catalog, patient_id is expected in actual data"
+      }
+    ],
+    "MRN": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using MRN as alternate person identifier",
+        "notes": "Documentation mentions both patient_id and MRN as unique patient identifiers"
+      }
     ]
   },
   "DAD Abstract (also present in other DAD categories)": {
@@ -1453,6 +1471,24 @@
         "description": "This is the provenance of the death record, i.e., where it came from. It is possible that an administrative claims database would source death information from a government file so do not assume the Death Type is the same as the Visit Type, etc.",
         "notes": "These fields indicate the circumstances and\nlocation of death."
       }
+    ],
+    "patient_id": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using patient_id as person identifier",
+        "notes": "Although not in current catalog, patient_id is expected in actual data"
+      }
+    ],
+    "MRN": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using MRN as alternate person identifier",
+        "notes": "Documentation mentions both patient_id and MRN as unique patient identifiers"
+      }
     ]
   },
   "Census or Admission / Discharge": {
@@ -1485,11 +1521,11 @@
         "notes": "The primary identifier for the patient's visit."
       },
       {
-        "omop_table": "PERSON",
-        "omop_field": "person_id",
-        "mapping_type": "special",
-        "description": "Using encounter number as person identifier since IHID is de-identified",
-        "notes": "This is a special mapping due to de-identification requirements"
+        "omop_table": "VISIT_OCCURRENCE",
+        "omop_field": "visit_occurrence_id",
+        "mapping_type": "exact",
+        "description": "Using encounter number as visit identifier",
+        "notes": "Each encounter represents a unique visit in the OMOP model"
       }
     ],
     "disch_dt_date": [
@@ -1515,6 +1551,24 @@
         "mapping_type": "exact",
         "description": NaN,
         "notes": "The discharge date and time should be used as the death date and time when disch_disp_dad_is_death is flagged."
+      }
+    ],
+    "patient_id": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using patient_id as person identifier",
+        "notes": "Although not in current catalog, patient_id is expected in actual data"
+      }
+    ],
+    "MRN": [
+      {
+        "omop_table": "PERSON",
+        "omop_field": "person_id",
+        "mapping_type": "anticipated",
+        "description": "Using MRN as alternate person identifier",
+        "notes": "Documentation mentions both patient_id and MRN as unique patient identifiers"
       }
     ]
   },

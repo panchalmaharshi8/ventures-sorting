@@ -4,7 +4,7 @@ This project contains tools to map IHID (Integrated Health Information Database)
 
 ## Overview
 
-The OMOP Common Data Model is a standardized way to organize healthcare data. Although IHID contains de-identified data, it maintains consistent patient identifiers across tables. We map the IHID patient_id to the OMOP person_id as the root identifier, and encounter numbers (encntr_num) to visit_occurrence_id.
+The OMOP Common Data Model is a standardized way to organize healthcare data. Although IHID contains de-identified data, it maintains consistent patient identifiers across tables. We map the IHID patient identifiers (patient_id or MRN) to the OMOP person_id as the root identifier, and encounter numbers (encntr_num) to visit_occurrence_id.
 
 ![OMOP Common Data Model Structure](OMOP_Structure.png)
 
@@ -58,14 +58,14 @@ This script uses the mapping to extract, transform, and load data from IHID to O
 
 The OMOP Common Data Model includes tables like:
 
-1. **Person** - Maps to IHID's patient_id field
-2. **Visit_Occurrence** - Maps to IHID admission/discharge records
-3. **Condition_Occurrence** - Maps to IHID diagnosis records
-4. **Drug_Exposure** - Maps to IHID medication records
-5. **Procedure_Occurrence** - Maps to IHID procedure records
-6. **Measurement** - Maps to IHID lab and other measurement records
-7. **Observation** - Maps to IHID observation records
-8. **Death** - Maps to IHID death records
+1. **Person** - Maps to IHID's patient_id or MRN field as the root identifier
+2. **Visit_Occurrence** - Maps to IHID admission/discharge records with encntr_num as the visit_occurrence_id
+3. **Condition_Occurrence** - Maps to IHID diagnosis records, linked to person_id and visit_occurrence_id
+4. **Drug_Exposure** - Maps to IHID medication records, linked to person_id and visit_occurrence_id
+5. **Procedure_Occurrence** - Maps to IHID procedure records, linked to person_id and visit_occurrence_id
+6. **Measurement** - Maps to IHID lab and other measurement records, linked to person_id and visit_occurrence_id
+7. **Observation** - Maps to IHID observation records, linked to person_id and visit_occurrence_id
+8. **Death** - Maps to IHID death records, linked to person_id
 
 And other related tables for structured clinical data.
 
@@ -94,5 +94,6 @@ And other related tables for structured clinical data.
 ## Notes
 
 - The mapping is based on the Excel file `OMOP_Summarized_Schema.xlsx` which contains the correspondence between IHID and OMOP fields.
-- Since IHID is de-identified, we use encounter numbers instead of patient identifiers.
+- Although IHID is de-identified, it maintains consistent patient identifiers (`patient_id` or `MRN`) across tables.
+- We use these consistent patient identifiers as the OMOP `person_id` and the encounter numbers (`encntr_num`) as `visit_occurrence_id`.
 - Not all IHID fields may have corresponding OMOP fields and vice versa.
