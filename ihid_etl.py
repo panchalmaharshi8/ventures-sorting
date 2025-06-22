@@ -166,123 +166,188 @@ def fetch_encounter(conn, encntr_num, catalog):
 
     return details
 
+# def transform_to_omop(details, mapping):
+#     """
+#     Transform IHID data to OMOP format based on the provided mapping.
+    
+#     Args:
+#         details: Dict of IHID tables -> records
+#         mapping: Dict of mapping from IHID to OMOP
+    
+#     Returns:
+#         Dict of OMOP tables with their records
+#     """
+#     omop_data = defaultdict(list)
+    
+#     # Track mapped fields to avoid duplicates
+#     processed = set()
+    
+#     # Track if we found any patient identifiers
+#     has_patient_identifiers = False
+    
+#     print(f"\n=== MAPPING DETAILS ===")
+    
+#     # Process each IHID table
+#     for ihid_table, records in details.items():
+#         if ihid_table not in mapping:
+#             print(f"Table {ihid_table} not in mapping, skipping")
+#             continue
+            
+#         print(f"\nProcessing {len(records)} records from table '{ihid_table}'")
+        
+#         for record_idx, record in enumerate(records):
+#             if record_idx > 3:  # Only print details for first few records to avoid verbosity
+#                 continue
+                
+#             # First identify patient_id and encntr_num to use across all mappings for this record
+#             patient_id = record.get('patient_id') or record.get('MRN')
+#             encntr_num = record.get('encntr_num')
+            
+#             print(f"  Record {record_idx+1}: Fields: {list(record.keys())[:5]}... (total {len(record)} fields)")
+#             print(f"    Patient ID: {patient_id}, Encounter: {encntr_num}")
+            
+#             # If we found a patient ID, mark that we have patient identifiers
+#             if patient_id:
+#                 has_patient_identifiers = True
+            
+#             # If patient_id is missing but we have an encounter number, use it as a fallback
+#             # but only if we haven't found any real patient IDs in the dataset
+#             if not patient_id and encntr_num and not has_patient_identifiers:
+#                 patient_id = f"ENC_{encntr_num}"  # Prefix to distinguish from real patient IDs
+#                 print(f"    Using encounter as patient ID fallback: {patient_id}")
+
+#             # Apply mappings for this table
+#             record_mappings = 0
+#             for ihid_field, maps in mapping[ihid_table].items():
+#                 if ihid_field not in record:
+#                     continue
+                    
+#                 ihid_value = record[ihid_field]
+                
+#                 for map_info in maps:
+#                     omop_table = map_info['omop_table']
+#                     omop_field = map_info['omop_field']
+#                     map_type = map_info.get('mapping_type', 'unknown')
+                    
+#                     # Skip person table as we handle it separately
+#                     if omop_table == 'person':
+#                         continue
+                        
+#                     # Skip if already processed (avoid duplicates)
+#                     key = (omop_table, omop_field, str(ihid_value))
+#                     if key in processed:
+#                         continue
+#                     processed.add(key)
+                    
+#                     if record_idx <= 3:  # Only print details for first few records
+#                         print(f"    Mapping: {ihid_field} -> {omop_table}.{omop_field} = {ihid_value} (type: {map_type})")
+#                     record_mappings += 1
+                    
+#                     # Create new OMOP record
+#                     new_record = {omop_field: ihid_value}
+                    
+#                     # Add standard foreign keys based on table
+#                     if patient_id:
+#                         # For all clinical tables, add person_id
+#                         clinical_tables = [
+#                             'visit_occurrence', 'condition_occurrence', 'procedure_occurrence', 
+#                             'drug_exposure', 'measurement', 'observation', 'note', 'specimen'
+#                         ]
+#                         if omop_table.lower() in [t.lower() for t in clinical_tables]:
+#                             new_record['person_id'] = patient_id
+                    
+#                     # Add visit_occurrence_id for tables that need it
+#                     if encntr_num:
+#                         event_tables = [
+#                             'condition_occurrence', 'procedure_occurrence', 'drug_exposure', 
+#                             'measurement', 'observation', 'note', 'specimen'
+#                         ]
+#                         if omop_table.lower() in [t.lower() for t in event_tables]:
+#                             new_record['visit_occurrence_id'] = encntr_num
+                        
+#                     # Special handling for visit_occurrence to ensure it has correct IDs
+#                     if omop_table.lower() == 'visit_occurrence':
+#                         if patient_id and 'person_id' not in new_record:
+#                             new_record['person_id'] = patient_id
+#                         if encntr_num and 'visit_occurrence_id' not in new_record:
+#                             new_record['visit_occurrence_id'] = encntr_num
+                    
+#                     # Add the record to the appropriate OMOP table
+#                     omop_data[omop_table].append(new_record)
+            
+#             if record_idx <= 3:
+#                 print(f"    Total mappings applied: {record_mappings}")
+    
+#     print("\n=== MAPPING SUMMARY ===")
+#     for omop_table, records in omop_data.items():
+#         print(f"Generated {len(records)} records for {omop_table}")
+    
+#     return dict(omop_data)
+
 def transform_to_omop(details, mapping):
     """
-    Transform IHID data to OMOP format based on the provided mapping.
-    
-    Args:
-        details: Dict of IHID tables -> records
-        mapping: Dict of mapping from IHID to OMOP
-    
-    Returns:
-        Dict of OMOP tables with their records
+    Build one OMOP record per IHID-record per OMOP-table,
+    grouping all fields together and assigning unique IDs.
     """
-    omop_data = defaultdict(list)
-    
-    # Track mapped fields to avoid duplicates
-    processed = set()
-    
-    # Track if we found any patient identifiers
-    has_patient_identifiers = False
-    
-    print(f"\n=== MAPPING DETAILS ===")
-    
-    # Process each IHID table
-    for ihid_table, records in details.items():
-        if ihid_table not in mapping:
-            print(f"Table {ihid_table} not in mapping, skipping")
-            continue
-            
-        print(f"\nProcessing {len(records)} records from table '{ihid_table}'")
-        
-        for record_idx, record in enumerate(records):
-            if record_idx > 3:  # Only print details for first few records to avoid verbosity
-                continue
-                
-            # First identify patient_id and encntr_num to use across all mappings for this record
-            patient_id = record.get('patient_id') or record.get('MRN')
-            encntr_num = record.get('encntr_num')
-            
-            print(f"  Record {record_idx+1}: Fields: {list(record.keys())[:5]}... (total {len(record)} fields)")
-            print(f"    Patient ID: {patient_id}, Encounter: {encntr_num}")
-            
-            # If we found a patient ID, mark that we have patient identifiers
-            if patient_id:
-                has_patient_identifiers = True
-            
-            # If patient_id is missing but we have an encounter number, use it as a fallback
-            # but only if we haven't found any real patient IDs in the dataset
-            if not patient_id and encntr_num and not has_patient_identifiers:
-                patient_id = f"ENC_{encntr_num}"  # Prefix to distinguish from real patient IDs
-                print(f"    Using encounter as patient ID fallback: {patient_id}")
+    from collections import defaultdict
 
-            # Apply mappings for this table
-            record_mappings = 0
-            for ihid_field, maps in mapping[ihid_table].items():
-                if ihid_field not in record:
-                    continue
-                    
-                ihid_value = record[ihid_field]
-                
-                for map_info in maps:
-                    omop_table = map_info['omop_table']
-                    omop_field = map_info['omop_field']
-                    map_type = map_info.get('mapping_type', 'unknown')
-                    
-                    # Skip person table as we handle it separately
-                    if omop_table == 'person':
-                        continue
-                        
-                    # Skip if already processed (avoid duplicates)
-                    key = (omop_table, omop_field, str(ihid_value))
-                    if key in processed:
-                        continue
-                    processed.add(key)
-                    
-                    if record_idx <= 3:  # Only print details for first few records
-                        print(f"    Mapping: {ihid_field} -> {omop_table}.{omop_field} = {ihid_value} (type: {map_type})")
-                    record_mappings += 1
-                    
-                    # Create new OMOP record
-                    new_record = {omop_field: ihid_value}
-                    
-                    # Add standard foreign keys based on table
-                    if patient_id:
-                        # For all clinical tables, add person_id
-                        clinical_tables = [
-                            'visit_occurrence', 'condition_occurrence', 'procedure_occurrence', 
-                            'drug_exposure', 'measurement', 'observation', 'note', 'specimen'
-                        ]
-                        if omop_table.lower() in [t.lower() for t in clinical_tables]:
-                            new_record['person_id'] = patient_id
-                    
-                    # Add visit_occurrence_id for tables that need it
-                    if encntr_num:
-                        event_tables = [
-                            'condition_occurrence', 'procedure_occurrence', 'drug_exposure', 
-                            'measurement', 'observation', 'note', 'specimen'
-                        ]
-                        if omop_table.lower() in [t.lower() for t in event_tables]:
-                            new_record['visit_occurrence_id'] = encntr_num
-                        
-                    # Special handling for visit_occurrence to ensure it has correct IDs
-                    if omop_table.lower() == 'visit_occurrence':
-                        if patient_id and 'person_id' not in new_record:
-                            new_record['person_id'] = patient_id
-                        if encntr_num and 'visit_occurrence_id' not in new_record:
-                            new_record['visit_occurrence_id'] = encntr_num
-                    
-                    # Add the record to the appropriate OMOP table
-                    omop_data[omop_table].append(new_record)
+    # Temporary buffer: (omop_table, record_index) -> dict of fields
+    buffer = {}
+
+    # Tables whose rows map to VISIT_DETAIL rather than a visit occurrence
+    visit_detail_sources = {
+        'Emergency', 'Order', 'Laboratory Result', 'Surgery Case Completed',
+        'Activity Med Service', 'Activity Nursing Unit', 'Clinical Event',
+        'Medical Imaging', 'Census', 'DAD Diagnosis', 'DAD Intervention',
+        'DAD Special Care Unit'
+    }
+
+    for ihid_table, recs in details.items():
+        # look up the mapping definitions for this IHID table
+        table_maps = mapping.get(ihid_table, {})
+
+        for idx, rec in enumerate(recs):
+            # fetch the FK info once
+            enc = rec.get('encntr_num')
+            pid = rec.get('patient_id') or rec.get('MRN') or f"ENC_{enc}"
             
-            if record_idx <= 3:
-                print(f"    Total mappings applied: {record_mappings}")
-    
-    print("\n=== MAPPING SUMMARY ===")
-    for omop_table, records in omop_data.items():
-        print(f"Generated {len(records)} records for {omop_table}")
-    
+            for ihid_field, maps in table_maps.items():
+                if ihid_field not in rec:
+                    continue
+                val = rec[ihid_field]
+
+                for m in maps:
+                    ot = m['omop_table']
+                    of = m['omop_field']
+
+                    # choose a record key: one per (omop_table, idx)
+                    key = (ot, idx)
+
+                    if key not in buffer:
+                        # initialize the buffered record
+                        buffer[key] = {}
+                        # assign the correct primary key
+                        if ot.lower() == 'visit_occurrence':
+                            buffer[key]['visit_occurrence_id'] = enc
+                        elif ot.lower() == 'visit_detail':
+                            # VD_<enc>_<table>_<idx>
+                            buffer[key]['visit_detail_id'] = f"VD_{enc}_{ihid_table.replace(' ','')}_{idx}"
+                        # everybody gets a person_id
+                        buffer[key]['person_id'] = pid
+                        # visit_occurrence_id for detail/event tables
+                        if ihid_table in visit_detail_sources:
+                            buffer[key]['visit_occurrence_id'] = enc
+
+                    # now assign the actual field
+                    buffer[key][of] = val
+
+    # collapse buffer into final omop_data
+    omop_data = defaultdict(list)
+    for (ot, _), fields in buffer.items():
+        omop_data[ot].append(fields)
+
     return dict(omop_data)
+
 
 def save_omop_data(omop_data, output_dir):
     """Save OMOP data to JSON files by table."""
