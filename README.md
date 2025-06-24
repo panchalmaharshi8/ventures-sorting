@@ -138,35 +138,3 @@ And other related tables for structured clinical data.
 
 6. **Verify Output**:
    Check the generated files in the `omop_output/` directory.
-
-## Robustness Features
-
-### 1. Patient ID Handling
-- Primary lookup for `patient_id` field
-- Fallback to `MRN` field if patient_id not found
-- Fallback to using encounter numbers with `ENC_` prefix if no patient identifiers exist
-- Generation of dummy IDs as a last resort
-
-### 2. Table Name Normalization
-- Handles different separators (-, /, spaces)
-- Matches tables despite case differences
-- Sanitizes problematic characters for database compatibility
-
-### 3. Error Handling
-- Detailed logging throughout the process
-- Warning for missing fields expected in real data
-- Graceful handling of database access errors
-- Recovery from missing tables or columns
-
-### 4. Testing Support
-- Sample database creation for testing without real data
-- Synthetic data generation with proper relationships
-- Test mode in ETL to validate mappings
-
-## Notes
-
-- The mapping is based on the Excel file `OMOP_Summarized_Schema.xlsx` which contains the correspondence between IHID and OMOP fields.
-- Although IHID is de-identified, it maintains consistent patient identifiers (`patient_id` or `MRN`) across tables.
-- We use these consistent patient identifiers as the OMOP `person_id` and the encounter numbers (`encntr_num`) as `visit_occurrence_id`.
-- Not all IHID fields may have corresponding OMOP fields and vice versa.
-- The system is designed to be robust against missing fields, table name variations, and missing patient identifiers.
