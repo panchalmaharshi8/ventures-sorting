@@ -8,7 +8,7 @@ import sys
 import os
 sys.path.append('scripts')
 
-from optimized_ihid_etl import OptimizedIHIDToOMOPETL
+from scripts.optimized_ihid_etl import OptimizedIHIDToOMOPETL
 import logging
 
 def main():
