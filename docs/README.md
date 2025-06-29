@@ -1,6 +1,6 @@
 # IHID to OMOP ETL Pipeline
 
-Automated transformation of IHID (Integrated Health Information Database) data to OMOP (Observational Medical Outcomes Partnership) Common Data Model format.
+Automated transformation of IHID (Integrated Health Information Datalab) data to OMOP (Observational Medical Outcomes Partnership) Common Data Model format.
 
 ## Quick Start
 
