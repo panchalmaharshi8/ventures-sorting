@@ -1,0 +1,644 @@
+[
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "encntr_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Encounter number - unique identifier for a hospital visit/encounter"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "case_num",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['SPIC-2024-627', 'SPOR-2020-5832']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_surg_operating_room_facility_health_organization_site_short_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Healthcare facility identifier or name"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "surg_case_svc_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for surg case svc"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "surg_case_svc_desc_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['Cardiology (SN)', 'General (SN)']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_px_1_surg_px_code_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['CAR00123', 'GEN00340']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_px_1_surg_px_desc_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['Angioplasty Coronary with Balloon', 'Laparoscopy Diagnostic']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_px_2_surg_px_code_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['CAR00121', '-1']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_px_2_surg_px_desc_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['Angiogram Selective Coronary', 'Not provided']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_px_3_surg_px_code_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['CAR00143', '-1']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "reporting_px_3_surg_px_desc_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Surgery table. Sample values: ['Catheterization Left Heart', 'Not provided']"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "patient_in_room_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for patient in room"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "patient_out_room_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for patient out room"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "patient_in_out_elapsed_time_minutes",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Surgery table. Sample values: [59, 110]"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "surg_start_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for surg start"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "surg_stop_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for surg stop"
+  },
+  {
+    "Source_Section": "Surgery",
+    "Column Name": "surg_start_to_stop_elapsed_time_minutes",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Surgery table. Sample values: [48, 48]"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "encntr_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Encounter number - unique identifier for a hospital visit/encounter"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis code (typically ICD-10)"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis description"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_order_number",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from DAD Diagnosis table. Sample values: [1, 3]"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_prefix_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Diagnosis code (typically ICD-10)"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_prefix_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis description"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_type_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis code (typically ICD-10)"
+  },
+  {
+    "Source_Section": "DAD Diagnosis",
+    "Column Name": "diagnosis_type_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis description"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "encntr_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Encounter number - unique identifier for a hospital visit/encounter"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_attribute_extent_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Code value for intervention attribute extent"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_attribute_extent_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for intervention attribute extent"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_attribute_location_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Code value for intervention attribute location"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_attribute_location_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for intervention attribute location"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_attribute_status_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Code value for intervention attribute status"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_attribute_status_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for intervention attribute status"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Code value for intervention"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for intervention"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_episode_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from DAD Intervention table. Sample values: [2, 1]"
+  },
+  {
+    "Source_Section": "DAD Intervention",
+    "Column Name": "intervention_order_number",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from DAD Intervention table. Sample values: [2, 4]"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "encntr_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Encounter number - unique identifier for a hospital visit/encounter"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "event_id",
+    "Data Type": "INTEGER",
+    "Explanation": "Unique identifier for a clinical event"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "clinical_event_id",
+    "Data Type": "INTEGER",
+    "Explanation": "Unique identifier for a clinical event"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "clinical_event_code_desc_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from Clinical Event table. Sample values: ['Body Mass Index Measured', 'Body Mass Index Measured']"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "event_end_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for event end"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "result_interpretation_desc_src",
+    "Data Type": "VARCHAR",
+    "Explanation": "Clinical interpretation of a result"
+  },
+  {
+    "Source_Section": "Clinical Event",
+    "Column Name": "result_value",
+    "Data Type": "DECIMAL",
+    "Explanation": "Numeric or text result value for a clinical measurement"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "encntr_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Encounter number - unique identifier for a hospital visit/encounter"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "facility_short_name",
+    "Data Type": "VARCHAR",
+    "Explanation": "Healthcare facility identifier or name"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "admit_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient admission"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "disch_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient discharge"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "most_responsible_diagnosis_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis code (typically ICD-10)"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "most_responsible_diagnosis_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Diagnosis description"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_age_category_cd",
+    "Data Type": "VARCHAR",
+    "Explanation": "Patient age at the time of the event"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_age_category_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Patient age at the time of the event"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_cmg_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for cmg cmg"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_cmg_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for cmg cmg"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_comorbidity_level_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for cmg comorbidity level"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_comorbidity_level_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for cmg comorbidity level"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_expected_los",
+    "Data Type": "DECIMAL",
+    "Explanation": "Length of stay in days"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_grade_assignment",
+    "Data Type": "VARCHAR",
+    "Explanation": "Data field from DAD Information table. Sample values: ['Surgical', 'Surgical']"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_inpt_riw_atyp_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for cmg inpt riw atyp"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_inpt_riw_atyp_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for cmg inpt riw atyp"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_mcc_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for cmg mcc"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_mcc_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for cmg mcc"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_resource_intensity_level_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for cmg resource intensity level"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_resource_intensity_level_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for cmg resource intensity level"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_resource_intensity_weight",
+    "Data Type": "DECIMAL",
+    "Explanation": "Data field from DAD Information table. Sample values: [1.4166, 0.9733]"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_resource_intensity_weight_typical",
+    "Data Type": "DECIMAL",
+    "Explanation": "Data field from DAD Information table. Sample values: [1.2287, 0.9733]"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_status_type_for_typical_atypical_case_cd",
+    "Data Type": "INTEGER",
+    "Explanation": "Code value for cmg status type for typical atypical case"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_status_type_for_typical_atypical_case_desc",
+    "Data Type": "VARCHAR",
+    "Explanation": "Description for cmg status type for typical atypical case"
+  },
+  {
+    "Source_Section": "DAD Information",
+    "Column Name": "cmg_trim_point",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from DAD Information table. Sample values: [8, 12]"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "index_encounter",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Readmission table. Sample values: [2000001185649, 2000000970280]"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "index_encounter_admission_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for index encounter admission"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "index_encounter_discharge_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient discharge"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "index_encounter_nursing_unit_desc_src_at_admit",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "index_encounter_nursing_unit_desc_src_at_disch",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "readmission_encounter",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Readmission table. Sample values: [2000001477811, 2000003250390]"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "readmission_encounter_admission_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for readmission encounter admission"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "readmission_encounter_discharge_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient discharge"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "readmission_encounter_nursing_unit_desc_src_at_admit",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "readmission_encounter_nursing_unit_desc_src_at_disch",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Readmission",
+    "Column Name": "days_between_index_readmission",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Readmission table. Sample values: [98, 660]"
+  },
+  {
+    "Source_Section": "Laboratory Result",
+    "Column Name": "mrn\tencntr_num\tevent_id\tclinical_event_code_cd\tclinical_event_code_desc_src\tclinical_event_id\tcollection_dt_tm\tfacility_health_organization_site_short_desc_at_collection\tresult_interpretation_desc_src\tresult_units_of_measure_desc_src\tresult_value",
+    "Data Type": "VARCHAR",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "encntr_num",
+    "Data Type": "INTEGER",
+    "Explanation": "Encounter number - unique identifier for a hospital visit/encounter"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "nursing_unit_desc_src_at_admit",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "nursing_unit_desc_src_at_disch",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "age_at_admit",
+    "Data Type": "INTEGER",
+    "Explanation": "Patient age at the time of the event"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "gender_desc_at_admit",
+    "Data Type": "VARCHAR",
+    "Explanation": "Patient gender information"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "admit_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient admission"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "disch_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient discharge"
+  },
+  {
+    "Source_Section": "Admission / Discharge",
+    "Column Name": "admit_to_disch_los_elapsed_time_days",
+    "Data Type": "INTEGER",
+    "Explanation": "Length of stay in days"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "mrn",
+    "Data Type": "INTEGER",
+    "Explanation": "Medical Record Number - unique patient identifier"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "index_encounter",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Previous Admission table. Sample values: [2000003250390, 2000001937619]"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "index_encounter_admission_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for index encounter admission"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "index_encounter_discharge_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient discharge"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "index_encounter_nursing_unit_desc_src_at_admit",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "index_encounter_nursing_unit_desc_src_at_disch",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "previous_encounter",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Previous Admission table. Sample values: [2000000970280, 2000000633296]"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "previous_encounter_admission_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time for previous encounter admission"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "previous_encounter_discharge_dt_tm",
+    "Data Type": "VARCHAR",
+    "Explanation": "Date and time of patient discharge"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "previous_nursing_unit_desc_src_at_admit",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "previous_nursing_unit_desc_src_at_disch",
+    "Data Type": "VARCHAR",
+    "Explanation": "Nursing unit or ward location"
+  },
+  {
+    "Source_Section": "Previous Admission",
+    "Column Name": "days_between_index_prev_admission",
+    "Data Type": "INTEGER",
+    "Explanation": "Data field from Previous Admission table. Sample values: [660, 487]"
+  }
+]

@@ -347,7 +347,7 @@
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "disch_dt_date": [
@@ -677,217 +677,217 @@
     "infectious_disease_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_icd_1_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_icd_2_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_icd_3_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_icd_1_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_icd_2_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_icd_3_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_1_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_2_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_3_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_icd_1_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_icd_2_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "admit_dx_icd_3_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_1_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_2_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_3_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_icd_1_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_icd_2_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_dx_icd_3_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_care_team_desc_at_admit": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_care_team_desc_at_disch": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_dad_desc_at_admit": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_dad_desc_at_disch": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_desc_src_at_admit": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_desc_src_at_disch": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_bed_desc_src_at_admit": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_bed_desc_src_at_disch": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_room_desc_src_at_admit": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_room_desc_src_at_disch": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "infectious_disease_desc_at_admit": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "infectious_disease_desc_at_disch": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
@@ -1049,126 +1049,126 @@
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact"
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_class_id_at_admit": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact"
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_class_id_at_disch": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact"
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_id_at_ad": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact"
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_id_at_admit": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact"
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_id_at_disch": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_occurrence_id",
-        "mapping_type": "exact"
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_class_desc_at_ad": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_class_desc_at_admit": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_class_desc_at_disch": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_class_desc_src_at_ad": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_class_desc_src_at_admit": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_class_desc_src_at_disch": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_at_ad": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_at_admit": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_at_disch": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_src_at_ad": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_src_at_admit": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_src_at_disch": [
       {
         "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_source_value",
+        "mapping_type": "exact"
       }
     ],
     "admit_date_id": [
@@ -1272,6 +1272,11 @@
         "omop_table": "cost",
         "omop_field": "cost_event_id",
         "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
       }
     ],
     "abstract_num": [
@@ -1496,6 +1501,13 @@
         "mapping_type": "non-exact"
       }
     ],
+    "facility_short_name": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
     "transfer_patient_service_01_days": [
       {
         "omop_table": "visit_detail",
@@ -1548,7 +1560,7 @@
     "admission_category_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
@@ -1598,14 +1610,14 @@
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "cmg_inpt_riw_atyp_desc": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "los": [
@@ -1855,6 +1867,20 @@
         "mapping_type": "non-exact"
       }
     ],
+    "facility_community_of_care_desc_at_arrival": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_arrival": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
     "transfer_facility_to_desc_src": [
       {
         "omop_table": "visit_detail",
@@ -2037,87 +2063,143 @@
         "mapping_type": "non-exact"
       }
     ],
-    "disch_ed_dx_1_desc": [
+    "encntr_num": [
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
+      }
+    ],
+    "encntr_extract_key_date_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_key": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_class_desc_src_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_class_id_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_desc_src_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_id_at_admit": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "disch_ed_dx_1_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_1_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_1_display_as_text": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_2_code_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_2_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_2_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_2_display_as_text": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_2_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_3_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_3_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_3_display_as_text": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "disch_ed_dx_3_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
@@ -2128,81 +2210,60 @@
         "mapping_type": "exact"
       }
     ],
-    "encntr_extract_key_date_id": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_id": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_key": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
     "chief_complaint_2_category": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_2_desc": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_2_desc_src": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_2_nacrs_desc_src": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_3_category": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_3_desc": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_3_desc_src": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ],
     "chief_complaint_3_nacrs_desc_src": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ]
   },
@@ -2832,6 +2893,11 @@
       },
       {
         "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
@@ -2845,6 +2911,11 @@
       {
         "omop_table": "drug_exposure",
         "omop_field": "visit_occurrence_id",
+        "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
         "mapping_type": "non-exact"
       },
       {
@@ -2866,6 +2937,11 @@
       },
       {
         "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
@@ -2883,6 +2959,11 @@
       },
       {
         "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
@@ -2894,7 +2975,7 @@
         "mapping_type": "non-exact"
       },
       {
-        "omop_table": "visit_occurrence",
+        "omop_table": "visit_detail",
         "omop_field": "care_site_id",
         "mapping_type": "non-exact"
       }
@@ -3235,7 +3316,96 @@
         "mapping_type": "non-exact"
       }
     ],
+    "facility_community_of_care_desc_at_orig_order": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_order_completed": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_id_at_order_completed": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_health_organization_desc_src_at_order_completed": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_health_organization_desc_src_at_orig_order": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_health_organization_site_desc_src_at_order_completed": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_health_organization_site_desc_src_at_orig_order": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_health_organization_site_short_desc_at_order_completed": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_health_organization_site_short_desc_at_orig_order": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
+      }
+    ],
+    "consult_reason_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
     "encntr_type_class_desc_src_at_orig_order": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
@@ -3245,11 +3415,21 @@
     "encntr_type_desc_src_at_order_completed": [
       {
         "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "encntr_type_desc_src_at_orig_order": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
@@ -3259,85 +3439,20 @@
     "encntr_type_id_at_order_completed": [
       {
         "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
         "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
-      }
-    ],
-    "facility_community_of_care_desc_at_orig_order": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_community_of_care_subgrp_desc_at_order_completed": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_id_at_order_completed": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_health_organization_desc_src_at_order_completed": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_health_organization_desc_src_at_orig_order": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_health_organization_site_desc_src_at_order_completed": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_health_organization_site_desc_src_at_orig_order": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_health_organization_site_short_desc_at_order_completed": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "facility_health_organization_site_short_desc_at_orig_order": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "care_site_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "consult_reason_id": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
       }
     ],
     "consult_reason_desc_src": [
       {
         "omop_table": "visit_occurrence",
         "omop_field": "visit_source_value",
-        "mapping_type": "non-exact"
+        "mapping_type": "exact"
       }
     ]
   },
@@ -3668,6 +3783,11 @@
         "omop_table": "device_exposure",
         "omop_field": "unit_source_value",
         "mapping_type": "exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_desc_at_rad_exam_end": [
@@ -3675,6 +3795,11 @@
         "omop_table": "device_exposure",
         "omop_field": "unit_source_value",
         "mapping_type": "exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_class_desc_src_at_rad_exam_end": [
@@ -3682,6 +3807,11 @@
         "omop_table": "device_exposure",
         "omop_field": "unit_source_value",
         "mapping_type": "exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
       }
     ],
     "encntr_type_class_desc_at_rad_exam_end": [
@@ -3689,6 +3819,11 @@
         "omop_table": "device_exposure",
         "omop_field": "unit_source_value",
         "mapping_type": "exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
       }
     ],
     "rad_exam_room_facility_community_of_care _desc": [
@@ -3844,11 +3979,23 @@
         "mapping_type": "non-exact"
       }
     ],
+    "encntr_key": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
     "encntr_type_desc_src_at_rad_exam_end": [
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_id",
         "mapping_type": "non-exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ],
     "exam_status_change_to_exam_started_dt_tm": [
@@ -3865,6 +4012,11 @@
         "omop_table": "care_site",
         "omop_field": "place_of_service_concept_id",
         "mapping_type": "exact"
+      },
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
       }
     ],
     "end_effective_date_id": [
@@ -3928,6 +4080,55 @@
         "omop_table": "procedure_occurrence",
         "omop_field": "quantity",
         "mapping_type": "exact"
+      }
+    ],
+    "facility_community_of_care_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_name_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_short_name_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
+      }
+    ],
+    "encntr_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
       }
     ]
   },
@@ -4181,179 +4382,193 @@
         "mapping_type": "non-exact"
       }
     ],
-    "infectious_disease_desc": [
+    "encntr_num": [
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
+      }
+    ],
+    "encntr_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_class_desc_at_census": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_class_desc_src_at_census": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_class_id_at_census": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_desc_at_census": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_desc_src_at_census": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_id_at_census": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "infectious_disease_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "is_admit_dx_stroke": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "is_disch_dx_stroke": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "is_disch_dx_stroke_hemorrhagic": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "is_disch_dx_stroke_ischemic": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "is_disch_dx_stroke_other": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "is_disch_dx_stroke_tia": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_bed_desc_src_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_bed_id_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_room_desc_src_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "loc_room_id_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_care_team_code_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_care_team_desc_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_dad_code_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_dad_desc_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_desc_src_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_id_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_program_code_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "med_service_program_desc_at_census": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
-      }
-    ],
-    "encntr_type_class_desc_at_census": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_type_class_desc_src_at_census": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_type_class_id_at_census": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_type_desc_at_census": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_type_desc_src_at_census": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
-      }
-    ],
-    "encntr_type_id_at_census": [
-      {
-        "omop_table": "visit_occurrence",
-        "omop_field": "visit_occurrence_id",
-        "mapping_type": "non-exact"
       }
     ]
   },
@@ -5089,14 +5304,14 @@
     "sched_appt_type_desc_src": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "sched_appt_type_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ]
@@ -5161,21 +5376,21 @@
     "intervention_desc": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "intervention_order_number": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
     "intervention_cd": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
+        "omop_field": "visit_detail_source_value",
         "mapping_type": "exact"
       }
     ],
@@ -5259,6 +5474,13 @@
       }
     ],
     "special_care_unit_06_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_short_name": [
       {
         "omop_table": "visit_detail",
         "omop_field": "care_site_id",
@@ -5687,6 +5909,41 @@
         "mapping_type": "non-exact"
       }
     ],
+    "facility_community_of_care_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_name_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_short_name_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
     "entry_mode_desc_src": [
       {
         "omop_table": "visit_detail",
@@ -5719,6 +5976,27 @@
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_end_datetime",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
+      }
+    ],
+    "encntr_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_loc_hist_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
         "mapping_type": "non-exact"
       }
     ],
@@ -5790,8 +6068,8 @@
     "is_active": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ]
   },
@@ -6048,39 +6326,116 @@
         "mapping_type": "non-exact"
       }
     ],
-    "clinical_event_code_desc_src": [
+    "facility_community_of_care_desc_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_id_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_name_src_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "facility_short_name_src_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "care_site_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_num": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "exact"
+      }
+    ],
+    "encntr_id": [
       {
         "omop_table": "visit_detail",
         "omop_field": "visit_detail_id",
         "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_desc_src_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_id": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "encntr_type_id_at_collection": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_id",
+        "mapping_type": "non-exact"
+      }
+    ],
+    "clinical_event_code_desc_src": [
+      {
+        "omop_table": "visit_detail",
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ],
     "clinical_event_code_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ],
     "clinical_event_id": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ],
     "med_service_desc_src_at_collection": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ],
     "med_service_id_at_collection": [
       {
         "omop_table": "visit_detail",
-        "omop_field": "visit_detail_id",
-        "mapping_type": "non-exact"
+        "omop_field": "visit_detail_source_value",
+        "mapping_type": "exact"
       }
     ]
   },
