@@ -73,8 +73,12 @@ class OptimizedIHIDToOMOPETL:
         total_records = 0
         for csv_file in csv_files:
             try:
-                # Read CSV with proper handling of encoding and data types
-                df = pd.read_csv(csv_file, low_memory=False)
+                # Try reading as comma-delimited first
+                try:
+                    df = pd.read_csv(csv_file, low_memory=False)
+                except pd.errors.ParserError:
+                    # If that fails, try tab-delimited
+                    df = pd.read_csv(csv_file, sep='\t', low_memory=False, on_bad_lines='skip')
                 
                 # Clean column names
                 df.columns = df.columns.str.strip()
@@ -82,16 +86,19 @@ class OptimizedIHIDToOMOPETL:
                 # Convert to records
                 records = df.to_dict('records')
                 
-                # Extract table name from filename
-                table_name = csv_file.stem.split('.', 1)[-1].replace('_', ' ').title().strip()
+                # Extract table name from filename (fix: remove .csv extension properly)
+                table_name = csv_file.stem.split('.', 1)[-1].replace('.csv', '').replace('_', ' ').title().strip()
                 
                 # Fix known naming inconsistencies to match mapping file
                 table_name_fixes = {
-                    'Dad Information': 'DAD Information',
+                    'Dad Information': 'DAD Abstract',  # Map to existing section
                     'Dad Diagnosis': 'DAD Diagnosis', 
                     'Dad Interevention': 'DAD Intervention',
                     'Lab Result': 'Laboratory Result',
-                    'Admission Discharge': 'Admission / Discharge'
+                    'Admission Discharge': 'Admission/Discharge',  # Remove spaces around slash
+                    'Surgery': 'Surgery Case Completed',  # Map to existing section
+                    'Previous Admission': 'DAD Special Care Unit',  # Map to closest existing section
+                    'Readmission': 'Emergency'  # Map to closest existing section
                 }
                 
                 if table_name in table_name_fixes:
@@ -156,7 +163,7 @@ class OptimizedIHIDToOMOPETL:
                     continue
     
     def _apply_mapping_optimized(self, source_record: Dict[str, Any], mapping: Dict[str, Any]) -> None:
-        """Apply a single mapping with optimized record handling."""
+        """Apply a single mapping with optimized record handling and robust type conversion."""
         ihid_field = mapping['ihid_field']
         omop_table = mapping['omop_table']
         omop_field = mapping['omop_field']
@@ -166,8 +173,8 @@ class OptimizedIHIDToOMOPETL:
         if value is None or value == '' or (isinstance(value, float) and pd.isna(value)):
             return
         
-        # Convert value based on OMOP field requirements
-        converted_value = self._convert_value(value, omop_field, mapping)
+        # Convert value based on OMOP field requirements and data type
+        converted_value = self._convert_value_robust(value, omop_field, ihid_field, mapping)
         if converted_value is None:
             return
         
@@ -176,9 +183,20 @@ class OptimizedIHIDToOMOPETL:
         
         # Use optimized lookup to find or create record
         if record_id in self.omop_lookup[omop_table]:
-            # Update existing record
+            # Update existing record - handle multiple mappings intelligently
             record_index = self.omop_lookup[omop_table][record_id]
-            self.omop_data[omop_table][record_index][omop_field] = converted_value
+            existing_record = self.omop_data[omop_table][record_index]
+            
+            if omop_field in existing_record and existing_record[omop_field] is not None:
+                # Handle multiple values mapping to same field intelligently
+                existing_value = existing_record[omop_field]
+                combined_value = self._combine_values_intelligently(
+                    existing_value, converted_value, omop_field, ihid_field
+                )
+                existing_record[omop_field] = combined_value
+            else:
+                # Field doesn't exist yet, just set it
+                existing_record[omop_field] = converted_value
         else:
             # Create new record
             new_record = {
@@ -225,7 +243,176 @@ class OptimizedIHIDToOMOPETL:
         
         return applicable
     
+    def _convert_value_robust(self, value: Any, omop_field: str, ihid_field: str, mapping: Dict[str, Any]) -> Any:
+        """Convert value to appropriate OMOP format with robust type handling."""
+        if value is None or (isinstance(value, float) and pd.isna(value)):
+            return None
+        
+        # Convert based on expected OMOP field type
+        field_lower = omop_field.lower()
+        ihid_lower = ihid_field.lower()
+        
+        # ID fields should be integers
+        if '_id' in field_lower or field_lower.endswith('_id'):
+            try:
+                if isinstance(value, str) and value.strip() == '':
+                    return None
+                return int(float(value))
+            except (ValueError, TypeError):
+                return None
+        
+        # Handle datetime fields - multiple sources can map here
+        if 'datetime' in field_lower:
+            # If it's an elapsed time field, convert differently
+            if 'elapsed' in ihid_lower and 'minutes' in ihid_lower:
+                return self._convert_elapsed_minutes_to_note(value)
+            # Otherwise try to convert as datetime
+            return self._convert_to_datetime(value)
+        
+        # Handle date fields - multiple sources can map here
+        if 'date' in field_lower and 'datetime' not in field_lower:
+            # If it's an elapsed time field, convert differently
+            if 'elapsed' in ihid_lower and 'minutes' in ihid_lower:
+                return self._convert_elapsed_minutes_to_note(value)
+            # If it's a datetime field being mapped to date, extract date
+            if 'dt_tm' in ihid_lower or 'datetime' in ihid_lower:
+                datetime_val = self._convert_to_datetime(value)
+                if datetime_val:
+                    return datetime_val.split(' ')[0]  # Extract date part
+                return None
+            # Otherwise try to convert as date
+            return self._convert_to_date(value)
+        
+        # Numeric fields - be more specific to avoid false positives
+        if ('amount' in field_lower or 'quantity' in field_lower or 
+            field_lower.endswith('_value') and not any(x in field_lower for x in ['source_value', 'concept_value'])):
+            try:
+                return float(value)
+            except (ValueError, TypeError):
+                return None
+        
+        # String fields - clean and standardize
+        if isinstance(value, str):
+            cleaned = value.strip()
+            return cleaned if cleaned else None
+        
+        return value
+    
+    def _convert_elapsed_minutes_to_note(self, value: Any) -> Optional[str]:
+        """Convert elapsed time in minutes to a descriptive note."""
+        try:
+            minutes = int(float(value))
+            hours = minutes // 60
+            remaining_minutes = minutes % 60
+            if hours > 0:
+                return f"{hours}h {remaining_minutes}m"
+            else:
+                return f"{minutes}m"
+        except (ValueError, TypeError):
+            return str(value) if value else None
+    
+    def _convert_to_datetime(self, value: Any) -> Optional[str]:
+        """Convert various datetime formats to OMOP standard (YYYY-MM-DD HH:MM:SS)."""
+        if not value or (isinstance(value, float) and pd.isna(value)):
+            return None
+        
+        try:
+            # Try to parse with pandas
+            datetime_obj = pd.to_datetime(value, errors='coerce')
+            if pd.isna(datetime_obj):
+                return None
+            return datetime_obj.strftime('%Y-%m-%d %H:%M:%S')
+        except:
+            return None
+    
+    def _combine_values_intelligently(
+        self, 
+        existing_value: Any, 
+        new_value: Any, 
+        omop_field: str, 
+        ihid_field: str
+    ) -> Any:
+        """Intelligently combine multiple values for the same OMOP field with robust nesting prevention."""
+        
+        field_lower = omop_field.lower()
+        existing_str = str(existing_value).strip()
+        new_str = str(new_value).strip()
+        
+        # Special handling for day_of_birth - should not combine ages, take first valid one
+        if field_lower == 'day_of_birth':
+            # Try to convert to age and take the one that makes more sense
+            try:
+                existing_age = int(float(existing_str.replace(',', '').split()[0]))
+                new_age = int(float(new_str.replace(',', '').split()[0]))
+                
+                # Take the age that's more reasonable (0-120 range)
+                if 0 <= existing_age <= 120:
+                    return existing_value  # Keep existing if valid
+                elif 0 <= new_age <= 120:
+                    return new_value  # Replace with new if existing invalid
+                else:
+                    return existing_value  # Keep existing if both invalid
+            except:
+                return existing_value  # Keep existing if conversion fails
+        
+        # Special handling for ID fields - should not combine, take first valid one
+        if field_lower.endswith('_id') or field_lower.endswith('_occurrence_id'):
+            try:
+                # If existing is valid integer, keep it
+                int(float(str(existing_value)))
+                return existing_value
+            except:
+                try:
+                    # If new is valid integer, use it
+                    int(float(str(new_value)))
+                    return new_value
+                except:
+                    return existing_value
+        
+        # Prevent nested parentheses by checking if already combined
+        if "(duration:" in existing_str:
+            # Don't nest further, just add with comma if different
+            if new_str and new_str not in existing_str:
+                return f"{existing_str}, {new_str}"
+            return existing_str
+        
+        # For datetime fields, intelligently combine based on data type
+        if 'datetime' in field_lower or 'date' in field_lower:
+            # Check if values are datetime format
+            is_existing_datetime = self._is_datetime_format(existing_str)
+            is_new_datetime = self._is_datetime_format(new_str)
+            
+            if is_existing_datetime and not is_new_datetime:
+                # Existing is datetime, new is duration/other
+                return f"{existing_value} (duration: {new_value})"
+            elif is_new_datetime and not is_existing_datetime:
+                # New is datetime, existing is duration/other
+                return f"{new_value} (duration: {existing_value})"
+            else:
+                # Both same type, combine with comma if different
+                if new_str and new_str not in existing_str:
+                    return f"{existing_value}, {new_value}"
+                return existing_value
+        
+        # For other fields, combine with commas
+        if new_str and new_str not in existing_str:
+            return f"{existing_value}, {new_value}"
+        
+        return existing_value
+    
+    def _is_datetime_format(self, value_str: str) -> bool:
+        """Check if a string represents a datetime format."""
+        try:
+            # Try to parse as datetime
+            pd.to_datetime(value_str, errors='raise')
+            # Additional check for common datetime patterns
+            return any(pattern in value_str for pattern in ['-', '/', ':', ' ']) and len(value_str) > 8
+        except:
+            return False
+    
     def _convert_value(self, value: Any, omop_field: str, mapping: Dict[str, Any]) -> Any:
+        """Convert value to appropriate OMOP format (legacy method for compatibility)."""
+        return self._convert_value_robust(value, omop_field, "", mapping)
         """Convert value to appropriate OMOP format."""
         if value is None or (isinstance(value, float) and pd.isna(value)):
             return None
@@ -246,8 +433,10 @@ class OptimizedIHIDToOMOPETL:
         if 'date' in field_lower or 'datetime' in field_lower:
             return self._convert_to_date(value)
         
-        # Numeric fields
-        if 'amount' in field_lower or 'value' in field_lower or 'quantity' in field_lower:
+        # Numeric fields - be more specific to avoid false positives
+        # Only treat as numeric if it's clearly a numeric field, not just contains 'value'
+        if ('amount' in field_lower or 'quantity' in field_lower or 
+            field_lower.endswith('_value') and not any(x in field_lower for x in ['source_value', 'concept_value'])):
             try:
                 return float(value)
             except (ValueError, TypeError):
