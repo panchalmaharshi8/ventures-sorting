@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 from collections import defaultdict
 import time
+from typing import Tuple
 
 # Configure logging
 logging.basicConfig(
@@ -26,6 +27,9 @@ class OptimizedIHIDToOMOPETL:
         self.omop_data = defaultdict(list)
         self.omop_lookup = defaultdict(dict)  # Fast lookup tables
         self.mapping = {}
+        self.place_of_service_lookup = {}
+        self.next_concept_id = 1000000
+
         
     def load_mapping(self) -> None:
         """Load IHID to OMOP field mappings."""
@@ -203,7 +207,14 @@ class OptimizedIHIDToOMOPETL:
                 '_record_id': record_id,
                 omop_field: converted_value
             }
-            
+
+            # If care_site_name is available, map prefix → concept ID
+            if omop_table == 'care_site' and 'care_site_name' in source_record:
+                prefix, concept_id = self._get_or_create_place_of_service_concept(source_record['care_site_name'])
+                if prefix and concept_id:
+                    new_record["place_of_service_source_value"] = prefix
+                    new_record["place_of_service_concept_id"] = concept_id
+
             # Add standard identifiers
             self._add_standard_identifiers(new_record, source_record, omop_table)
             
@@ -297,6 +308,33 @@ class OptimizedIHIDToOMOPETL:
             return cleaned if cleaned else None
         
         return value
+        
+    def _get_or_create_place_of_service_concept(self, care_site_name: str) -> Tuple[Optional[str], Optional[int]]:
+        if not care_site_name or not isinstance(care_site_name, str):
+            return None, None
+
+        prefix = care_site_name.strip().split(' ')[0].upper()
+
+        if prefix not in self.place_of_service_lookup:
+            concept_id = self.next_concept_id
+            self.place_of_service_lookup[prefix] = concept_id
+            self.next_concept_id += 1
+
+            self.omop_data['concept'].append({
+                "concept_id": concept_id,
+                "concept_name": prefix,
+                "domain_id": "Place of Service",
+                "vocabulary_id": "Custom",
+                "concept_class_id": "Place of Service",
+                "standard_concept": "S",
+                "concept_code": prefix,
+                "valid_start_date": "1970-01-01",
+                "valid_end_date": "2099-12-31",
+                "invalid_reason": None
+            })
+
+        return prefix, self.place_of_service_lookup[prefix]
+
     
     def _convert_elapsed_minutes_to_note(self, value: Any) -> Optional[str]:
         """Convert elapsed time in minutes to a descriptive note."""
