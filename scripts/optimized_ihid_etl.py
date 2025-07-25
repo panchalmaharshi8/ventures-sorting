@@ -237,18 +237,13 @@ class OptimizedIHIDToOMOPETL:
         return standardized
     
     def _get_applicable_mappings(self, source_table: str, source_record: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Get mappings applicable to this table and record."""
+        """Get mappings applicable to this record - field-centric approach."""
         applicable = []
         
         for mapping in self.mapping:
             ihid_field = mapping['ihid_field']
-            source_table_match = mapping.get('source_table', '')
             
-            # Check if mapping applies to this table (exact match, case-insensitive)
-            if source_table_match and source_table_match.lower() != source_table.lower():
-                continue
-            
-            # Check if the field exists in the record
+            # Field-centric mapping: only check if the field exists in the record
             if ihid_field in source_record:
                 applicable.append(mapping)
         
