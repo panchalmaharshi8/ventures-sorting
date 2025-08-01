@@ -1,0 +1,154 @@
+{
+  "care_site": {
+    "place_of_service_concept_id": 1
+  },
+  "cdm_source": {
+    "cdm_version_concept_id": 1
+  },
+  "cohort_definition": {
+    "subject_concept_id": 1
+  },
+  "concept_ancestor": {
+    "ancestor_concept_id": 1,
+    "descendant_concept_id": 2
+  },
+  "concept_class": {
+    "concept_class_concept_id": 1
+  },
+  "concept_relationship": {
+    "concept_id_1": 1,
+    "concept_id_2": 2
+  },
+  "concept_synonym": {
+    "concept_id": 1,
+    "language_concept_id": 2
+  },
+  "condition_era": {
+    "condition_concept_id": 1
+  },
+  "condition_occurrence": {
+    "condition_concept_id": 1,
+    "condition_status_concept_id": 2
+  },
+  "cost": {
+    "currency_concept_id": 1,
+    "drg_concept_id": 2,
+    "revenue_code_concept_id": 3
+  },
+  "death": {
+    "cause_concept_id": 1
+  },
+  "device_exposure": {
+    "device_concept_id": 1,
+    "unit_concept_id": 2
+  },
+  "domain": {
+    "domain_concept_id": 1
+  },
+  "dose_era": {
+    "drug_concept_id": 1,
+    "unit_concept_id": 2
+  },
+  "drug_era": {
+    "drug_concept_id": 1
+  },
+  "drug_exposure": {
+    "drug_concept_id": 1,
+    "route_concept_id": 2
+  },
+  "drug_strength": {
+    "amount_unit_concept_id": 1,
+    "denominator_unit_concept_id": 2,
+    "drug_concept_id": 3,
+    "ingredient_concept_id": 4,
+    "numerator_unit_concept_id": 5
+  },
+  "episode": {
+    "episode_concept_id": 1,
+    "episode_object_concept_id": 2
+  },
+  "episode_event": {
+    "episode_event_field_concept_id": 1
+  },
+  "fact_relationship": {
+    "domain_concept_id_1": 1,
+    "domain_concept_id_2": 2,
+    "relationship_concept_id": 3
+  },
+  "location": {
+    "country_concept_id": 1
+  },
+  "measurement": {
+    "meas_event_field_concept_id": 1,
+    "measurement_concept_id": 2,
+    "operator_concept_id": 3,
+    "unit_concept_id": 4,
+    "value_as_concept_id": 5
+  },
+  "metadata": {
+    "metadata_concept_id": 1,
+    "value_as_concept_id": 2
+  },
+  "note": {
+    "encoding_concept_id": 1,
+    "language_concept_id": 2,
+    "note_class_concept_id": 3,
+    "note_event_field_concept_id": 4
+  },
+  "note_nlp": {
+    "note_nlp_concept_id": 1,
+    "section_concept_id": 2
+  },
+  "observation": {
+    "obs_event_field_concept_id": 1,
+    "observation_concept_id": 2,
+    "qualifier_concept_id": 3,
+    "unit_concept_id": 4,
+    "value_as_concept_id": 5
+  },
+  "payer_plan_period": {
+    "payer_concept_id": 1,
+    "plan_concept_id": 2,
+    "sponsor_concept_id": 3,
+    "stop_reason_concept_id": 4
+  },
+  "person": {
+    "ethnicity_concept_id": 1,
+    "gender_concept_id": 2,
+    "race_concept_id": 3
+  },
+  "procedure_occurrence": {
+    "modifier_concept_id": 1,
+    "procedure_concept_id": 2
+  },
+  "provider": {
+    "gender_concept_id": 1,
+    "specialty_concept_id": 2
+  },
+  "relationship": {
+    "relationship_concept_id": 1
+  },
+  "source_to_concept_map": {
+    "source_concept_id": 1,
+    "target_concept_id": 2
+  },
+  "specimen": {
+    "anatomic_site_concept_id": 1,
+    "disease_status_concept_id": 2,
+    "specimen_concept_id": 3,
+    "unit_concept_id": 4
+  },
+  "visit_detail": {
+    "admitted_from_concept_id": 1,
+    "discharged_to_concept_id": 2,
+    "visit_detail_concept_id": 3
+  },
+  "visit_occurrence": {
+    "admitted_from_concept_id": 1,
+    "discharged_to_concept_id": 2,
+    "visit_concept_id": 3
+  },
+  "vocabulary": {
+    "vocabulary_concept_id": 1
+  }
+}

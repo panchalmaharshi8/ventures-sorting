@@ -29,7 +29,9 @@ class OptimizedIHIDToOMOPETL:
         self.mapping = {}
         self.place_of_service_lookup = {}
         self.next_concept_id = 1000000
-
+        self.concept_id_counters = defaultdict(lambda: defaultdict(dict))  # [table][field][value] = concept_id
+        self.concept_field_order = {}  # Loaded from JSON
+        self.table_ids = {}  # Loaded from table_ids.txt
         
     def load_mapping(self) -> None:
         """Load IHID to OMOP field mappings."""
@@ -118,7 +120,28 @@ class OptimizedIHIDToOMOPETL:
                 continue
         
         logging.info(f"Loaded {len(self.ihid_data)} CSV tables with {total_records} total records")
-    
+
+    def load_concept_field_order(self, path: str = "schemas/concept_field_order.json") -> None:
+        try:
+            with open(path, "r") as f:
+                self.concept_field_order = json.load(f)
+            logging.info(f"Loaded concept field order for {len(self.concept_field_order)} tables")
+        except Exception as e:
+            logging.error(f"Failed to load concept_field_order.json: {e}")
+            raise
+
+    def load_table_ids(self, path: str = "schemas/table_ids.txt") -> None:
+        try:
+            with open(path, 'r') as f:
+                for line in f:
+                    if '=' in line:
+                        table, tid = line.strip().split('=')
+                        self.table_ids[table.strip()] = int(tid.strip())
+            logging.info(f"Loaded table IDs for {len(self.table_ids)} tables")
+        except Exception as e:
+            logging.error(f"Failed to load table_ids.txt: {e}")
+            raise
+
     def transform_to_omop(self) -> None:
         """Transform IHID data to OMOP format using optimized processing."""
         logging.info("Starting IHID to OMOP transformation")
@@ -178,7 +201,14 @@ class OptimizedIHIDToOMOPETL:
             return
         
         # Convert value based on OMOP field requirements and data type
-        converted_value = self._convert_value_robust(value, omop_field, ihid_field, mapping)
+        if omop_field.endswith("_concept_id") and isinstance(value, str):
+            concept_id = self._get_or_create_dynamic_concept(omop_table, omop_field, value)
+            if concept_id is None:
+                return
+            converted_value = concept_id
+        else:
+            converted_value = self._convert_value_robust(value, omop_field, ihid_field, mapping)
+
         if converted_value is None:
             return
         
@@ -209,11 +239,11 @@ class OptimizedIHIDToOMOPETL:
             }
 
             # If care_site_name is available, map prefix → concept ID
-            if omop_table == 'care_site' and 'care_site_name' in source_record:
-                prefix, concept_id = self._get_or_create_place_of_service_concept(source_record['care_site_name'])
-                if prefix and concept_id:
-                    new_record["place_of_service_source_value"] = prefix
-                    new_record["place_of_service_concept_id"] = concept_id
+            # if omop_table == 'care_site' and 'care_site_name' in source_record:
+            #     prefix, concept_id = self._get_or_create_place_of_service_concept(source_record['care_site_name'])
+            #     if prefix and concept_id:
+            #         new_record["place_of_service_source_value"] = prefix
+            #         new_record["place_of_service_concept_id"] = concept_id
 
             # Add standard identifiers
             self._add_standard_identifiers(new_record, source_record, omop_table)
@@ -330,7 +360,55 @@ class OptimizedIHIDToOMOPETL:
 
         return prefix, self.place_of_service_lookup[prefix]
 
-    
+    def _get_or_create_dynamic_concept(self, omop_table: str, concept_field: str, raw_value: str) -> Optional[int]:
+        """
+        Auto-generate concept_id for any *_concept_id field using the XXYYZZ scheme.
+        """
+        if not raw_value or not isinstance(raw_value, str):
+            return None
+
+        value = raw_value.strip().title()
+
+        # Return existing concept_id if already seen
+        if value in self.concept_id_counters[omop_table][concept_field]:
+            return self.concept_id_counters[omop_table][concept_field][value]
+
+        # Get XX from table_ids.txt
+        table_id = self.table_ids.get(omop_table, 99)
+        xx = f"{table_id:02d}"
+
+        # Get YY from concept_field_order.json
+        field_order = self.concept_field_order.get(omop_table, {}).get(concept_field)
+        if field_order is None:
+            logging.warning(f"Missing field order for {omop_table}.{concept_field}")
+            return None
+        yy = f"{field_order:02d}"
+
+        # Get next ZZ for this field
+        zz = f"{len(self.concept_id_counters[omop_table][concept_field]):02d}"
+
+        # Construct full concept_id
+        concept_id = int(f"{xx}{yy}{zz}")
+
+        # Store and track
+        self.concept_id_counters[omop_table][concept_field][value] = concept_id
+
+        # Append to concept table
+        self.omop_data["concept"].append({
+            "concept_id": concept_id,
+            "concept_name": value,
+            "domain_id": concept_field.replace("_concept_id", ""),
+            "vocabulary_id": "Custom",
+            "concept_class_id": "Custom",
+            "standard_concept": "S",
+            "concept_code": f"{xx}{yy}{zz}",
+            "valid_start_date": "1970-01-01",
+            "valid_end_date": "2099-12-31",
+            "invalid_reason": None
+        })
+
+        return concept_id
+
     def _convert_elapsed_minutes_to_note(self, value: Any) -> Optional[str]:
         """Convert elapsed time in minutes to a descriptive note."""
         try:
@@ -596,6 +674,8 @@ class OptimizedIHIDToOMOPETL:
             
             # Load configuration and data
             self.load_mapping()
+            self.load_table_ids()
+            self.load_concept_field_order()
             self.load_csv_data()
             
             if not self.ihid_data:
