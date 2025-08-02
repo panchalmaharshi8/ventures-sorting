@@ -237,14 +237,6 @@ class OptimizedIHIDToOMOPETL:
                 '_record_id': record_id,
                 omop_field: converted_value
             }
-
-            # If care_site_name is available, map prefix → concept ID
-            # if omop_table == 'care_site' and 'care_site_name' in source_record:
-            #     prefix, concept_id = self._get_or_create_place_of_service_concept(source_record['care_site_name'])
-            #     if prefix and concept_id:
-            #         new_record["place_of_service_source_value"] = prefix
-            #         new_record["place_of_service_concept_id"] = concept_id
-
             # Add standard identifiers
             self._add_standard_identifiers(new_record, source_record, omop_table)
             
@@ -333,32 +325,6 @@ class OptimizedIHIDToOMOPETL:
             return cleaned if cleaned else None
         
         return value
-        
-    def _get_or_create_place_of_service_concept(self, care_site_name: str) -> Tuple[Optional[str], Optional[int]]:
-        if not care_site_name or not isinstance(care_site_name, str):
-            return None, None
-
-        prefix = care_site_name.strip().split(' ')[0].upper()
-
-        if prefix not in self.place_of_service_lookup:
-            concept_id = self.next_concept_id
-            self.place_of_service_lookup[prefix] = concept_id
-            self.next_concept_id += 1
-
-            self.omop_data['concept'].append({
-                "concept_id": concept_id,
-                "concept_name": prefix,
-                "domain_id": "Place of Service",
-                "vocabulary_id": "Custom",
-                "concept_class_id": "Place of Service",
-                "standard_concept": "S",
-                "concept_code": prefix,
-                "valid_start_date": "1970-01-01",
-                "valid_end_date": "2099-12-31",
-                "invalid_reason": None
-            })
-
-        return prefix, self.place_of_service_lookup[prefix]
 
     def _get_or_create_dynamic_concept(self, omop_table: str, concept_field: str, raw_value: str) -> Optional[int]:
         """
@@ -627,9 +593,195 @@ class OptimizedIHIDToOMOPETL:
             if mrn:
                 omop_record['person_id'] = mrn
     
+    def _generate_domain_table(self) -> None:
+        """Generate domain table from ALL concept fields in schema, not just those with data."""
+        logging.info("Generating comprehensive domain table from concept field schema")
+        
+        # Extract ALL possible domain_ids from concept_field_order.json schema
+        schema_domains = set()
+        for table, fields in self.concept_field_order.items():
+            for field_name, order in fields.items():
+                if field_name.endswith("_concept_id"):
+                    domain_id = field_name.replace("_concept_id", "")
+                    schema_domains.add(domain_id)
+                elif "_concept_id_" in field_name:  # Handle domain_concept_id_1, etc.
+                    parts = field_name.split("_concept_id_")
+                    domain_id = parts[0]
+                    schema_domains.add(domain_id)
+        
+        # Also collect domains that actually have data in concept table
+        data_domains = set()
+        if "concept" in self.omop_data:
+            for concept_record in self.omop_data["concept"]:
+                domain_id = concept_record.get("domain_id")
+                if domain_id and domain_id != "Metadata":  # Exclude Metadata to avoid circular reference
+                    data_domains.add(domain_id)
+        
+        # Combine schema domains with data domains
+        all_domains = schema_domains.union(data_domains)
+        
+        logging.info(f"Found {len(schema_domains)} domains in schema, {len(data_domains)} domains with data")
+        logging.info(f"Generating {len(all_domains)} total domain records")
+        
+        # Comprehensive domain mapping with OMOP standard domains
+        domain_mapping = {
+            # Standard OMOP domains
+            'condition': {'name': 'Condition', 'standard': True},
+            'procedure': {'name': 'Procedure', 'standard': True},
+            'drug': {'name': 'Drug', 'standard': True},
+            'measurement': {'name': 'Measurement', 'standard': True},
+            'observation': {'name': 'Observation', 'standard': True},
+            'device': {'name': 'Device', 'standard': True},
+            'visit': {'name': 'Visit', 'standard': True},
+            'provider': {'name': 'Provider', 'standard': True},
+            'care_site': {'name': 'Care Site', 'standard': True},
+            'location': {'name': 'Location', 'standard': True},
+            'gender': {'name': 'Gender', 'standard': True},
+            'race': {'name': 'Race', 'standard': True},
+            'ethnicity': {'name': 'Ethnicity', 'standard': True},
+            'relationship': {'name': 'Relationship', 'standard': True},
+            'unit': {'name': 'Unit', 'standard': True},
+            'currency': {'name': 'Currency', 'standard': True},
+            'episode': {'name': 'Episode', 'standard': True},
+            'metadata': {'name': 'Metadata', 'standard': True},
+            'vocabulary': {'name': 'Vocabulary', 'standard': True},
+            
+            # Clinical domains
+            'cause': {'name': 'Cause of Death', 'standard': False},
+            'condition_status': {'name': 'Condition Status', 'standard': False},
+            'modifier': {'name': 'Procedure Modifier', 'standard': False},
+            'route': {'name': 'Route', 'standard': False},
+            'operator': {'name': 'Measurement Operator', 'standard': False},
+            'qualifier': {'name': 'Observation Qualifier', 'standard': False},
+            'value_as': {'name': 'Value As Concept', 'standard': False},
+            
+            # Administrative domains
+            'admitted_from': {'name': 'Admitted From', 'standard': False},
+            'discharged_to': {'name': 'Discharged To', 'standard': False},
+            'visit_detail': {'name': 'Visit Detail', 'standard': False},
+            'place_of_service': {'name': 'Place of Service', 'standard': False},
+            'payer': {'name': 'Payer', 'standard': False},
+            'plan': {'name': 'Plan', 'standard': False},
+            'sponsor': {'name': 'Sponsor', 'standard': False},
+            'stop_reason': {'name': 'Stop Reason', 'standard': False},
+            
+            # Specimen domains
+            'specimen': {'name': 'Specimen', 'standard': False},
+            'anatomic_site': {'name': 'Anatomic Site', 'standard': False},
+            'disease_status': {'name': 'Disease Status', 'standard': False},
+            
+            # Drug domains
+            'ingredient': {'name': 'Ingredient', 'standard': False},
+            'amount_unit': {'name': 'Amount Unit', 'standard': False},
+            'numerator_unit': {'name': 'Numerator Unit', 'standard': False},
+            'denominator_unit': {'name': 'Denominator Unit', 'standard': False},
+            
+            # Note domains
+            'language': {'name': 'Language', 'standard': False},
+            'encoding': {'name': 'Encoding', 'standard': False},
+            'note_class': {'name': 'Note Class', 'standard': False},
+            'note_event_field': {'name': 'Note Event Field', 'standard': False},
+            'note_nlp': {'name': 'Note NLP', 'standard': False},
+            'section': {'name': 'Section', 'standard': False},
+            
+            # Event field domains
+            'meas_event_field': {'name': 'Measurement Event Field', 'standard': False},
+            'obs_event_field': {'name': 'Observation Event Field', 'standard': False},
+            'episode_event_field': {'name': 'Episode Event Field', 'standard': False},
+            
+            # Cost domains
+            'drg': {'name': 'DRG', 'standard': False},
+            'revenue_code': {'name': 'Revenue Code', 'standard': False},
+            
+            # Provider domains
+            'specialty': {'name': 'Provider Specialty', 'standard': False},
+            
+            # Geography domains
+            'country': {'name': 'Country', 'standard': False},
+            
+            # Concept system domains
+            'domain': {'name': 'Domain', 'standard': False},
+            'concept_class': {'name': 'Concept Class', 'standard': False},
+            'ancestor': {'name': 'Ancestor Concept', 'standard': False},
+            'descendant': {'name': 'Descendant Concept', 'standard': False},
+            'source': {'name': 'Source Concept', 'standard': False},
+            'target': {'name': 'Target Concept', 'standard': False},
+            
+            # Episode domains
+            'episode_object': {'name': 'Episode Object', 'standard': False},
+            'subject': {'name': 'Cohort Subject', 'standard': False},
+            
+            # Version domains
+            'cdm_version': {'name': 'CDM Version', 'standard': False}
+        }
+        
+        # Get domain table ID (30) for concept generation
+        domain_table_id = self.table_ids.get("domain", 30)
+        
+        # Generate domain records for ALL domains
+        domain_records = []
+        domain_concept_counter = 0
+        
+        for domain_id in sorted(all_domains):
+            # Skip Metadata domain to avoid circular reference
+            if domain_id == "Metadata":
+                continue
+                
+            # Get domain info from mapping or create custom
+            domain_info = domain_mapping.get(domain_id, {
+                'name': domain_id.replace('_', ' ').title(), 
+                'standard': False
+            })
+            
+            # Generate domain concept_id using XXYYZZ pattern
+            # XX = domain table ID (30), YY = field order (01 for domain_concept_id), ZZ = sequence
+            domain_concept_id = int(f"{domain_table_id:02d}01{domain_concept_counter:02d}")
+            
+            # Create domain record
+            domain_record = {
+                "domain_id": domain_id,
+                "domain_name": domain_info['name'],
+                "domain_concept_id": domain_concept_id
+            }
+            
+            domain_records.append(domain_record)
+            
+            # Create the domain concept in concept table
+            domain_concept = {
+                "concept_id": domain_concept_id,
+                "concept_name": domain_info['name'],
+                "domain_id": "Metadata",  # Domain concepts belong to Metadata domain
+                "vocabulary_id": "Domain",
+                "concept_class_id": "Domain",
+                "standard_concept": "S" if domain_info['standard'] else "C",
+                "concept_code": domain_id.upper(),
+                "valid_start_date": "1970-01-01",
+                "valid_end_date": "2099-12-31",
+                "invalid_reason": None
+            }
+            
+            self.omop_data["concept"].append(domain_concept)
+            domain_concept_counter += 1
+        
+        # Replace domain table with generated records
+        self.omop_data["domain"] = domain_records
+        
+        logging.info(f"Generated {len(domain_records)} comprehensive domain records")
+        if len(domain_records) <= 20:  # Only log all if reasonable number
+            for record in domain_records:
+                logging.info(f"  {record['domain_id']}: {record['domain_name']} (concept_id: {record['domain_concept_id']})")
+        else:
+            # Log first few and summary
+            for record in domain_records[:5]:
+                logging.info(f"  {record['domain_id']}: {record['domain_name']} (concept_id: {record['domain_concept_id']})")
+            logging.info(f"  ... and {len(domain_records) - 5} more domain records")
+    
     def _post_process_omop_data(self) -> None:
         """Post-process OMOP data to ensure consistency and add required fields."""
         logging.info("Post-processing OMOP data")
+        
+        # Generate domain table from concept table data
+        self._generate_domain_table()
         
         # Remove internal record IDs and lookup tables
         for table_name, records in self.omop_data.items():
