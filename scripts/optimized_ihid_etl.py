@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-Optimized IHID to OMOP ETL Pipeline
-Processes IHID CSV data and transforms it to OMOP format using efficient lookups.
+IHID to OMOP ETL Pipeline
+
+Transforms healthcare data from IHID (Integrated Health Information Database) format 
+to OMOP Common Data Model format. Supports dynamic concept generation and maintains 
+referential integrity across OMOP tables.
 """
 
 import json
@@ -11,7 +14,6 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 from collections import defaultdict
 import time
-from typing import Tuple
 
 # Configure logging
 logging.basicConfig(
@@ -20,26 +22,34 @@ logging.basicConfig(
 )
 
 class OptimizedIHIDToOMOPETL:
+    """
+    IHID to OMOP ETL processor with optimized batch processing and dynamic concept generation.
+    
+    Transforms healthcare data from IHID format to OMOP Common Data Model format,
+    automatically generating OMOP concept IDs using a structured XXYYZZ scheme where:
+    - XX: OMOP table ID 
+    - YY: Concept field order within table
+    - ZZ: Sequential concept number
+    """
     def __init__(self, data_dir: str = 'data', mapping_file: str = 'ihid_omop_mapping.json'):
         self.data_dir = Path(data_dir)
         self.mapping_file = mapping_file
         self.ihid_data = {}
         self.omop_data = defaultdict(list)
-        self.omop_lookup = defaultdict(dict)  # Fast lookup tables
+        self.omop_lookup = defaultdict(dict)
         self.mapping = {}
         self.place_of_service_lookup = {}
         self.next_concept_id = 1000000
-        self.concept_id_counters = defaultdict(lambda: defaultdict(dict))  # [table][field][value] = concept_id
-        self.concept_field_order = {}  # Loaded from JSON
-        self.table_ids = {}  # Loaded from table_ids.txt
+        self.concept_id_counters = defaultdict(lambda: defaultdict(dict))
+        self.concept_field_order = {}
+        self.table_ids = {}
         
     def load_mapping(self) -> None:
-        """Load IHID to OMOP field mappings."""
+        """Load IHID to OMOP field mappings from JSON configuration file."""
         try:
             with open(self.mapping_file, 'r') as f:
                 raw_mapping = json.load(f)
             
-            # Convert nested mapping structure to flat list
             self.mapping = []
             mapping_count = 0
             
@@ -69,7 +79,7 @@ class OptimizedIHIDToOMOPETL:
             raise
     
     def load_csv_data(self) -> None:
-        """Load all CSV files from the data directory."""
+        """Load and standardize IHID CSV files from the data directory."""
         csv_files = list(self.data_dir.glob('*.csv'))
         
         if not csv_files:
@@ -79,32 +89,26 @@ class OptimizedIHIDToOMOPETL:
         total_records = 0
         for csv_file in csv_files:
             try:
-                # Try reading as comma-delimited first
                 try:
                     df = pd.read_csv(csv_file, low_memory=False)
                 except pd.errors.ParserError:
-                    # If that fails, try tab-delimited
                     df = pd.read_csv(csv_file, sep='\t', low_memory=False, on_bad_lines='skip')
                 
-                # Clean column names
                 df.columns = df.columns.str.strip()
-                
-                # Convert to records
                 records = df.to_dict('records')
                 
-                # Extract table name from filename (fix: remove .csv extension properly)
                 table_name = csv_file.stem.split('.', 1)[-1].replace('.csv', '').replace('_', ' ').title().strip()
                 
-                # Fix known naming inconsistencies to match mapping file
+                # Map table names to match mapping configuration
                 table_name_fixes = {
-                    'Dad Information': 'DAD Abstract',  # Map to existing section
+                    'Dad Information': 'DAD Abstract',
                     'Dad Diagnosis': 'DAD Diagnosis', 
                     'Dad Interevention': 'DAD Intervention',
                     'Lab Result': 'Laboratory Result',
-                    'Admission Discharge': 'Admission/Discharge',  # Remove spaces around slash
-                    'Surgery': 'Surgery Case Completed',  # Map to existing section
-                    'Previous Admission': 'DAD Special Care Unit',  # Map to closest existing section
-                    'Readmission': 'Emergency'  # Map to closest existing section
+                    'Admission Discharge': 'Admission/Discharge',
+                    'Surgery': 'Surgery Case Completed',
+                    'Previous Admission': 'DAD Special Care Unit',
+                    'Readmission': 'Emergency'
                 }
                 
                 if table_name in table_name_fixes:
@@ -122,6 +126,7 @@ class OptimizedIHIDToOMOPETL:
         logging.info(f"Loaded {len(self.ihid_data)} CSV tables with {total_records} total records")
 
     def load_concept_field_order(self, path: str = "schemas/concept_field_order.json") -> None:
+        """Load concept field ordering configuration for dynamic concept ID generation."""
         try:
             with open(path, "r") as f:
                 self.concept_field_order = json.load(f)
@@ -131,6 +136,7 @@ class OptimizedIHIDToOMOPETL:
             raise
 
     def load_table_ids(self, path: str = "schemas/table_ids.txt") -> None:
+        """Load OMOP table ID mappings for concept ID generation."""
         try:
             with open(path, 'r') as f:
                 for line in f:
@@ -143,10 +149,9 @@ class OptimizedIHIDToOMOPETL:
             raise
 
     def transform_to_omop(self) -> None:
-        """Transform IHID data to OMOP format using optimized processing."""
+        """Transform loaded IHID data to OMOP format using batch processing for performance."""
         logging.info("Starting IHID to OMOP transformation")
         
-        # Process each IHID table
         for table_name, records in self.ihid_data.items():
             if not records:
                 continue
@@ -154,13 +159,11 @@ class OptimizedIHIDToOMOPETL:
             logging.info(f"Processing {table_name} with {len(records)} records")
             start_time = time.time()
             
-            # Process records in batches for better performance
             batch_size = 1000
             for i in range(0, len(records), batch_size):
                 batch = records[i:i+batch_size]
                 self._process_batch(table_name, batch)
                 
-                # Log progress for large tables
                 if len(records) > 10000 and (i + batch_size) % 10000 == 0:
                     elapsed = time.time() - start_time
                     progress = (i + batch_size) / len(records) * 100
@@ -169,17 +172,12 @@ class OptimizedIHIDToOMOPETL:
             elapsed = time.time() - start_time
             logging.info(f"Completed {table_name} in {elapsed:.1f}s")
         
-        # Post-process the data
         self._post_process_omop_data()
     
     def _process_batch(self, source_table: str, records: List[Dict[str, Any]]) -> None:
-        """Process a batch of records efficiently."""
-        
+        """Process a batch of IHID records and apply applicable OMOP mappings."""
         for source_record in records:
-            # Standardize source record field names
             source_record = self._standardize_field_names(source_record)
-            
-            # Find applicable mappings for this table
             applicable_mappings = self._get_applicable_mappings(source_table, source_record)
             
             for mapping in applicable_mappings:
@@ -190,17 +188,16 @@ class OptimizedIHIDToOMOPETL:
                     continue
     
     def _apply_mapping_optimized(self, source_record: Dict[str, Any], mapping: Dict[str, Any]) -> None:
-        """Apply a single mapping with optimized record handling and robust type conversion."""
+        """Apply a single IHID->OMOP field mapping with value conversion and record deduplication."""
         ihid_field = mapping['ihid_field']
         omop_table = mapping['omop_table']
         omop_field = mapping['omop_field']
         
-        # Get the value from source record
         value = source_record.get(ihid_field)
         if value is None or value == '' or (isinstance(value, float) and pd.isna(value)):
             return
         
-        # Convert value based on OMOP field requirements and data type
+        # Generate concept ID for concept fields, otherwise convert value type
         if omop_field.endswith("_concept_id") and isinstance(value, str):
             concept_id = self._get_or_create_dynamic_concept(omop_table, omop_field, value)
             if concept_id is None:
@@ -212,75 +209,63 @@ class OptimizedIHIDToOMOPETL:
         if converted_value is None:
             return
         
-        # Generate unique record ID
         record_id = self._generate_record_id(source_record, omop_table)
         
-        # Use optimized lookup to find or create record
+        # Update existing record or create new one
         if record_id in self.omop_lookup[omop_table]:
-            # Update existing record - handle multiple mappings intelligently
             record_index = self.omop_lookup[omop_table][record_id]
             existing_record = self.omop_data[omop_table][record_index]
             
             if omop_field in existing_record and existing_record[omop_field] is not None:
-                # Handle multiple values mapping to same field intelligently
                 existing_value = existing_record[omop_field]
                 combined_value = self._combine_values_intelligently(
                     existing_value, converted_value, omop_field, ihid_field
                 )
                 existing_record[omop_field] = combined_value
             else:
-                # Field doesn't exist yet, just set it
                 existing_record[omop_field] = converted_value
         else:
-            # Create new record
             new_record = {
                 '_record_id': record_id,
                 omop_field: converted_value
             }
-            # Add standard identifiers
             self._add_standard_identifiers(new_record, source_record, omop_table)
             
-            # Add to data and lookup
             record_index = len(self.omop_data[omop_table])
             self.omop_data[omop_table].append(new_record)
             self.omop_lookup[omop_table][record_id] = record_index
     
     def _standardize_field_names(self, record: Dict[str, Any]) -> Dict[str, Any]:
-        """Standardize field names for consistent mapping."""
+        """Standardize IHID field names to lowercase with underscores for consistent mapping."""
         standardized = {}
         for key, value in record.items():
-            # Convert to lowercase and replace spaces/special chars with underscores
             clean_key = str(key).lower().strip()
             clean_key = clean_key.replace(' ', '_').replace('-', '_').replace('.', '_')
-            # Remove duplicate underscores
             while '__' in clean_key:
                 clean_key = clean_key.replace('__', '_')
             standardized[clean_key] = value
         return standardized
     
     def _get_applicable_mappings(self, source_table: str, source_record: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Get mappings applicable to this record - field-centric approach."""
+        """Get mappings applicable to this record based on available IHID fields."""
         applicable = []
         
         for mapping in self.mapping:
             ihid_field = mapping['ihid_field']
             
-            # Field-centric mapping: only check if the field exists in the record
             if ihid_field in source_record:
                 applicable.append(mapping)
         
         return applicable
     
     def _convert_value_robust(self, value: Any, omop_field: str, ihid_field: str, mapping: Dict[str, Any]) -> Any:
-        """Convert value to appropriate OMOP format with robust type handling."""
+        """Convert IHID values to appropriate OMOP data types based on field patterns."""
         if value is None or (isinstance(value, float) and pd.isna(value)):
             return None
         
-        # Convert based on expected OMOP field type
         field_lower = omop_field.lower()
         ihid_lower = ihid_field.lower()
         
-        # ID fields should be integers
         if '_id' in field_lower or field_lower.endswith('_id'):
             try:
                 if isinstance(value, str) and value.strip() == '':
@@ -289,29 +274,21 @@ class OptimizedIHIDToOMOPETL:
             except (ValueError, TypeError):
                 return None
         
-        # Handle datetime fields - multiple sources can map here
         if 'datetime' in field_lower:
-            # If it's an elapsed time field, convert differently
             if 'elapsed' in ihid_lower and 'minutes' in ihid_lower:
                 return self._convert_elapsed_minutes_to_note(value)
-            # Otherwise try to convert as datetime
             return self._convert_to_datetime(value)
         
-        # Handle date fields - multiple sources can map here
         if 'date' in field_lower and 'datetime' not in field_lower:
-            # If it's an elapsed time field, convert differently
             if 'elapsed' in ihid_lower and 'minutes' in ihid_lower:
                 return self._convert_elapsed_minutes_to_note(value)
-            # If it's a datetime field being mapped to date, extract date
             if 'dt_tm' in ihid_lower or 'datetime' in ihid_lower:
                 datetime_val = self._convert_to_datetime(value)
                 if datetime_val:
-                    return datetime_val.split(' ')[0]  # Extract date part
+                    return datetime_val.split(' ')[0]
                 return None
-            # Otherwise try to convert as date
             return self._convert_to_date(value)
         
-        # Numeric fields - be more specific to avoid false positives
         if ('amount' in field_lower or 'quantity' in field_lower or 
             field_lower.endswith('_value') and not any(x in field_lower for x in ['source_value', 'concept_value'])):
             try:
@@ -319,51 +296,56 @@ class OptimizedIHIDToOMOPETL:
             except (ValueError, TypeError):
                 return None
         
-        # String fields - clean and standardize
         if isinstance(value, str):
             cleaned = value.strip()
             return cleaned if cleaned else None
         
         return value
 
+    def _extract_domain_from_concept_field(self, concept_field: str) -> str:
+        """Extract domain_id from concept field name for proper OMOP domain classification."""
+        if concept_field.endswith("_source_concept_id"):
+            return concept_field.replace("_source_concept_id", "")
+        
+        if concept_field.endswith("_concept_id"):
+            return concept_field.replace("_concept_id", "")
+        
+        if "_concept_id_" in concept_field:
+            return concept_field.split("_concept_id_")[0]
+        
+        return concept_field
+
     def _get_or_create_dynamic_concept(self, omop_table: str, concept_field: str, raw_value: str) -> Optional[int]:
-        """
-        Auto-generate concept_id for any *_concept_id field using the XXYYZZ scheme.
-        """
+        """Generate OMOP concept ID using XXYYZZ scheme: XX=table, YY=field, ZZ=sequence."""
         if not raw_value or not isinstance(raw_value, str):
             return None
 
         value = raw_value.strip().title()
 
-        # Return existing concept_id if already seen
         if value in self.concept_id_counters[omop_table][concept_field]:
             return self.concept_id_counters[omop_table][concept_field][value]
 
-        # Get XX from table_ids.txt
         table_id = self.table_ids.get(omop_table, 99)
         xx = f"{table_id:02d}"
 
-        # Get YY from concept_field_order.json
         field_order = self.concept_field_order.get(omop_table, {}).get(concept_field)
         if field_order is None:
             logging.warning(f"Missing field order for {omop_table}.{concept_field}")
             return None
         yy = f"{field_order:02d}"
 
-        # Get next ZZ for this field
         zz = f"{len(self.concept_id_counters[omop_table][concept_field]):02d}"
 
-        # Construct full concept_id
         concept_id = int(f"{xx}{yy}{zz}")
 
-        # Store and track
         self.concept_id_counters[omop_table][concept_field][value] = concept_id
 
-        # Append to concept table
+        domain_id = self._extract_domain_from_concept_field(concept_field)
+
         self.omop_data["concept"].append({
             "concept_id": concept_id,
             "concept_name": value,
-            "domain_id": concept_field.replace("_concept_id", ""),
+            "domain_id": domain_id,
             "vocabulary_id": "Custom",
             "concept_class_id": "Custom",
             "standard_concept": "S",
@@ -376,7 +358,7 @@ class OptimizedIHIDToOMOPETL:
         return concept_id
 
     def _convert_elapsed_minutes_to_note(self, value: Any) -> Optional[str]:
-        """Convert elapsed time in minutes to a descriptive note."""
+        """Convert elapsed time in minutes to human-readable format (e.g., '90' -> '1h 30m')."""
         try:
             minutes = int(float(value))
             hours = minutes // 60
@@ -409,69 +391,53 @@ class OptimizedIHIDToOMOPETL:
         omop_field: str, 
         ihid_field: str
     ) -> Any:
-        """Intelligently combine multiple values for the same OMOP field with robust nesting prevention."""
-        
+        """Combine multiple IHID field values mapping to the same OMOP field, handling data type conflicts."""
         field_lower = omop_field.lower()
         existing_str = str(existing_value).strip()
         new_str = str(new_value).strip()
         
-        # Special handling for day_of_birth - should not combine ages, take first valid one
         if field_lower == 'day_of_birth':
-            # Try to convert to age and take the one that makes more sense
             try:
                 existing_age = int(float(existing_str.replace(',', '').split()[0]))
                 new_age = int(float(new_str.replace(',', '').split()[0]))
                 
-                # Take the age that's more reasonable (0-120 range)
                 if 0 <= existing_age <= 120:
-                    return existing_value  # Keep existing if valid
+                    return existing_value
                 elif 0 <= new_age <= 120:
-                    return new_value  # Replace with new if existing invalid
+                    return new_value
                 else:
-                    return existing_value  # Keep existing if both invalid
+                    return existing_value
             except:
-                return existing_value  # Keep existing if conversion fails
+                return existing_value
         
-        # Special handling for ID fields - should not combine, take first valid one
         if field_lower.endswith('_id') or field_lower.endswith('_occurrence_id'):
             try:
-                # If existing is valid integer, keep it
                 int(float(str(existing_value)))
                 return existing_value
             except:
                 try:
-                    # If new is valid integer, use it
                     int(float(str(new_value)))
                     return new_value
                 except:
                     return existing_value
         
-        # Prevent nested parentheses by checking if already combined
         if "(duration:" in existing_str:
-            # Don't nest further, just add with comma if different
             if new_str and new_str not in existing_str:
                 return f"{existing_str}, {new_str}"
             return existing_str
-        
-        # For datetime fields, intelligently combine based on data type
         if 'datetime' in field_lower or 'date' in field_lower:
-            # Check if values are datetime format
             is_existing_datetime = self._is_datetime_format(existing_str)
             is_new_datetime = self._is_datetime_format(new_str)
             
             if is_existing_datetime and not is_new_datetime:
-                # Existing is datetime, new is duration/other
                 return f"{existing_value} (duration: {new_value})"
             elif is_new_datetime and not is_existing_datetime:
-                # New is datetime, existing is duration/other
                 return f"{new_value} (duration: {existing_value})"
             else:
-                # Both same type, combine with comma if different
                 if new_str and new_str not in existing_str:
                     return f"{existing_value}, {new_value}"
                 return existing_value
         
-        # For other fields, combine with commas
         if new_str and new_str not in existing_str:
             return f"{existing_value}, {new_value}"
         
@@ -480,51 +446,10 @@ class OptimizedIHIDToOMOPETL:
     def _is_datetime_format(self, value_str: str) -> bool:
         """Check if a string represents a datetime format."""
         try:
-            # Try to parse as datetime
             pd.to_datetime(value_str, errors='raise')
-            # Additional check for common datetime patterns
             return any(pattern in value_str for pattern in ['-', '/', ':', ' ']) and len(value_str) > 8
         except:
             return False
-    
-    def _convert_value(self, value: Any, omop_field: str, mapping: Dict[str, Any]) -> Any:
-        """Convert value to appropriate OMOP format (legacy method for compatibility)."""
-        return self._convert_value_robust(value, omop_field, "", mapping)
-        """Convert value to appropriate OMOP format."""
-        if value is None or (isinstance(value, float) and pd.isna(value)):
-            return None
-        
-        # Convert based on expected OMOP field type
-        field_lower = omop_field.lower()
-        
-        # ID fields should be integers
-        if '_id' in field_lower or field_lower.endswith('_id'):
-            try:
-                if isinstance(value, str) and value.strip() == '':
-                    return None
-                return int(float(value))
-            except (ValueError, TypeError):
-                return None
-        
-        # Date fields
-        if 'date' in field_lower or 'datetime' in field_lower:
-            return self._convert_to_date(value)
-        
-        # Numeric fields - be more specific to avoid false positives
-        # Only treat as numeric if it's clearly a numeric field, not just contains 'value'
-        if ('amount' in field_lower or 'quantity' in field_lower or 
-            field_lower.endswith('_value') and not any(x in field_lower for x in ['source_value', 'concept_value'])):
-            try:
-                return float(value)
-            except (ValueError, TypeError):
-                return None
-        
-        # String fields - clean and standardize
-        if isinstance(value, str):
-            cleaned = value.strip()
-            return cleaned if cleaned else None
-        
-        return value
     
     def _convert_to_date(self, value: Any) -> Optional[str]:
         """Convert various date formats to OMOP standard (YYYY-MM-DD)."""
@@ -541,14 +466,11 @@ class OptimizedIHIDToOMOPETL:
             return None
     
     def _generate_record_id(self, source_record: Dict[str, Any], omop_table: str) -> str:
-        """Generate a unique record identifier for OMOP records."""
-        
-        # Get primary identifiers from source record
+        """Generate unique record identifier for OMOP records based on available source data."""
         mrn = source_record.get('mrn') or source_record.get('medical_record_number')
         encntr_num = source_record.get('encntr_num') or source_record.get('encounter_number')
         event_id = source_record.get('event_id') or source_record.get('clinical_event_id')
         
-        # Generate ID based on table type and available identifiers
         if omop_table.lower() == 'person':
             return f"person_{mrn}" if mrn else f"person_unknown_{hash(str(source_record))}"
         elif omop_table.lower() == 'visit_occurrence':
@@ -559,7 +481,6 @@ class OptimizedIHIDToOMOPETL:
         elif event_id:
             return f"{omop_table.lower()}_{event_id}"
         else:
-            # Fallback to hash of the record
             return f"{omop_table.lower()}_{hash(str(source_record))}"
     
     def _add_standard_identifiers(
@@ -568,16 +489,13 @@ class OptimizedIHIDToOMOPETL:
         source_record: Dict[str, Any],
         omop_table: str
     ) -> None:
-        """Add standard OMOP identifiers to a record."""
-        
+        """Add standard OMOP identifiers (person_id, visit_occurrence_id) to records."""
         mrn = source_record.get('mrn') or source_record.get('medical_record_number')
         encntr_num = source_record.get('encntr_num') or source_record.get('encounter_number')
         
-        # Add person_id for all clinical tables
         if omop_table.lower() != 'person' and mrn:
             omop_record['person_id'] = mrn
         
-        # Add visit_occurrence_id for event tables
         event_tables = [
             'condition_occurrence', 'procedure_occurrence', 'drug_exposure',
             'measurement', 'observation', 'device_exposure', 'specimen'
@@ -585,7 +503,6 @@ class OptimizedIHIDToOMOPETL:
         if omop_table.lower() in event_tables and encntr_num:
             omop_record['visit_occurrence_id'] = encntr_num
         
-        # Add table-specific required fields
         if omop_table.lower() == 'person' and mrn:
             omop_record['person_id'] = mrn
         elif omop_table.lower() == 'visit_occurrence' and encntr_num:
@@ -594,36 +511,32 @@ class OptimizedIHIDToOMOPETL:
                 omop_record['person_id'] = mrn
     
     def _generate_domain_table(self) -> None:
-        """Generate domain table from ALL concept fields in schema, not just those with data."""
+        """Generate domain table from ALL concept fields in schema."""
         logging.info("Generating comprehensive domain table from concept field schema")
         
-        # Extract ALL possible domain_ids from concept_field_order.json schema
         schema_domains = set()
         for table, fields in self.concept_field_order.items():
             for field_name, order in fields.items():
                 if field_name.endswith("_concept_id"):
                     domain_id = field_name.replace("_concept_id", "")
                     schema_domains.add(domain_id)
-                elif "_concept_id_" in field_name:  # Handle domain_concept_id_1, etc.
+                elif "_concept_id_" in field_name:
                     parts = field_name.split("_concept_id_")
                     domain_id = parts[0]
                     schema_domains.add(domain_id)
         
-        # Also collect domains that actually have data in concept table
         data_domains = set()
         if "concept" in self.omop_data:
             for concept_record in self.omop_data["concept"]:
                 domain_id = concept_record.get("domain_id")
-                if domain_id and domain_id != "Metadata":  # Exclude Metadata to avoid circular reference
+                if domain_id and domain_id != "Metadata":
                     data_domains.add(domain_id)
         
-        # Combine schema domains with data domains
         all_domains = schema_domains.union(data_domains)
         
         logging.info(f"Found {len(schema_domains)} domains in schema, {len(data_domains)} domains with data")
         logging.info(f"Generating {len(all_domains)} total domain records")
         
-        # Comprehensive domain mapping with OMOP standard domains
         domain_mapping = {
             # Standard OMOP domains
             'condition': {'name': 'Condition', 'standard': True},
@@ -715,29 +628,22 @@ class OptimizedIHIDToOMOPETL:
             'cdm_version': {'name': 'CDM Version', 'standard': False}
         }
         
-        # Get domain table ID (30) for concept generation
         domain_table_id = self.table_ids.get("domain", 30)
         
-        # Generate domain records for ALL domains
         domain_records = []
         domain_concept_counter = 0
         
         for domain_id in sorted(all_domains):
-            # Skip Metadata domain to avoid circular reference
             if domain_id == "Metadata":
                 continue
                 
-            # Get domain info from mapping or create custom
             domain_info = domain_mapping.get(domain_id, {
                 'name': domain_id.replace('_', ' ').title(), 
                 'standard': False
             })
             
-            # Generate domain concept_id using XXYYZZ pattern
-            # XX = domain table ID (30), YY = field order (01 for domain_concept_id), ZZ = sequence
             domain_concept_id = int(f"{domain_table_id:02d}01{domain_concept_counter:02d}")
             
-            # Create domain record
             domain_record = {
                 "domain_id": domain_id,
                 "domain_name": domain_info['name'],
@@ -746,11 +652,10 @@ class OptimizedIHIDToOMOPETL:
             
             domain_records.append(domain_record)
             
-            # Create the domain concept in concept table
             domain_concept = {
                 "concept_id": domain_concept_id,
                 "concept_name": domain_info['name'],
-                "domain_id": "Metadata",  # Domain concepts belong to Metadata domain
+                "domain_id": "Metadata",
                 "vocabulary_id": "Domain",
                 "concept_class_id": "Domain",
                 "standard_concept": "S" if domain_info['standard'] else "C",
@@ -763,7 +668,6 @@ class OptimizedIHIDToOMOPETL:
             self.omop_data["concept"].append(domain_concept)
             domain_concept_counter += 1
         
-        # Replace domain table with generated records
         self.omop_data["domain"] = domain_records
         
         logging.info(f"Generated {len(domain_records)} comprehensive domain records")
@@ -771,7 +675,6 @@ class OptimizedIHIDToOMOPETL:
             for record in domain_records:
                 logging.info(f"  {record['domain_id']}: {record['domain_name']} (concept_id: {record['domain_concept_id']})")
         else:
-            # Log first few and summary
             for record in domain_records[:5]:
                 logging.info(f"  {record['domain_id']}: {record['domain_name']} (concept_id: {record['domain_concept_id']})")
             logging.info(f"  ... and {len(domain_records) - 5} more domain records")
@@ -780,18 +683,14 @@ class OptimizedIHIDToOMOPETL:
         """Post-process OMOP data to ensure consistency and add required fields."""
         logging.info("Post-processing OMOP data")
         
-        # Generate domain table from concept table data
         self._generate_domain_table()
         
-        # Remove internal record IDs and lookup tables
         for table_name, records in self.omop_data.items():
             for record in records:
                 record.pop('_record_id', None)
         
-        # Clear lookup tables to free memory
         self.omop_lookup.clear()
         
-        # Log final statistics
         total_records = sum(len(records) for records in self.omop_data.values())
         logging.info(f"Generated {len(self.omop_data)} OMOP tables with {total_records} total records")
         
@@ -824,7 +723,6 @@ class OptimizedIHIDToOMOPETL:
         try:
             logging.info("Starting IHID to OMOP ETL pipeline")
             
-            # Load configuration and data
             self.load_mapping()
             self.load_table_ids()
             self.load_concept_field_order()
@@ -834,10 +732,8 @@ class OptimizedIHIDToOMOPETL:
                 logging.error("No IHID data loaded. Exiting.")
                 return
             
-            # Transform data
             self.transform_to_omop()
             
-            # Save results
             self.save_omop_data()
             
             elapsed = time.time() - start_time
