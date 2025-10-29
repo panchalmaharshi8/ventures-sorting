@@ -1,0 +1,220 @@
+{
+  "field_to_domain_mapping": {
+    "condition_concept": "Condition",
+    "condition_source": "Condition",
+    "condition_status": "Type Concept",
+    "condition_type": "Type Concept",
+    "cause": "Condition",
+    "cause_source": "Condition",
+    "death_type": "Type Concept",
+    "drug": "Drug",
+    "drug_source": "Drug",
+    "drug_type": "Type Concept",
+    "route": "Drug",
+    "ingredient": "Drug",
+    "procedure": "Procedure",
+    "procedure_source": "Procedure",
+    "procedure_type": "Type Concept",
+    "modifier": "Procedure",
+    "measurement": "Measurement",
+    "measurement_source": "Measurement",
+    "measurement_type": "Type Concept",
+    "operator": "Measurement",
+    "value_as": "Measurement",
+    "unit": "Unit",
+    "unit_source": "Unit",
+    "amount_unit": "Unit",
+    "denominator_unit": "Unit",
+    "numerator_unit": "Unit",
+    "meas_event_field": "Measurement",
+    "observation": "Observation",
+    "observation_source": "Observation",
+    "observation_type": "Type Concept",
+    "qualifier": "Observation",
+    "obs_event_field": "Observation",
+    "visit": "Visit",
+    "visit_source": "Visit",
+    "visit_type": "Type Concept",
+    "visit_detail": "Visit",
+    "visit_detail_source": "Visit",
+    "visit_detail_type": "Type Concept",
+    "admitted_from": "Visit",
+    "discharged_to": "Visit",
+    "gender": "Gender",
+    "gender_source": "Gender",
+    "race": "Race",
+    "race_source": "Race",
+    "ethnicity": "Ethnicity",
+    "ethnicity_source": "Ethnicity",
+    "specialty": "Provider",
+    "specialty_source": "Provider",
+    "place_of_service": "Care Site",
+    "country": "Geography",
+    "device": "Device",
+    "device_source": "Device",
+    "device_type": "Type Concept",
+    "episode": "Episode",
+    "episode_source": "Episode",
+    "episode_type": "Type Concept",
+    "episode_object": "Episode",
+    "episode_event_field": "Episode",
+    "specimen": "Specimen",
+    "specimen_type": "Type Concept",
+    "anatomic_site": "Spec Anatomic Site",
+    "disease_status": "Spec Disease Status",
+    "cost_type": "Type Concept",
+    "currency": "Currency",
+    "drg": "Type Concept",
+    "revenue_code": "Type Concept",
+    "payer": "Type Concept",
+    "payer_source": "Type Concept",
+    "plan": "Type Concept",
+    "plan_source": "Type Concept",
+    "sponsor": "Type Concept",
+    "sponsor_source": "Type Concept",
+    "stop_reason": "Type Concept",
+    "stop_reason_source": "Type Concept",
+    "period_type": "Type Concept",
+    "encoding": "Type Concept",
+    "language": "Type Concept",
+    "note_class": "Type Concept",
+    "note_event_field": "Observation",
+    "note_type": "Type Concept",
+    "note_nlp": "Observation",
+    "note_nlp_source": "Observation",
+    "section": "Observation",
+    "metadata": "Observation",
+    "metadata_type": "Type Concept",
+    "cdm_version": "Type Concept",
+    "definition_type": "Type Concept",
+    "subject": "Type Concept",
+    "concept_class": "Type Concept",
+    "domain": "Type Concept",
+    "vocabulary": "Type Concept",
+    "relationship": "Relationship",
+    "concept_id_1": "Type Concept",
+    "concept_id_2": "Type Concept",
+    "concept_id": "Type Concept",
+    "source": "Type Concept",
+    "target": "Type Concept",
+    "domain_concept_id_1": "Type Concept",
+    "domain_concept_id_2": "Type Concept"
+  },
+  "omop_standard_domains": {
+    "Condition": {
+      "domain_id": "Condition",
+      "domain_name": "Condition",
+      "domain_concept_id": 19
+    },
+    "Drug": {
+      "domain_id": "Drug",
+      "domain_name": "Drug",
+      "domain_concept_id": 13
+    },
+    "Procedure": {
+      "domain_id": "Procedure",
+      "domain_name": "Procedure",
+      "domain_concept_id": 10
+    },
+    "Measurement": {
+      "domain_id": "Measurement",
+      "domain_name": "Measurement",
+      "domain_concept_id": 21
+    },
+    "Observation": {
+      "domain_id": "Observation",
+      "domain_name": "Observation",
+      "domain_concept_id": 27
+    },
+    "Device": {
+      "domain_id": "Device",
+      "domain_name": "Device",
+      "domain_concept_id": 17
+    },
+    "Provider": {
+      "domain_id": "Provider",
+      "domain_name": "Provider",
+      "domain_concept_id": 18
+    },
+    "Visit": {
+      "domain_id": "Visit",
+      "domain_name": "Visit",
+      "domain_concept_id": 8
+    },
+    "Care Site": {
+      "domain_id": "Care Site",
+      "domain_name": "Care Site",
+      "domain_concept_id": 57
+    },
+    "Location": {
+      "domain_id": "Location",
+      "domain_name": "Location",
+      "domain_concept_id": 55
+    },
+    "Episode": {
+      "domain_id": "Episode",
+      "domain_name": "Episode",
+      "domain_concept_id": 32
+    },
+    "Specimen": {
+      "domain_id": "Specimen",
+      "domain_name": "Specimen",
+      "domain_concept_id": 36
+    },
+    "Unit": {
+      "domain_id": "Unit",
+      "domain_name": "Unit",
+      "domain_concept_id": 58
+    },
+    "Currency": {
+      "domain_id": "Currency",
+      "domain_name": "Currency",
+      "domain_concept_id": 44
+    },
+    "Geography": {
+      "domain_id": "Geography",
+      "domain_name": "Geography",
+      "domain_concept_id": 4
+    },
+    "Race": {
+      "domain_id": "Race",
+      "domain_name": "Race",
+      "domain_concept_id": 2
+    },
+    "Ethnicity": {
+      "domain_id": "Ethnicity",
+      "domain_name": "Ethnicity",
+      "domain_concept_id": 1
+    },
+    "Gender": {
+      "domain_id": "Gender",
+      "domain_name": "Gender",
+      "domain_concept_id": 3
+    },
+    "Type Concept": {
+      "domain_id": "Type Concept",
+      "domain_name": "Type Concept",
+      "domain_concept_id": 58
+    },
+    "Relationship": {
+      "domain_id": "Relationship",
+      "domain_name": "Relationship",
+      "domain_concept_id": 59
+    },
+    "Spec Anatomic Site": {
+      "domain_id": "Spec Anatomic Site",
+      "domain_name": "Spec Anatomic Site",
+      "domain_concept_id": 43
+    },
+    "Spec Disease Status": {
+      "domain_id": "Spec Disease Status",
+      "domain_name": "Spec Disease Status",
+      "domain_concept_id": 42
+    }
+  },
+  "usage_instructions": {
+    "purpose": "This file maps concept field names to appropriate OMOP domains",
+    "usage": "Use get_domain_for_field() function to determine domain_id for concept fields",
+    "note": "Domain assignments follow OMOP CDM 6.0 standards"
+  }
+}

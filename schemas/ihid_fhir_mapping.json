@@ -1,0 +1,6746 @@
+{
+  "DAD Information": {
+    "phn_province_issuing": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "cacs_age_category": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "cmg_age_category_desc": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "private_clinic_institution_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "private_clinic_institution_name": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "institution_num": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "alias",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "disch_disposition_desc": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "hospitalization.dischargeDisposition",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "disch_dt_date": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "recordedDate",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "admit_dt_date": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "recordedDate",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "ed_left_ed_dt_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "abstract_num": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "main_patient_service_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "recorder",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "principle_procedure_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "recorder",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "disch_disp_dad_is_death": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "complication",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "death_in_operating_room": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "complicationDetail",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "cmg_intervention_event_count": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "complicationDetail",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "cmg_intervention_ooh_count": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "complicationDetail",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "ed_registration_dt_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "ed_registration_dt_time": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "ed_left_ed_dt_time": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "ed_unknown_time": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "ed_unknown_time_phc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "cmg_mcc_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "autopsy": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "bodySite",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "proj_340_stroke_administration_of_acute_th": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "proj_340_stroke_antithrombotic_rx_med_des": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "medicine_reconciliation_desc": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "performer.function",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "payor_desc": [
+      {
+        "fhir_resource": "Coverage",
+        "fhir_table": "Coverage",
+        "fhir_field": "payor",
+        "mapping_type": "exact",
+        "category": "Financial",
+        "header": "Support"
+      }
+    ],
+    "primary_health_plan_desc_src": [
+      {
+        "fhir_resource": "InsurancePlan",
+        "fhir_table": "InsurancePlan",
+        "fhir_field": "coverage",
+        "mapping_type": "non-exact",
+        "category": "Financial",
+        "header": "General"
+      }
+    ],
+    "cacs_ambulatory_cost_weight": [
+      {
+        "fhir_resource": "InsurancePlan",
+        "fhir_table": "InsurancePlan",
+        "fhir_field": "plan.specificCost",
+        "mapping_type": "non-exact",
+        "category": "Financial",
+        "header": "General"
+      }
+    ]
+  },
+  "Medical Imaging": {
+    "is_research": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "gender_desc": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "gender",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_at_exam": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_category_at_exam": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "patient_postal_code_geographical_health_authority_name_at_rad_exam_end": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "patient_postal_code_geographical_local_health_authority_name_at_rad_exam_end": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "rad_assigned_priority_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "exam_status_change_to_exam_started_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "encntr_key": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_at_rad_exam_end": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "encntr_type_class_desc_src_at_rad_exam_end": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "DxTypeID": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "diagnosis_type_id": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "sch_event_id": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_modality_code_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "modality",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "series.modality",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "encntr_type_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "encntr_type_desc_at_rad_exam_end": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_start_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "started",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_request_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "started",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_request_received_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "started",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "reporting_check_in_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "started",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "reporting_rad_exam_request_received_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "started",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_resource_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "basedOn",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_report_final_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "endpoint",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "transcription_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "endpoint",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_end_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "endpoint",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "med_service_desc_src_at_rad_exam_end": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "procedureReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_workload_extended_units": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "procedureReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_name_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_short_name_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_community_of_care _desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_community_of_care _subgrp_desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_health_organization_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_health_organization_site_desc _src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_health_organization_site_short_desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      },
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "reason_for_exam_text": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_report_status_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "check_in_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "dictation_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "sched_rad_exam_start_dt_tm": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_community_of_care_desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_community_of_care_subgrp_desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_facility_health_organization_site_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_is_clerical_room": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_rad_department_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_rad_section_cost_center_desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_rad_section_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_rad_section_fin_site_desc": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_room_rad_sub_section_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_status_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "discount_rad_order_priority_desc_src": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "rad_exam_count": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "series.number",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ]
+  },
+  "Admission / Discharge": {
+    "gender_desc_at_admit": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "gender",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "gender_desc_at_disch": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "gender",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_at_admit": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_at_disch": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_id_at_admit": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_id_at_disch": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "patient_postal_code_geographical_health_authority_name_at_ad": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "patient_postal_code_geographical_health_service_delivery_area_name_at_ad": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "patient_postal_code_geographical_local_health_authority_name_at_ad": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "is_homeless": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "is_homeless_phc": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "address",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "facility_id_at_ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src_at_ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src_at_ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "admit_source_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "admit_category_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "transfer_facility_from_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "admit_source_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "admit_source_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_is_acute_at_ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_is_free_standing_rehab_at _ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_desc_at_ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_desc_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_desc_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_ad": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_at_first _admit _med_rec_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_at_last _disch_med_rec_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_src_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_src_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_src_at_first_admit_med_rec_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_src_at_last_di sch_med_rec_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_src_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_src_at_disch": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "encntr_type_class_id_at_ad": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_id_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_id_at_disch": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_ad": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_disch": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_src_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_src_at_disch": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_at_ad": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_at_disch": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_src_at_ad": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_at_ad": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "subject",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_at_disch": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_ad": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_disch": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "diagnosis_type_id": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "admit_dt_tm": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "recordedDate",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "care_type": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "recorder",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "primary_health_plan_desc_src": [
+      {
+        "fhir_resource": "InsurancePlan",
+        "fhir_table": "InsurancePlan",
+        "fhir_field": "name",
+        "mapping_type": "exact",
+        "category": "Financial",
+        "header": "General"
+      }
+    ],
+    "primary_health_plan_short_desc_src": [
+      {
+        "fhir_resource": "InsurancePlan",
+        "fhir_table": "InsurancePlan",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Financial",
+        "header": "General"
+      }
+    ]
+  },
+  "Orders": {
+    "gender_desc_at_orig_order": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "gender",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "nursing_unit_id_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_id_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "order_detail_patient_admit_date_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "order_detail_patient_admit_dt_tm": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "order_detail_patient_admit_time_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_bed_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_bed_id_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_room_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_room_id_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "med_service_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "med_service_id_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_desc_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "facility_health_organization_desc_src_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_health_organization_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_health_organization_site_desc_src_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_health_organization_site_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_health_organization_site_short_desc_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_health_organization_site_short_desc_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_src_at_order_completed": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "description",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_id_at_order_completed": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "encntr_type_class_id_at_orig_order": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "encntr_type_id_at_order_completed": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_orig_order": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "originating_encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "encounter",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "originating_encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "encounter",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "encntr_type_class_desc_src_at_order_completed": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "encntr_type_class_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_order_completed": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_orig_order": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "specimen_type_desc_src": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_type_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "order_specimen_type_desc_src": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "order_specimen_type_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_collection_date_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_received_date_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_collection_dt_tm": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_collection_time_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_received_dt_tm": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "specimen_received_time_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "person_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_completed_date_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "status",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_completed_dt_tm": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "status",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "orig_order_class_desc_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "category",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "category",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "age_category_at_orig_order": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "category",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "receiver",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "age_at_orig_order": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "subject",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "receiver",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "age_id_at_orig_order": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "subject",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "receiver",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "requested_start_dt_tm": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "authoredOn",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "requested_start_time_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "authoredOn",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "anti_infective_indication_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "requester",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "research_study_account_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "requester",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "ResearchStudy",
+        "fhir_table": "ResearchStudy",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Specialized",
+        "header": "Public Health"
+      }
+    ],
+    "anti_infective_indication_desc_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "requester",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "transfer_med_rec_completed_dt_tm": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "recorder",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "strength_dose_minimum_range_value": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.dose",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "prescription_duration_units_of_measure_desc_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dispenseRequest.quantity",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "prescription_duration_units_of_measure_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dispenseRequest.quantity",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "administration_infuse_over_time_units_of_measure_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "prescription_duration_value": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "dispenseRequest.quantity",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "daysSupply",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_dispense_with_substitution_flag": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "substitution.allowed[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "orig_order_time_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "requested_start_date_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "orig_order_date_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "orig_order_dt_tm": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "research_study_account_name_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_pathway_catalog_desc_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_pathway_catalog_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "orig_order_class_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "source_system_code": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "administration_route_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "performer.function",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_requisition_routing_text": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "performer.function",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_requisition_routing_type_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "performer.function",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_requisition_routing_type_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "performer.function",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "administration_route_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "performer.function",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "dispense_quantity_units_of_measure_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.dose",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "dispense_quantity_units_of_measure_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.dose",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "dispense_quantity_value": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.dose",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "number_of_orders": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.dose",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_frequency_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.rate[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_frequency_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "dosage.rate[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "is_once_future_order": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "is_order_cancelled": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "is_order_completed": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "is_order_discontinued": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_communication_type_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_communication_type_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_discontinued_date_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_discontinued_dt_tm": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_discontinued_time_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_status_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_status_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_stop_type_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "subphase_order_pathway_catalog_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "subphase_order_pathway_catalog_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "template_order_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "template_order_type_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "template_order_type_id": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "continuous_infusion_volume_rate_units_of_measure_id": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_id": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "clinical_event_class_desc_src": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "context",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "ordering_care_provider_specialty_desc": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "performer.function",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "continuous_infusion_volume_rate_value": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "quantity",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "continuous_infusion_volume_rate_units_of_measure_desc_src": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "quantity",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "freetext_dose_text": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "special_instructions_text": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_priority_desc_src": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_priority_id": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_prn_flag": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "pharmacy_take_home_flag": [
+      {
+        "fhir_resource": "MedicationDispense",
+        "fhir_table": "MedicationDispense",
+        "fhir_field": "dosageInstruction",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "samples_given_flaG": [
+      {
+        "fhir_resource": "MedicationStatement",
+        "fhir_table": "MedicationStatement",
+        "fhir_field": "medication[x]",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_activity_subtype_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_activity_type_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_dcp_clinical_category_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_id": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_type_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "bcca_protocol_code_text": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_department_status_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_department_status_id": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_detail_med_service_id": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "order_detail_med_service_nacrs_category": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "order_detail_med_service_dad_code": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "order_detail_med_service_dad_desc": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "order_detail_med_service_desc_src": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ]
+  },
+  "Census": {
+    "gender_desc_at_census": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "gender",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_at_census": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_category_at_census": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "age_id_at_census": [
+      {
+        "fhir_resource": "Patient",
+        "fhir_table": "Patient",
+        "fhir_field": "birthDate",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      }
+    ],
+    "facility_community_of_care_desc_at_census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id_at_census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_is_acute_at_census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_is_free_standing_rehab_at _census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src_at_census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src_at_census": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "census_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "census_date_reporting_week_end": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "census_date_reporting_week_nbr": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "census_date_reporting_year": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "census_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_id_at_census": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_census": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_at_census": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_src_at_census": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_at_census": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_census": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "admit_dt_tm": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "recordedDate",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "disch_dt_tm": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "recordedDate",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ]
+  },
+  "Clinical Event": {
+    "performed_by_care_provider_is_ed_care_provider": [
+      {
+        "fhir_resource": "Practitioner",
+        "fhir_table": "Practitioner",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      },
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "performer",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "performed_by_care_provider_specialty_desc": [
+      {
+        "fhir_resource": "Practitioner",
+        "fhir_table": "Practitioner",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Individuals"
+      },
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "performer",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "facility_community_of_care_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "facility_name_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "facility_short_name_src\"": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "event_start_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "event_start_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "event_start_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "event_end_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "event_end_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "event_end_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "ce_dynamic_label_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "facility_short_name_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "accession_num": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "performed_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "report",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "performed_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "performed_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "result_authoured_status_id": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "result_interpretation_id": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "verified_by_care_provider_specialty_desc": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "performer",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "result_authoured_status_desc_src": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "value[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "result_interpretation_desc_src": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "value[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "result_interpretation_short_desc_src": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "value[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "result_value": [
+      {
+        "fhir_resource": "Observation",
+        "fhir_table": "Observation",
+        "fhir_field": "value[x]",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "order_catalog_type_desc_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "clinical_event_class_desc_src": [
+      {
+        "fhir_resource": "MedicationAdministration",
+        "fhir_table": "MedicationAdministration",
+        "fhir_field": "category",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "clinical_event_class_id": [
+      {
+        "fhir_resource": "MedicationStatement",
+        "fhir_table": "MedicationStatement",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "order_catalog_id": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "number_of_clinical_event": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "occurrence[x]",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ]
+  },
+  "Emergency": {
+    "facility_id_at_arrival": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src_at_arrival": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src_at_arri val": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "ed_nursing_unit_desc_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "ed_nursing_unit_desc_src_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "ed_nursing_unit_id_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "ed_nursing_unit_short_desc_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "ed_nursing_unit_short_desc_src_at_admit": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_cdu_loc_room_type_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_cdu_loc_room_type_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_time_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_type_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_type_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_nursing_unit_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_nursing_unit_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_nursing_unit_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_nursing_unit_short_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_nursing_unit_short_desc _src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_type_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "first_ed_loc_room_type_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "last_ed_loc_room_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "last_ed_loc_room_type_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_desc_at_arrival": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_arrival": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "ed_depart_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "last_cdu_out_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "left_ed_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "ed_depart_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "ed_depart_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_nursing_unit_dt_tm_post_ed": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "last_cdu_out_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "last_ed_loc_room_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "left_ed_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "nursing_unit_beg_to_end_effective_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_key": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_id_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_src_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_admit": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_extract_key_date_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "period",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ]
+  },
+  "DAD Intervention": {
+    "special_care_unit_01_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "special_care_unit_02_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "special_care_unit_01_admit_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_02_admit_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_01_admit_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_02_admit_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_01_disch_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_02_disch_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_01_disch_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_02_disch_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_01_death_flag": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "special_care_unit_02_death_flag": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ]
+  },
+  "DADSCU": {
+    "special_care_unit_03_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "special_care_unit_04_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "special_care_unit_05_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "special_care_unit_06_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "special_care_unit_03_admit_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_04_admit_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_05_admit_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_06_admit_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_cdu_in_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_loc_room_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_nurse_practitioner_reltn_beg_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_nurse_reltn_beg_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_provider_reltn_beg_date_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_03_admit_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_04_admit_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_05_admit_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_06_admit_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_cdu_in_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_cdu_in_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_loc_room_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_loc_room_excl_default_waiting_room_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_loc_room_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_nurse_practitioner_reltn_beg_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_nurse_practitioner_reltn_beg_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_nurse_reltn_beg_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_nurse_reltn_beg_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_provider_reltn_beg_dt_tm": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "first_ed_provider_reltn_beg_time_id": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "start",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_03_disch_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_04_disch_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_05_disch_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_06_disch_dt_date": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_03_disch_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_04_disch_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_05_disch_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_06_disch_dt_time": [
+      {
+        "fhir_resource": "Appointment",
+        "fhir_table": "Appointment",
+        "fhir_field": "end",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Workflow"
+      }
+    ],
+    "special_care_unit_03_death_flag": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "special_care_unit_04_death_flag": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "special_care_unit_05_death_flag": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "special_care_unit_06_death_flag": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "note",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ]
+  },
+  "Surgery": {
+    "surg_operating_room_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_community_of_care_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_community_of_care_subgrp_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_health_organization_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_health_organization_site_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_health_organization_site_short_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_name_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_facility_short_name_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_surg_area_desc _src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_surg_department_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "surg_operating_room_surg_st aging_area_desc_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_key": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_id_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_cd_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_class_desc_src_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "classHistory.class",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_cd_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_surg_start": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "patient_in_pre_op_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_pre_op_elapsed_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_pre_op_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_room_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_room_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_out_room_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_out_room_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_ready_for_surg_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_ready_for_surg_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_in_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_in_out_elapsed_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_in_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_out_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_out_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_in_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_in_out_elapsed_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_in_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_out_date _id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_out_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_case_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_case_svc_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_svc_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_svc_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_svc_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_moh_category_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_special_grp_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_moh_category_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_special_grp_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_moh_category_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_special_grp_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_spr_code": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_spr_code_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_code": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_code_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_code": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_code_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_performed_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "performed[x]",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_code": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_code_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonCode",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_case_svc_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_case_svc_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_cardiac_services_bc_grp_priority": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_cardiac_services_bc_grp_short_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_spr_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_spr_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_svc_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_cardiac_services_bc_grp_priority": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_cardiac_services_bc_grp_short_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_spr_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_spr_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_2_svc_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_cardiac_services_bc_grp_priority": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_cardiac_services_bc_grp_short_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_spr_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_spr_desc_src": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_3_svc_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "reasonReference",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_performed_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_checkin_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_checkin_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_checkin_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_out_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_pre_op_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_pre_op_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_in_room_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_out_room_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "patient_ready_for_surg_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_in_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_in_out_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_1_pacu_out_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_in_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_in_out_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "phase_2_sdc_post_op_out_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "sched_surg_px_1_is_moh_px_excl": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "primary_health_plan_id": [
+      {
+        "fhir_resource": "InsurancePlan",
+        "fhir_table": "InsurancePlan",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Financial",
+        "header": "General"
+      }
+    ],
+    "primary_health_plan_short_desc_src": [
+      {
+        "fhir_resource": "InsurancePlan",
+        "fhir_table": "InsurancePlan",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Financial",
+        "header": "General"
+      }
+    ]
+  },
+  "Laboratory Result": {
+    "nursing_unit_desc_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_desc_src_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_id_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "nursing_unit_short_desc_src_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_bed_desc_src_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_bed_id_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_room_desc_src_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "loc_room_id_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_desc_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src_at_collection": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_id_at_collection": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_type_desc_src_at_collection": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "serviceType",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "surg_stop_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surgeon_1_care_provider_specialty_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surgeon_2_care_provider_specialty_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surgeon_3_care_provider_specialty_desc": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "location",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_start_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "report",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_start_date_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_start_to_stop_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "surg_stop_dt_tm": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "organism_1_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_2_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_3_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_1_desc_src": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_1_ipac_category": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_1_is_ipac_trigger": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_2_desc_src": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_2_ipac_category": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_2_is_ipac_trigger": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_3_desc_src": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_3_ipac_category": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "organism_3_is_ipac_trigger": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "type",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "collection_date_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "lab_collection_date_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "collection_dt_tm": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "collection_time_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "lab_collection_dt_tm": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "lab_collection_time_id": [
+      {
+        "fhir_resource": "Specimen",
+        "fhir_table": "Specimen",
+        "fhir_field": "receivedTime",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ]
+  },
+  "Active Medical Service": {
+    "facility_community_of_care_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_community_of_care_subgrp_desc": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_id": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_name_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "facility_short_name_src": [
+      {
+        "fhir_resource": "Location",
+        "fhir_table": "Location",
+        "fhir_field": "name",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Entities"
+      }
+    ],
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_loc_hist_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "statusHistory.status",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "med_service_beg_to_end_effective_elapsed_time_id": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "med_service_beg_to_end_effective_elapsed_time_minutes": [
+      {
+        "fhir_resource": "Procedure",
+        "fhir_table": "Procedure",
+        "fhir_field": "note",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "end_effective_date_id": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "end_effective_time_id": [
+      {
+        "fhir_resource": "ImagingStudy",
+        "fhir_table": "ImagingStudy",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Diagnostics"
+      }
+    ],
+    "beg_effective_date_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "beg_effective_time_id": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      },
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "beg_effective_dt_tm": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "orderDetail",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ],
+    "number_of_activities": [
+      {
+        "fhir_resource": "ServiceRequest",
+        "fhir_table": "ServiceRequest",
+        "fhir_field": "quantity[x]",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Care Provision"
+      }
+    ]
+  },
+  "ActNurs": {
+    "encntr_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ],
+    "encntr_loc_hist_id": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      },
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "statusHistory.status",
+        "mapping_type": "exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ]
+  },
+  "DadAbs": {
+    "encntr_num": [
+      {
+        "fhir_resource": "Encounter",
+        "fhir_table": "Encounter",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Base",
+        "header": "Management"
+      }
+    ]
+  },
+  "DAD Diagnosis": {
+    "diagnosis_type_id": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "category",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "code",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "diagnosis_order_number": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "encounter",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "diagnosis_desc": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "stage.summary",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      },
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "evidence",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ],
+    "most_responsible_diagnosis_desc": [
+      {
+        "fhir_resource": "Condition",
+        "fhir_table": "Condition",
+        "fhir_field": "evidence",
+        "mapping_type": "exact",
+        "category": "Clinical",
+        "header": "Summary"
+      }
+    ]
+  },
+  "Diagnostic Imaging": {
+    "catalog_type_desc_src": [
+      {
+        "fhir_resource": "MedicationRequest",
+        "fhir_table": "MedicationRequest",
+        "fhir_field": "eventHistory",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "dcp_clinical_category_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "activity_type_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ],
+    "activity_subtype_desc_src": [
+      {
+        "fhir_resource": "Medication",
+        "fhir_table": "Medication",
+        "fhir_field": "identifier",
+        "mapping_type": "non-exact",
+        "category": "Clinical",
+        "header": "Medications"
+      }
+    ]
+  }
+}
