@@ -358,7 +358,11 @@ class OptimizedIHIDToFHIRETL:
         s = name.strip().replace('/', '-').replace('\\', '-')
         return s
 
-    def load_fhir_index(self, schema_path: str = 'schemas/FIHR_Summarized_Schema.xlsx') -> None:
+    def load_fhir_index(self, schema_path: str = None) -> None:
+        if schema_path is None:
+            # Try to derive from mapping file's directory
+            schema_path = str(Path(self.mapping_file).parent / 'FIHR_Summarized_Schema.xlsx')
+            
         try:
             xls = pd.ExcelFile(schema_path)
             for sheet in xls.sheet_names:

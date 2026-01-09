@@ -244,7 +244,59 @@
         }
 
         const res = await fetch("/api/convert", { method: "POST", body: form });
-        const data = await res.json();
+        
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder("utf-8");
+        let buffer = "";
+        let finalData = null;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop(); // Keep the potentially incomplete line in buffer
+
+          for (const line of lines) {
+            if (!line.trim()) continue;
+            try {
+              const item = JSON.parse(line);
+              
+              if (item.type === "log") {
+                let color = "text-slate-600";
+                let border = "border-l-2 border-slate-300";
+                
+                if (item.level === "ERROR") {
+                  color = "text-red-600";
+                  border = "border-l-2 border-red-500";
+                } else if (item.level === "WARNING") {
+                  color = "text-amber-600";
+                  border = "border-l-2 border-amber-500";
+                }
+                
+                addLogLine(item.message, color, border);
+              } else if (item.type === "result") {
+                finalData = item;
+              }
+            } catch (err) {
+              console.warn("Failed to parse log line:", line, err);
+            }
+          }
+        }
+
+        // Handle any trailing buffer
+        if (buffer && buffer.trim()) {
+           try {
+             const item = JSON.parse(buffer);
+             if (item.type === "result") finalData = item;
+           } catch (e) {}
+        }
+
+        const data = finalData;
+        if (!data) {
+          throw new Error("Server response ended without a result object.");
+        }
 
         if (!res.ok || !data.ok) {
           const msg = data?.etl?.message ? data.etl.message : JSON.stringify(data);

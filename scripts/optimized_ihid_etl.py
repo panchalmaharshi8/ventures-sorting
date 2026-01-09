@@ -43,6 +43,7 @@ class OptimizedIHIDToOMOPETL:
         self.concept_id_counters = defaultdict(lambda: defaultdict(dict))
         self.concept_field_order = {}
         self.table_ids = {}
+        self.missing_field_order_logged = set()
         
     def load_mapping(self) -> None:
         """Load IHID to OMOP field mappings from JSON configuration file."""
@@ -125,8 +126,12 @@ class OptimizedIHIDToOMOPETL:
         
         logging.info(f"Loaded {len(self.ihid_data)} CSV tables with {total_records} total records")
 
-    def load_concept_field_order(self, path: str = "schemas/concept_field_order.json") -> None:
+    def load_concept_field_order(self, path: str = None) -> None:
         """Load concept field ordering configuration for dynamic concept ID generation."""
+        if path is None:
+             # Try to derive from mapping file location
+             path = Path(self.mapping_file).parent / "concept_field_order.json"
+
         try:
             with open(path, "r") as f:
                 self.concept_field_order = json.load(f)
@@ -135,8 +140,12 @@ class OptimizedIHIDToOMOPETL:
             logging.error(f"Failed to load concept_field_order.json: {e}")
             raise
 
-    def load_table_ids(self, path: str = "schemas/table_ids.txt") -> None:
+    def load_table_ids(self, path: str = None) -> None:
         """Load OMOP table ID mappings for concept ID generation."""
+        if path is None:
+             # Try to derive from mapping file location
+             path = Path(self.mapping_file).parent / "table_ids.txt"
+        
         try:
             with open(path, 'r') as f:
                 for line in f:
@@ -330,7 +339,10 @@ class OptimizedIHIDToOMOPETL:
 
         field_order = self.concept_field_order.get(omop_table, {}).get(concept_field)
         if field_order is None:
-            logging.warning(f"Missing field order for {omop_table}.{concept_field}")
+            key = f"{omop_table}.{concept_field}"
+            if key not in self.missing_field_order_logged:
+                logging.warning(f"Missing field order for {key}")
+                self.missing_field_order_logged.add(key)
             return None
         yy = f"{field_order:02d}"
 

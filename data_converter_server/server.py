@@ -1,7 +1,12 @@
-from flask import Flask, send_from_directory, request, jsonify, send_file
+from flask import Flask, send_from_directory, request, jsonify, send_file, Response, stream_with_context
 import os
 import uuid
 import zipfile
+import threading
+import queue
+import logging
+import json
+import time
 
 from etl_runner import run_etl_job
 
@@ -46,6 +51,18 @@ def make_zip_from_dir(src_dir: str, zip_path: str) -> int:
                 file_count += 1
 
     return file_count
+
+class QueueHandler(logging.Handler):
+    def __init__(self, log_queue):
+        super().__init__()
+        self.log_queue = log_queue
+
+    def emit(self, record):
+        try:
+            msg = self.format(record)
+            self.log_queue.put({"type": "log", "message": msg, "level": record.levelname})
+        except Exception:
+            self.handleError(record)
 
 def job_paths(job_id: str):
     runs_dir = os.path.join(REPO_ROOT, "runs")
@@ -126,10 +143,9 @@ def api_convert():
       - target: 'omop' | 'fhir'
       - files: one or more uploaded files
 
-    Stages files to runs/<job_id>/input/,
-    then runs ETL on that input directory.
-
-    If ETL produces output artifacts, package runs/<job_id>/output into output.zip.
+    Streams NDJSON:
+    - Log events: {"type": "log", "message": "...", "level": "INFO"}
+    - Final result: {"type": "result", "ok": true, ...}
     """
     target = (request.form.get("target", "omop") or "omop").strip().lower()
     if target not in ("omop", "fhir"):
@@ -191,50 +207,99 @@ def api_convert():
         f.save(dest_path)
         saved.append(fname)
 
-    # Run ETL (synchronous)
-    exit_code, message = run_etl_job(
-        target=target,
-        data_dir=input_dir,
-        mapping_file=None,
-        output_dir=output_dir,
-    )
+    def generate():
+        log_queue = queue.Queue()
+        queue_handler = QueueHandler(log_queue)
+        root_logger = logging.getLogger()
+        root_logger.addHandler(queue_handler)
+        # Capture all logs down to INFO (or lower if needed)
+        # etl_runner sets level to INFO, we respect that or enforce it here.
+        root_logger.setLevel(logging.INFO)
 
-    # Package output if anything exists in output_dir
-    output_files_count = 0
-    if exit_code == 0:
-        output_files_count = make_zip_from_dir(output_dir, zip_path)
+        result_container = {}
 
-        # If ETL says success but produced no files, treat as "no output"
-        if output_files_count == 0:
-            exit_code = 1
-            message = "ETL completed without errors but produced no output files. Verify uploaded IHID inputs."
+        def run_proc():
+            try:
+                # Run ETL (synchronous)
+                exit_code, message = run_etl_job(
+                    target=target,
+                    data_dir=input_dir,
+                    mapping_file=None,
+                    output_dir=output_dir,
+                )
+                
+                output_files_count = 0
+                if exit_code == 0:
+                    output_files_count = make_zip_from_dir(output_dir, zip_path)
 
-    return jsonify({
-        "ok": exit_code == 0,
-        "job_id": job_id,
-        "status": "completed" if exit_code == 0 else "failed",
-        "etl": {
-            "exit_code": exit_code,
-            "message": message
-        },
-        "received": {
-            "target": target,
-            "file_count": len(saved),
-            "skipped_count": len(skipped),
-            "saved_filenames_preview": saved[:10],
-            "skipped_preview": skipped[:10],
-        },
-        "artifacts": {
-            "output_files_count": output_files_count,
-            "zip_exists": os.path.isfile(zip_path),
-            "download_url": f"/api/download/{job_id}" if os.path.isfile(zip_path) else None
-        },
-        "paths": {
-            "job_dir": job_dir,
-            "input_dir": input_dir,
-            "output_dir": output_dir,
+                    if output_files_count == 0:
+                        exit_code = 1
+                        message = "ETL completed without errors but produced no output files. Verify uploaded IHID inputs."
+                
+                result_container.update({
+                    "exit_code": exit_code,
+                    "message": message,
+                    "output_files_count": output_files_count
+                })
+
+            except Exception as e:
+                logging.error(f"ETL fatal exception: {e}")
+                result_container.update({
+                    "exit_code": 1, 
+                    "message": str(e),
+                    "output_files_count": 0
+                })
+            finally:
+                # Use a unique sentinel to stop
+                log_queue.put(None)
+
+        t = threading.Thread(target=run_proc)
+        t.start()
+
+        while True:
+            item = log_queue.get()
+            if item is None:
+                break
+            yield json.dumps(item) + "\n"
+        
+        t.join()
+        root_logger.removeHandler(queue_handler)
+
+        # Retrieve results
+        exit_code = result_container.get("exit_code", 1)
+        message = result_container.get("message", "Unknown error")
+        output_files_count = result_container.get("output_files_count", 0)
+
+        final_response = {
+            "type": "result",
+            "ok": exit_code == 0,
+            "job_id": job_id,
+            "status": "completed" if exit_code == 0 else "failed",
+            "etl": {
+                "exit_code": exit_code,
+                "message": message
+            },
+            "received": {
+                "target": target,
+                "file_count": len(saved),
+                "skipped_count": len(skipped),
+                "saved_filenames_preview": saved[:10],
+                "skipped_preview": skipped[:10],
+            },
+            "artifacts": {
+                "output_files_count": output_files_count,
+                "zip_exists": os.path.isfile(zip_path),
+                "download_url": f"/api/download/{job_id}" if os.path.isfile(zip_path) else None
+            },
+            "paths": {
+                "job_dir": job_dir,
+                "input_dir": input_dir,
+                "output_dir": output_dir,
+            }
         }
-    }), 200
+        yield json.dumps(final_response) + "\n"
+
+    return Response(stream_with_context(generate()), mimetype='application/x-ndjson')
 
 
 if __name__ == "__main__":

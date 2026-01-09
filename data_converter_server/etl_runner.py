@@ -111,15 +111,10 @@ def _xlsx_to_csvs(input_dir: str) -> Tuple[int, str, List[str]]:
 def _dir_has_any_files(dir_path: str) -> bool:
     if not os.path.isdir(dir_path):
         return False
-    for name in os.listdir(dir_path):
-        if os.path.isfile(os.path.join(dir_path, name)):
+    # Walk fully through directories to find at least one file
+    for root, dirs, files in os.walk(dir_path):
+        if files:
             return True
-        # also count nested files one level deep (common for ETL outputs)
-        p = os.path.join(dir_path, name)
-        if os.path.isdir(p):
-            for sub in os.listdir(p):
-                if os.path.isfile(os.path.join(p, sub)):
-                    return True
     return False
 
 
